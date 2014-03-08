@@ -14,14 +14,37 @@ set nowrap
 set ignorecase
 set smartcase
 
-let g:tagbar_ctags_bin = 'C:\Box\Windows\CTags\ctags.exe'
+" adjust configuration for such hostile environment as Windows {{{
+if has("win32") || has("win16")
+  let g:tagbar_ctags_bin = 'C:\Box\Windows\CTags\ctags.exe'
+else
+  let g:tagbar_ctags_bin = '/opt/local/bin/ctags'
+endif
+" }}}
+
+
+
+"CtrlP settings
+let g:ctrlp_by_filename = 1
+
+
+filetype plugin on
+filetype indent plugin on
 
 execute pathogen#infect()
 
+
+
+
+"color-solarized settings
 syntax enable
 set background=dark
 let g:solarized_italic = 0
 colorscheme solarized
+
+
+
+
 
 syntax on
 map <F2> :NERDTreeToggle<CR>
