@@ -47,6 +47,8 @@ colorscheme solarized
 
 
 syntax on
+
+map , <C-W>
 map <F2> :NERDTreeToggle<CR>
 map <F8> :TagbarToggle<CR>
 
