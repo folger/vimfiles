@@ -3,7 +3,10 @@ set go-=T "remove the toolbar
 
 set backspace=2 "make backspace work like most other apps
 set number
-set ts=4
+
+set smartindent
+set tabstop=4
+set shiftwidth=4
 
 set laststatus=2
 
