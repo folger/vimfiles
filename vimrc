@@ -51,6 +51,6 @@ syntax on
 map , <C-W>
 map <F2> :NERDTreeToggle<CR>
 map <F8> :TagbarToggle<CR>
-
+nnoremap <CR> :noh<CR><CR>
 
 
