@@ -1,3 +1,5 @@
+set nocompatible   " Disable vi-compatibility
+
 set go-=m "remove the menu bar
 set go-=T "remove the toolbar
 
@@ -8,7 +10,7 @@ set smartindent
 set tabstop=4
 set shiftwidth=4
 
-set laststatus=2
+set laststatus=2  " Always show the statusline
 
 set statusline=%F\ %m\ %y%=%l,%c\%P
 set hlsearch
