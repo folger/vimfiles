@@ -44,6 +44,9 @@ let g:clang_user_options='-stdlib=libc++ -std=c++11 -IIncludePath'
 filetype plugin on
 filetype indent plugin on
 
+"Python file specific settings
+autocmd Filetype python setlocal expandtab
+
 execute pathogen#infect()
 
 
@@ -64,6 +67,6 @@ syntax on
 map , <C-W>
 map <F2> :NERDTreeToggle<CR>
 map <F8> :TagbarToggle<CR>
-nnoremap <CR> :noh<CR><CR>
+nnoremap <Esc> :noh<bar>pclose<CR><Esc>
 
 
