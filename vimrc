@@ -19,13 +19,6 @@ set nowrap
 set ignorecase
 set smartcase
 
-" adjust configuration for such hostile environment as Windows {{{
-if has("win32") || has("win16")
-  let g:tagbar_ctags_bin = 'C:\Box\Windows\CTags\ctags.exe'
-else
-  let g:tagbar_ctags_bin = '/opt/local/bin/ctags'
-endif
-" }}}
 
 
 
@@ -38,9 +31,18 @@ let g:ctrlp_by_filename = 1
 let g:clang_periodic_quickfix=1
 "let g:clang_snippets=1
 let g:clang_use_library=1
-let g:clang_library_path="D:/clang_lib/"
 let g:clang_close_preview=1
 let g:clang_user_options='-stdlib=libc++ -std=c++11 -IIncludePath'
+
+" adjust configuration for such hostile environment as Windows {{{
+if has("win32") || has("win16")
+  let g:tagbar_ctags_bin = 'C:\Box\Windows\CTags\ctags.exe'
+  let g:clang_library_path="D:/clang_lib/"
+else
+  let g:tagbar_ctags_bin = '/opt/local/bin/ctags'
+  let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/"
+endif
+" }}}
 
 
 filetype plugin on
