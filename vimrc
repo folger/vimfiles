@@ -25,6 +25,7 @@ set smartcase
 "CtrlP settings
 let g:ctrlp_by_filename = 1
 
+
 "clang_complet
 "let g:clang_auto_select = 2 
 "let g:clang_complete_copen=1
@@ -33,6 +34,7 @@ let g:clang_periodic_quickfix=1
 let g:clang_use_library=1
 let g:clang_close_preview=1
 let g:clang_user_options='-stdlib=libc++ -std=c++11 -IIncludePath'
+
 
 " adjust configuration for such hostile environment as Windows {{{
 if has("win32") || has("win16")
@@ -48,8 +50,10 @@ endif
 filetype plugin on
 filetype indent plugin on
 
+
 "Python file specific settings
 autocmd Filetype python setlocal expandtab
+
 
 execute pathogen#infect()
 
