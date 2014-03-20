@@ -29,7 +29,7 @@ let g:ctrlp_by_filename = 1
 "clang_complet
 "let g:clang_auto_select = 2 
 "let g:clang_complete_copen=1
-let g:clang_periodic_quickfix=1
+"let g:clang_periodic_quickfix=1
 "let g:clang_snippets=1
 let g:clang_use_library=1
 let g:clang_close_preview=1
