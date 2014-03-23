@@ -77,6 +77,6 @@ syntax on
 map , <C-W>
 map <F2> :NERDTreeToggle<CR>
 map <F8> :TagbarToggle<CR>
-nnoremap <Esc> :noh<bar>pclose<CR><Esc>
-
+noremap <Esc> :noh<bar>pclose<CR><Esc>
+noremap <script> <silent> <unique> <Leader>bb :BufExplorer<CR>
 
