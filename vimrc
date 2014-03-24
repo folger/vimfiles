@@ -1,5 +1,7 @@
 set nocompatible   " Disable vi-compatibility
 
+set history=200
+
 set go-=m "remove the menu bar
 set go-=T "remove the toolbar
 
@@ -20,6 +22,11 @@ set ignorecase
 set smartcase
 
 
+set encoding=utf-8
+let &termencoding=&encoding
+set fileencodings=utf-8,gbk
+set guifont=Courier_New:h10
+set guifontwide=NSimSun:h10
 
 
 "CtrlP settings
@@ -75,8 +82,15 @@ colorscheme solarized
 syntax on
 
 map , <C-W>
+
 map <F2> :NERDTreeToggle<CR>
 map <F8> :TagbarToggle<CR>
+
 noremap <Esc> :noh<bar>pclose<CR><Esc>
 noremap <script> <silent> <unique> <Leader>bb :BufExplorer<CR>
+
+map <C-K><C-O> :Gist -l<CR>
+
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
 
