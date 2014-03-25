@@ -26,10 +26,6 @@ set smartcase
 set encoding=utf-8
 let &termencoding=&encoding
 set fileencodings=utf-8,gbk
-set guifont=Courier_New:h10
-set guifontwide=NSimSun:h10
-
-set tags=C:\Dev\Source\tags
 
 "CtrlP settings
 let g:ctrlp_by_filename = 1
@@ -51,9 +47,13 @@ let g:clang_user_options='-stdlib=libc++ -std=c++11 -IIncludePath'
 if has("win32") || has("win16")
   let g:tagbar_ctags_bin = 'C:\Box\Windows\CTags\ctags.exe'
   let g:clang_library_path="D:/clang_lib/"
+  set tags=C:\Dev\Source\tags
+  set guifont=Courier_New:h10
+  set guifontwide=NSimSun:h10
 else
   let g:tagbar_ctags_bin = '/opt/local/bin/ctags'
   let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/"
+  set guifont=Courier_New:h11
 endif
 " }}}
 
