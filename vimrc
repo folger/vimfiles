@@ -8,6 +8,7 @@ set go-=T "remove the toolbar
 set backspace=2 "make backspace work like most other apps
 set number
 
+set incsearch
 set smartindent
 set tabstop=4
 set shiftwidth=4
@@ -28,6 +29,7 @@ set fileencodings=utf-8,gbk
 set guifont=Courier_New:h10
 set guifontwide=NSimSun:h10
 
+set tags=C:\Dev\Source\tags
 
 "CtrlP settings
 let g:ctrlp_by_filename = 1
@@ -98,6 +100,9 @@ nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
+
+nnoremap <silent> [c :cprevious<CR>
+nnoremap <silent> ]c :cnext<CR>
 
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
