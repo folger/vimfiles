@@ -1,5 +1,7 @@
 set nocompatible   " Disable vi-compatibility
 
+set hidden
+
 set history=200
 
 set go-=m "remove the menu bar
@@ -15,7 +17,6 @@ set shiftwidth=4
 
 set laststatus=2  " Always show the statusline
 
-set statusline=%F\ %m\ %y%=%l,%c\%P
 set hlsearch
 set nowrap
 
@@ -79,6 +80,8 @@ colorscheme solarized
 
 
 
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview 
 
 
 syntax on
@@ -92,6 +95,7 @@ noremap <Esc> :noh<bar>pclose<CR><Esc>
 noremap <script> <silent> <unique> <Leader>bb :BufExplorer<CR>
 
 map <C-K><C-O> :Gist -l<CR>
+map <C-K><C-M> :call AddModificationLog()<CR>
 
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
@@ -101,8 +105,29 @@ nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
 
-nnoremap <silent> [c :cprevious<CR>
-nnoremap <silent> ]c :cnext<CR>
+nnoremap <silent> [n :cprevious<CR>
+nnoremap <silent> ]n :cnext<CR>
 
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
+"
+"
+"
+" Custom functions
+"
+"
+"
+"add code marking to modification log, OrgLab stuff
+function! AddModificationLog()
+	g/ \*-\+\*\//normal O*	Folger =strftime("%m/%d/%Y") =g:jira =g:codem
+endfun
+
+"substitude git diff relative path
+function! SubGitDiffPath()
+	%s/^diff --git a\/\(\S*\) b\/\(.*\)/diff --git a\/Source\/Moudle\/scintilla\/\1 b\/\Source\/Module\/scintilla\/\2/g
+	%s/^\([-+]\{3} [ab]\)\/\(.*\)/\1\/Source\/Module\/scintilla\/\2/g
+endfunc
+
+
+
 
