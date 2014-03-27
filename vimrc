@@ -1,5 +1,8 @@
 set nocompatible   " Disable vi-compatibility
 
+set backupdir=~/vimbackup,.
+set dir=~/vimbackup,.
+
 set hidden
 
 set history=200
