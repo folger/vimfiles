@@ -54,11 +54,18 @@ if has("win32") || has("win16")
   set tags=C:\Dev\Source\tags
   set guifont=Courier_New:h10
   set guifontwide=NSimSun:h10
+
+  nmap <F11> :!start explorer /e,%:p:h<CR>
+  nmap <S-F11> :!start explorer /select,%:p<CR>
 else
   let g:tagbar_ctags_bin = '/opt/local/bin/ctags'
   let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/"
   set guifont=Courier_New:h11
+
+  nmap <Leader>f :!open %:p:h<CR>
 endif
+
+  imap <F11> <Esc><F11>
 " }}}
 
 
