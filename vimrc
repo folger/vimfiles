@@ -47,6 +47,10 @@ let g:clang_close_preview=1
 let g:clang_user_options='-stdlib=libc++ -std=c++11 -IIncludePath'
 
 
+"syntastic settings
+let g:syntastic_ignore_files = ['\m\c\.py$', '\m\c\.pyw$']
+
+
 " adjust configuration for such hostile environment as Windows {{{
 if has("win32") || has("win16")
   let g:tagbar_ctags_bin = 'C:\Box\Windows\CTags\ctags.exe'
@@ -117,6 +121,8 @@ nnoremap <silent> ]B :blast<CR>
 
 nnoremap <silent> [n :cprevious<CR>
 nnoremap <silent> ]n :cnext<CR>
+
+nnoremap <C-k><C-l> :Gstatus<CR>
 
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 

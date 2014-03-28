@@ -70,3 +70,6 @@
 	path = bundle/gist-vim
 	url = https://github.com/mattn/gist-vim
 	ignore = dirty
+[submodule "bundle/python-mode"]
+	path = bundle/python-mode
+	url = https://github.com/klen/python-mode
