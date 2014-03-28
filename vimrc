@@ -136,7 +136,7 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 "
 "add code marking to modification log, OrgLab stuff
 function! AddModificationLog()
-	g/ \*-\+\*\//normal O*	Folger =strftime("%m/%d/%Y") =g:jira =g:codem
+	g/ \*-\+\*\//normal O*	Folger =strftime("%m/%d/%Y") =g:jira =g:codem
 endfun
 
 "substitude git diff relative path
