@@ -108,8 +108,10 @@ map <F8> :TagbarToggle<CR>
 noremap <Esc> :noh<bar>pclose<CR><Esc>
 noremap <script> <silent> <unique> <Leader>bb :BufExplorer<CR>
 
-map <C-K><C-O> :Gist -l<CR>
-map <C-K><C-M> :call AddModificationLog()<CR>
+nnoremap <C-K><C-o> :Gist -l<CR>
+nnoremap <C-K><C-m> :call AddModificationLog()<CR>
+nnoremap <C-k><C-l> :Gstatus<CR>
+nnoremap <C-k><C-i> :MRU<CR>
 
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
@@ -122,7 +124,6 @@ nnoremap <silent> ]B :blast<CR>
 nnoremap <silent> [n :cprevious<CR>
 nnoremap <silent> ]n :cnext<CR>
 
-nnoremap <C-k><C-l> :Gstatus<CR>
 
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
