@@ -110,6 +110,8 @@ autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview 
 
 
+set pastetoggle=<F3>
+
 syntax on
 
 map , <C-W>
@@ -124,6 +126,7 @@ nnoremap <C-K><C-o> :Gist -l<CR>
 nnoremap <C-K><C-m> :call AddModificationLog()<CR>
 nnoremap <C-k><C-l> :Gstatus<CR>
 nnoremap <C-k><C-i> :MRU<CR>
+nnoremap <C-k><C-d> :Gdiff<CR>
 
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
