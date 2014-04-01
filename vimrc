@@ -50,6 +50,10 @@ let g:clang_user_options='-stdlib=libc++ -std=c++11 -IIncludePath'
 "syntastic settings
 let g:syntastic_ignore_files = ['\m\c\.py$', '\m\c\.pyw$']
 
+"pymode settings
+let g:pymode_python = 'python'
+let g:pymode_rope = 0
+let g:pymode_lint_ignore = "E501,W,C901"
 
 " adjust configuration for such hostile environment as Windows {{{
 if has("win32") || has("win16")
