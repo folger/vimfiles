@@ -29,7 +29,7 @@ set smartcase
 
 set encoding=utf-8
 let &termencoding=&encoding
-set fileencodings=utf-8,gbk
+set fileencodings=utf-8,gbk,default,latin1
 
 "CtrlP settings
 let g:ctrlp_by_filename = 1
