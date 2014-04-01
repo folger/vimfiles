@@ -1,5 +1,9 @@
 set nocompatible   " Disable vi-compatibility
 
+set virtualedit=all "let the cursor stray beyond the defined text
+
+set vb t_vb= "get rid of the annoying beeps when command doesn't work
+
 set backupdir=~/vimbackup,.
 set dir=~/vimbackup,.
 
@@ -14,7 +18,6 @@ set backspace=2 "make backspace work like most other apps
 set number
 
 set incsearch
-set smartindent
 set tabstop=4
 set shiftwidth=4
 
@@ -78,6 +81,11 @@ endif
 
 
 filetype plugin on
+" according to
+" http://stackoverflow.com/questions/18415492/autoindent-is-subset-of-smartindent-in-vim,
+" smartindent is deprecated and should not be used
+set autoindent
+"set smartindent
 filetype indent plugin on
 
 
