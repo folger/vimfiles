@@ -2,7 +2,8 @@ set nocompatible   " Disable vi-compatibility
 
 set virtualedit=all "let the cursor stray beyond the defined text
 
-set vb t_vb= "get rid of the annoying beeps when command doesn't work
+"Vim kept flashing when press <ESC> when this is on under Windows
+"set vb t_vb= "get rid of the annoying beeps when command doesn't work
 
 set backupdir=~/vimbackup,.
 set dir=~/vimbackup,.
