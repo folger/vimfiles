@@ -1,9 +1,9 @@
-set nocompatible   " Disable vi-compatibility
+set nocompatible   "" Disable vi-compatibility
 
-set virtualedit=all "let the cursor stray beyond the defined text
+"set virtualedit=all ""let the cursor stray beyond the defined text
 
-"Vim kept flashing when press <ESC> when this is on under Windows
-"set vb t_vb= "get rid of the annoying beeps when command doesn't work
+""Vim kept flashing when press <ESC> when this is on under Windows
+"set vb t_vb= ""get rid of the annoying beeps when command doesn't work
 
 set backupdir=~/vimbackup,.
 set dir=~/vimbackup,.
@@ -12,17 +12,17 @@ set hidden
 
 set history=200
 
-set go-=m "remove the menu bar
-set go-=T "remove the toolbar
+set go-=m ""remove the menu bar
+set go-=T ""remove the toolbar
 
-set backspace=2 "make backspace work like most other apps
+set backspace=2 ""make backspace work like most other apps
 set number
 
 set incsearch
 set tabstop=4
 set shiftwidth=4
 
-set laststatus=2  " Always show the statusline
+set laststatus=2  "" Always show the statusline
 
 set hlsearch
 set nowrap
@@ -36,13 +36,13 @@ let &termencoding=&encoding
 set fileencodings=ucs-bom,utf-8,gbk
 set ambiwidth=double
 
-"CtrlP settings
+""CtrlP settings
 let g:ctrlp_by_filename = 1
 let g:ctrlp_max_files = 0
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:30'
 
 
-"clang_complet
+""clang_complet
 "let g:clang_auto_select = 2 
 "let g:clang_complete_copen=1
 "let g:clang_periodic_quickfix=1
@@ -52,15 +52,15 @@ let g:clang_close_preview=1
 let g:clang_user_options='-stdlib=libc++ -std=c++11 -IIncludePath'
 
 
-"syntastic settings
+""syntastic settings
 let g:syntastic_ignore_files = ['\m\c\.py$', '\m\c\.pyw$']
 
-"pymode settings
+""pymode settings
 let g:pymode_python = 'python'
 let g:pymode_rope = 0
 let g:pymode_lint_ignore = "E501,W,C901"
 
-" adjust configuration for such hostile environment as Windows {{{
+"" adjust configuration for such hostile environment as Windows {{{
 if has("win32") || has("win16")
   let g:tagbar_ctags_bin = 'D:\clang_lib\ctags.exe'
   let g:clang_library_path="D:/clang_lib/"
@@ -79,19 +79,19 @@ else
 endif
 
   imap <F11> <Esc><F11>
-" }}}
+"" }}}
 
 
 filetype plugin on
-" according to
-" http://stackoverflow.com/questions/18415492/autoindent-is-subset-of-smartindent-in-vim,
-" smartindent is deprecated and should not be used
+"" according to
+"" http://stackoverflow.com/questions/18415492/autoindent-is-subset-of-smartindent-in-vim,
+"" smartindent is deprecated and should not be used
 set autoindent
 "set smartindent
 filetype indent plugin on
 
 
-"Python file specific settings
+""Python file specific settings
 autocmd Filetype python setlocal expandtab
 
 
@@ -100,7 +100,7 @@ execute pathogen#infect()
 
 
 
-"color-solarized settings
+""color-solarized settings
 syntax enable
 set background=dark
 let g:solarized_italic = 0
@@ -144,19 +144,19 @@ nnoremap <silent> ]n :cnext<CR>
 
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
-"
-"
-"
-" Custom functions
-"
-"
-"
-"add code marking to modification log, OrgLab stuff
+""
+""
+""
+"" Custom functions
+""
+""
+""
+""add code marking to modification log, OrgLab stuff
 function! AddModificationLog()
-	g/ \*-\+\*\//normal O*	Folger =strftime("%m/%d/%Y") =g:jira =g:codem
+	g/ \*-\+\*\//normal O*	Folger =strftime("%m/%d/%Y") =g:jira=g:codem
 endfun
 
-"substitude git diff relative path
+""substitude git diff relative path
 function! SubGitDiffPath()
 	%s/^diff --git a\/\(\S*\) b\/\(.*\)/diff --git a\/Source\/Moudle\/scintilla\/\1 b\/\Source\/Module\/scintilla\/\2/g
 	%s/^\([-+]\{3} [ab]\)\/\(.*\)/\1\/Source\/Module\/scintilla\/\2/g
