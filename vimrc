@@ -58,7 +58,7 @@ let g:syntastic_ignore_files = ['\m\c\.py$', '\m\c\.pyw$']
 ""pymode settings
 let g:pymode_python = 'python'
 let g:pymode_rope = 0
-let g:pymode_lint_ignore = "E501,W,C901"
+let g:pymode_lint_ignore = "E501,E265,W,C901"
 
 "" adjust configuration for such hostile environment as Windows {{{
 if has("win32") || has("win16")
@@ -82,17 +82,17 @@ endif
 "" }}}
 
 
-filetype plugin on
+filetype indent plugin on
 "" according to
 "" http://stackoverflow.com/questions/18415492/autoindent-is-subset-of-smartindent-in-vim,
 "" smartindent is deprecated and should not be used
 set autoindent
 "set smartindent
-filetype indent plugin on
 
 
 ""Python file specific settings
 autocmd Filetype python setlocal expandtab
+autocmd Filetype vim setlocal tabstop=2 shiftwidth=2 expandtab
 
 
 execute pathogen#infect()
@@ -129,6 +129,7 @@ nnoremap <C-K><C-m> :call AddModificationLog()<CR>
 nnoremap <C-k><C-l> :Gstatus<CR>
 nnoremap <C-k><C-i> :MRU<CR>
 nnoremap <C-k><C-d> :Gdiff<CR>
+nnoremap <C-k><C-p> :CtrlP 
 
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
@@ -140,6 +141,7 @@ nnoremap <silent> ]B :blast<CR>
 
 nnoremap <silent> [n :cprevious<CR>
 nnoremap <silent> ]n :cnext<CR>
+
 
 
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
