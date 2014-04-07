@@ -120,7 +120,6 @@ autocmd BufWinEnter *.* silent loadview
 
 set pastetoggle=<F3>
 
-syntax on
 
 map , <C-W>
 
