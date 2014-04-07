@@ -8,6 +8,11 @@ set nocompatible   "" Disable vi-compatibility
 set backupdir=~/vimbackup,.
 set dir=~/vimbackup,.
 
+augroup vimrc
+  au BufReadPre * setlocal foldmethod=indent
+  au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
+augroup END
+
 set hidden
 
 set history=200
@@ -58,7 +63,7 @@ let g:syntastic_ignore_files = ['\m\c\.py$', '\m\c\.pyw$']
 ""pymode settings
 let g:pymode_python = 'python'
 let g:pymode_rope = 0
-let g:pymode_lint_ignore = "E501,E265,W,C901"
+let g:pymode_lint_ignore = "E501,E265,E302,C901"
 
 "" adjust configuration for such hostile environment as Windows {{{
 if has("win32") || has("win16")
@@ -73,7 +78,7 @@ if has("win32") || has("win16")
 else
   let g:tagbar_ctags_bin = '/opt/local/bin/ctags'
   let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/"
-  set guifont=Courier_New:h11
+  set guifont=Menlo:h11
 
   nmap <Leader>f :!open %:p:h<CR>
 endif
@@ -100,11 +105,12 @@ execute pathogen#infect()
 
 
 
-""color-solarized settings
+""colorscheme settings
 syntax enable
 set background=dark
-let g:solarized_italic = 0
-colorscheme solarized
+"let g:solarized_italic = 0
+"colorscheme solarized
+colorscheme desert
 
 
 
@@ -142,6 +148,7 @@ nnoremap <silent> ]B :blast<CR>
 nnoremap <silent> [n :cprevious<CR>
 nnoremap <silent> ]n :cnext<CR>
 
+nnoremap <space> za
 
 
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
