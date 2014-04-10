@@ -8,10 +8,10 @@ set nocompatible   "" Disable vi-compatibility
 set backupdir=~/vimbackup,.
 set dir=~/vimbackup,.
 
-augroup vimrc
-  au BufReadPre * setlocal foldmethod=indent
-  au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
-augroup END
+"augroup vimrc
+  "au BufReadPre * setlocal foldmethod=indent
+  "au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
+"augroup END
 
 set hidden
 
@@ -64,6 +64,9 @@ let g:syntastic_ignore_files = ['\m\c\.py$', '\m\c\.pyw$']
 let g:pymode_python = 'python'
 let g:pymode_rope = 0
 let g:pymode_lint_ignore = "E501,E265,E302,C901"
+
+""tagbar settings
+let g:tagbar_autofocus = 1
 
 "" adjust configuration for such hostile environment as Windows {{{
 if has("win32") || has("win16")
@@ -135,6 +138,8 @@ nnoremap <C-k><C-l> :Gstatus<CR>
 nnoremap <C-k><C-i> :MRU<CR>
 nnoremap <C-k><C-d> :Gdiff<CR>
 nnoremap <C-k><C-p> :CtrlP 
+nnoremap <C-k><C-z> :call AddCodeMakingBegin()<CR>
+nnoremap <C-k><C-x> :call AddCodeMakingEnd()<CR>
 
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
@@ -162,6 +167,14 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 ""add code marking to modification log, OrgLab stuff
 function! AddModificationLog()
 	g/ \*-\+\*\//normal O*	Folger =strftime("%m/%d/%Y") =g:jira=g:codem
+endfun
+
+function! AddCodeMakingBegin()
+  normal O///------ Folger =strftime("%m/%d/%Y") =g:jira=g:codem
+endfun
+
+function! AddCodeMakingEnd()
+  normal o///------ End =g:codem
 endfun
 
 ""substitude git diff relative path
