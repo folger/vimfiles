@@ -170,11 +170,17 @@ function! AddModificationLog()
 endfun
 
 function! AddCodeMakingBegin()
+  let l:tt = &formatoptions
+  exe "set formatoptions-=cro"
   normal O///------ Folger =strftime("%m/%d/%Y") =g:jira=g:codem
+  let &formatoptions = l:tt
 endfun
 
 function! AddCodeMakingEnd()
+  let l:tt = &formatoptions
+  exe "set formatoptions-=cro"
   normal o///------ End =g:codem
+  let &formatoptions = l:tt
 endfun
 
 ""substitude git diff relative path
