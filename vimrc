@@ -63,7 +63,7 @@ let g:syntastic_ignore_files = ['\m\c\.py$', '\m\c\.pyw$']
 ""pymode settings
 let g:pymode_python = 'python'
 let g:pymode_rope = 0
-let g:pymode_lint_ignore = "E501,E265,E302,C901"
+let g:pymode_lint_ignore = "E501,E265,C901"
 
 ""tagbar settings
 let g:tagbar_autofocus = 1
