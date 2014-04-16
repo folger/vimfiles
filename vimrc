@@ -143,6 +143,8 @@ nnoremap <C-k><C-x> :call AddCodeMakingEnd()<CR>
 
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
+cnoremap <C-k> <Left>
+cnoremap <C-l> <Right>
 
 nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
@@ -217,6 +219,3 @@ function! DoPrettyXML()
   exe "set ft=" . l:origft
 endfunction
 command! PrettyXML call DoPrettyXML()
-
-
-
