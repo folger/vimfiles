@@ -141,6 +141,8 @@ nnoremap <C-k><C-d> :Gdiff<CR>
 nnoremap <C-k><C-p> :CtrlP 
 nnoremap <C-k><C-z> :call AddCodeMakingBegin()<CR>
 nnoremap <C-k><C-x> :call AddCodeMakingEnd()<CR>
+nnoremap <C-k><C-n> :call CompileCurrentFile()<CR>
+nnoremap <C-k><C-b> :call BuildProject()<CR>
 
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
@@ -184,6 +186,14 @@ function! AddCodeMakingEnd()
   exe "set formatoptions-=cro"
   normal o///------ End =g:codem
   let &formatoptions = l:tt
+endfun
+
+function! BuildProject()
+  exe "!start python H:/CheckCode/Python/BuildProj/BuildCmd.py " . g:proj
+endfun
+
+function! CompileCurrentFile()
+  exe "!start python H:/CheckCode/Python/BuildProj/BuildCmd.py " . g:proj . " %:t"
 endfun
 
 ""substitude git diff relative path
