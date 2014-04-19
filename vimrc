@@ -79,6 +79,16 @@ if has("win32") || has("win16")
 
   nmap <F11> :!start explorer /e,%:p:h<CR>
   nmap <S-F11> :!start explorer /select,%:p<CR>
+
+  function! BuildProject(file)
+    exe "!start python " . $Checkcode ."/Python/BuildProj/BuildCmd.py " . g:proj . " " . a:file
+  endfun
+  nnoremap <C-k><C-b> :call BuildProject("")<CR>
+
+  function! CompileCurrentFile()
+    call BuildProject("%:t")
+  endfun
+  nnoremap <C-k><C-n> :call CompileCurrentFile()<CR>
 else
   let g:tagbar_ctags_bin = '/opt/local/bin/ctags'
   let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/"
@@ -134,15 +144,13 @@ noremap <Esc> :noh<bar>pclose<CR><Esc>
 noremap <script> <silent> <unique> <Leader>bb :BufExplorer<CR>
 
 nnoremap <C-K><C-o> :Gist -l<CR>
-nnoremap <C-K><C-m> :call AddModificationLog()<CR>
 nnoremap <C-k><C-l> :Gstatus<CR>
 nnoremap <C-k><C-i> :MRU<CR>
 nnoremap <C-k><C-d> :Gdiff<CR>
 nnoremap <C-k><C-p> :CtrlP 
+nnoremap <C-K><C-m> :call AddModificationLog()<CR>
 nnoremap <C-k><C-z> :call AddCodeMakingBegin()<CR>
 nnoremap <C-k><C-x> :call AddCodeMakingEnd()<CR>
-nnoremap <C-k><C-n> :call CompileCurrentFile()<CR>
-nnoremap <C-k><C-b> :call BuildProject()<CR>
 
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
@@ -188,13 +196,6 @@ function! AddCodeMakingEnd()
   let &formatoptions = l:tt
 endfun
 
-function! BuildProject()
-  exe "!start python H:/CheckCode/Python/BuildProj/BuildCmd.py " . g:proj
-endfun
-
-function! CompileCurrentFile()
-  exe "!start python H:/CheckCode/Python/BuildProj/BuildCmd.py " . g:proj . " %:t"
-endfun
 
 ""substitude git diff relative path
 function! SubGitDiffPath()

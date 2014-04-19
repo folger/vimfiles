@@ -1,4 +1,4 @@
 snippet cm
-	///------ Folger `strftime("%m/%d/%Y")` `g:jira` `g:codem`
+	///------ Folger `strftime("%m/%d/%Y")` `g:jira``g:codem`
 snippet ce
 	///------ End `g:codem`
