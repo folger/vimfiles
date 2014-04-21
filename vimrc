@@ -82,12 +82,12 @@ if has("win32") || has("win16")
     let l:path = substitute(expand('%:p:h'), "\/", "\\", "g")
     exe "!start explorer /e," . l:path
   endfun
-  nmap <F11> :call OpenContaningFolder()<CR>
+  nmap <S-F11> :call OpenContaningFolder()<CR>
   function! RevealFileInFolder()
     let l:path = substitute(expand('%:p'), "\/", "\\", "g")
     exe "!start explorer /select," . l:path
   endfun
-  nmap <S-F11> :call RevealFileInFolder()<CR>
+  nmap <F11> :call RevealFileInFolder()<CR>
 
   function! BuildProject(file)
     exe "!start python " . $Checkcode ."/Python/BuildProj/BuildCmd.py " . g:proj . " " . a:file
