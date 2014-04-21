@@ -48,6 +48,7 @@ let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:30'
 
 
 ""clang_complet
+let g:clang_complete_loaded=1 
 "let g:clang_auto_select = 2 
 "let g:clang_complete_copen=1
 "let g:clang_periodic_quickfix=1
@@ -77,8 +78,16 @@ if has("win32") || has("win16")
   set guifont=Courier_New:h10
   set guifontwide=NSimSun:h10
 
-  nmap <F11> :!start explorer /e,%:p:h<CR>
-  nmap <S-F11> :!start explorer /select,%:p<CR>
+  function! OpenContaningFolder()
+    let l:path = substitute(expand('%:p:h'), "\/", "\\", "g")
+    exe "!start explorer /e," . l:path
+  endfun
+  nmap <F11> :call OpenContaningFolder()<CR>
+  function! RevealFileInFolder()
+    let l:path = substitute(expand('%:p'), "\/", "\\", "g")
+    exe "!start explorer /select," . l:path
+  endfun
+  nmap <S-F11> :call RevealFileInFolder()<CR>
 
   function! BuildProject(file)
     exe "!start python " . $Checkcode ."/Python/BuildProj/BuildCmd.py " . g:proj . " " . a:file
@@ -134,7 +143,7 @@ autocmd BufWinEnter *.* silent loadview
 
 set pastetoggle=<F3>
 
-
+map <F4> :NERDTreeFind<CR>
 map , <C-W>
 
 map <F2> :NERDTreeToggle<CR>
