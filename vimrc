@@ -118,10 +118,11 @@ set autoindent
 "set smartindent
 
 
-""Python file specific settings
 autocmd Filetype python setlocal expandtab
+
 autocmd Filetype vim setlocal tabstop=2 shiftwidth=2 expandtab
 
+autocmd BufNewFile,BufReadPost *.h,*.c,*.cpp let b:tagbar_ignore = 1
 
 execute pathogen#infect()
 
@@ -149,7 +150,7 @@ map <F4> :NERDTreeFind<CR>
 map , <C-W>
 
 map <F2> :NERDTreeToggle<CR>
-map <F8> :TagbarToggle<CR>
+map <F8> :let b:tagbar_ignore = 0 \| TagbarToggle<CR>
 
 noremap <Esc> :noh<bar>pclose<CR><Esc>
 noremap <script> <silent> <unique> <Leader>bb :BufExplorer<CR>
