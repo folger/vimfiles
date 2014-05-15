@@ -141,6 +141,8 @@ autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview 
 
 
+nmap <Leader>l :set list!<CR>
+
 set pastetoggle=<F3>
 
 map <F4> :NERDTreeFind<CR>
