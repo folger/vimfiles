@@ -74,7 +74,6 @@ if has("win32") || has("win16")
   set lines=50 columns=130
   let g:tagbar_ctags_bin = 'D:\clang_lib\ctags.exe'
   let g:clang_library_path="D:/clang_lib/"
-  set tags=$develop\Source\tags
   set guifont=Courier_New:h10
   set guifontwide=NSimSun:h10
 
@@ -98,6 +97,8 @@ if has("win32") || has("win16")
     call BuildProject("%:t")
   endfun
   nnoremap <C-k><C-n> :call CompileCurrentFile()<CR>
+
+  nmap <Leader>t :set tags=$develop/source/tags<CR>
 else
   let g:tagbar_ctags_bin = '/opt/local/bin/ctags'
   let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/"
