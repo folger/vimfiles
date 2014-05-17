@@ -128,6 +128,8 @@ autocmd Filetype vim setlocal tabstop=2 shiftwidth=2 expandtab
 
 autocmd BufNewFile,BufReadPost *.h,*.c,*.cpp let b:tagbar_ignore = 1
 
+"autocmd BufWritePost vimrc,.vimrc source $MYVIMRC
+
 command! Wrap set wrap linebreak nolist
 command! Nowrap set nowrap nolinebreak nolist
 
@@ -149,6 +151,7 @@ autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview 
 
 
+nmap <Leader>v :e $MYVIMRC<CR>
 nmap <Leader>l :set list!<CR>
 nmap <Leader>s :set spell!<CR>
 map <Leader>ew :e <C-R>=expand("%:p:h") . "/"<CR>
@@ -162,7 +165,6 @@ map <F2> :NERDTreeToggle<CR>
 map <F8> :let b:tagbar_ignore = 0 \| TagbarToggle<CR>
 
 noremap <Esc> :noh<bar>pclose<CR><Esc>
-noremap <script> <silent> <unique> <Leader>bb :BufExplorer<CR>
 
 nnoremap <C-K><C-o> :Gist -l<CR>
 nnoremap <C-k><C-l> :Gstatus<CR>
