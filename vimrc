@@ -159,6 +159,7 @@ map <Leader>ew :e <C-R>=expand("%:p:h") . "/"<CR>
 set pastetoggle=<F3>
 
 map <F4> :NERDTreeFind<CR>
+nnoremap <F5> :GundoToggle<CR>
 map , <C-W>
 
 map <F2> :NERDTreeToggle<CR>
