@@ -69,6 +69,9 @@ let g:pymode_lint_ignore = "E501,E265,C901"
 ""tagbar settings
 let g:tagbar_autofocus = 1
 
+""NERDTree settings
+let g:NERDTreeHijackNetrw = 0
+
 "" adjust configuration for such hostile environment as Windows {{{
 if has("win32") || has("win16")
   set lines=50 columns=130
@@ -125,6 +128,9 @@ autocmd Filetype vim setlocal tabstop=2 shiftwidth=2 expandtab
 
 autocmd BufNewFile,BufReadPost *.h,*.c,*.cpp let b:tagbar_ignore = 1
 
+command! Wrap set wrap linebreak nolist
+command! Nowrap set nowrap nolinebreak nolist
+
 execute pathogen#infect()
 
 
@@ -144,6 +150,8 @@ autocmd BufWinEnter *.* silent loadview
 
 
 nmap <Leader>l :set list!<CR>
+nmap <Leader>s :set spell!<CR>
+map <Leader>ew :e <C-R>=expand("%:p:h") . "/"<CR>
 
 set pastetoggle=<F3>
 
@@ -210,7 +218,7 @@ function! AddCodeMakingEnd()
 endfun
 
 
-""substitude git diff relative path
+""substitute git diff relative path
 function! SubGitDiffPath()
 	%s/^diff --git a\/\(\S*\) b\/\(.*\)/diff --git a\/Source\/Moudle\/scintilla\/\1 b\/\Source\/Module\/scintilla\/\2/g
 	%s/^\([-+]\{3} [ab]\)\/\(.*\)/\1\/Source\/Module\/scintilla\/\2/g
