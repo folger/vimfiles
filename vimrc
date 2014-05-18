@@ -261,3 +261,12 @@ function! DoPrettyXML()
   exe "set ft=" . l:origft
 endfunction
 command! PrettyXML call DoPrettyXML()
+
+command! -nargs=0 -bar Qargs execute 'args' QuickfixFileNames()
+function! QuickfixFileNames()
+  let buffer_names = {}
+  for quickfix_item in getqflist()
+    let buffer_names[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
+  endfor
+  return join(map(values(buffer_names), 'fnameescape(v:val)'))
+endfun
