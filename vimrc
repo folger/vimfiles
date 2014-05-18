@@ -195,6 +195,9 @@ nnoremap <silent> ]B :blast<CR>
 nnoremap <silent> [n :cprevious<CR>
 nnoremap <silent> ]n :cnext<CR>
 
+nnoremap <silent> [t :tabp<CR>
+nnoremap <silent> ]t :tabn<CR>
+
 nnoremap <space> za
 
 
