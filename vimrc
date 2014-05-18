@@ -130,7 +130,7 @@ autocmd BufNewFile,BufReadPost *.h,*.c,*.cpp let b:tagbar_ignore = 1
 
 "autocmd BufWritePost vimrc,.vimrc source $MYVIMRC
 
-autocmd VimLeave * mksession! ~/vim_session
+"autocmd VimLeave * mksession! ~/vim_session
 "autocmd VimEnter * source ~/vim_session
 
 autocmd BufReadPost fugitive://* set bufhidden=delete
@@ -170,6 +170,7 @@ map , <C-W>
 map <F2> :NERDTreeToggle<CR>
 map <F8> :let b:tagbar_ignore = 0 \| TagbarToggle<CR>
 map <S-F2> :source ~/vim_session<CR>
+map <S-F3> :mks! ~/vim_session<CR>
 
 noremap <Esc> :noh<bar>pclose<CR><Esc>
 
