@@ -133,6 +133,8 @@ autocmd BufNewFile,BufReadPost *.h,*.c,*.cpp let b:tagbar_ignore = 1
 autocmd VimLeave * mksession! ~/vim_session
 "autocmd VimEnter * source ~/vim_session
 
+autocmd BufReadPost fugitive://* set bufhidden=delete
+
 command! Wrap set wrap linebreak nolist
 command! Nowrap set nowrap nolinebreak nolist
 
