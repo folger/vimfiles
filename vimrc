@@ -156,6 +156,7 @@ autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview 
 
 
+nmap <Leader>c :tabc<CR>
 nmap <Leader>v :e $MYVIMRC<CR>
 nmap <Leader>l :set list!<CR>
 nmap <Leader>s :set spell!<CR>
