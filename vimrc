@@ -84,12 +84,12 @@ if has("win32") || has("win16")
     let l:path = substitute(expand('%:p:h'), "\/", "\\", "g")
     exe "!start explorer /e," . l:path
   endfun
-  nmap <S-F11> :call OpenContaningFolder()<CR>
+  nnoremap <S-F11> :call OpenContaningFolder()<CR>
   function! RevealFileInFolder()
     let l:path = substitute(expand('%:p'), "\/", "\\", "g")
     exe "!start explorer /select," . l:path
   endfun
-  nmap <F11> :call RevealFileInFolder()<CR>
+  nnoremap <F11> :call RevealFileInFolder()<CR>
 
   function! BuildProject(file)
     exe "!start python " . $Checkcode ."/Python/BuildProj/BuildCmd.py " . g:proj . " " . a:file
@@ -101,16 +101,16 @@ if has("win32") || has("win16")
   endfun
   nnoremap <C-k><C-n> :call CompileCurrentFile()<CR>
 
-  nmap <Leader>t :set tags=$develop/source/tags<CR>
+  nnoremap <Leader>t :set tags=$develop/source/tags<CR>
 else
   let g:tagbar_ctags_bin = '/opt/local/bin/ctags'
   let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/"
   set guifont=Menlo:h11
 
-  nmap <Leader>f :!open %:p:h<CR>
+  nnoremap <Leader>f :!open %:p:h<CR>
 endif
 
-  imap <F11> <Esc><F11>
+  inoremap <F11> <Esc><F11>
 "" }}}
 
 
@@ -132,6 +132,7 @@ autocmd BufNewFile,BufReadPost *.h,*.c,*.cpp let b:tagbar_ignore = 1
 
 "autocmd VimLeave * mksession! ~/vim_session
 "autocmd VimEnter * source ~/vim_session
+autocmd VimEnter * echo ">^.^<"
 
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
@@ -156,22 +157,22 @@ autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview 
 
 
-nmap <Leader>c :tabc<CR>
-nmap <Leader>v :e $MYVIMRC<CR>
-nmap <Leader>l :set list!<CR>
-nmap <Leader>s :set spell!<CR>
-map <Leader>ew :e <C-R>=expand("%:p:h") . "/"<CR>
+nnoremap <Leader>c :tabc<CR>
+nnoremap <Leader>v :vsplit $MYVIMRC<CR>
+nnoremap <Leader>l :set list!<CR>
+nnoremap <Leader>s :set spell!<CR>
+nnoremap <Leader>ew :e <C-R>=expand("%:p:h") . "/"<CR>
 
 set pastetoggle=<F3>
 
-map <F4> :NERDTreeFind<CR>
+nnoremap <F4> :NERDTreeFind<CR>
 nnoremap <F5> :GundoToggle<CR>
-map , <C-W>
+noremap , <C-W>
 
-map <F2> :NERDTreeToggle<CR>
-map <F8> :let b:tagbar_ignore = 0 \| TagbarToggle<CR>
-map <S-F2> :source ~/vim_session<CR>
-map <S-F3> :mks! ~/vim_session<CR>
+nnoremap <F2> :NERDTreeToggle<CR>
+nnoremap <F8> :let b:tagbar_ignore = 0 \| TagbarToggle<CR>
+nnoremap <S-F2> :source ~/vim_session<CR>
+nnoremap <S-F3> :mks! ~/vim_session<CR>
 
 noremap <Esc> :noh<bar>pclose<CR><Esc>
 
