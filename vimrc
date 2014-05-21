@@ -41,7 +41,6 @@ let g:ctrlp_by_filename = 1
 let g:ctrlp_max_files = 0
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:30'
 "" }}}
-
 "" clang_complet {{{
 let g:clang_complete_loaded=1 
 "let g:clang_auto_select = 2 
@@ -52,25 +51,20 @@ let g:clang_use_library=1
 let g:clang_close_preview=1
 let g:clang_user_options='-stdlib=libc++ -std=c++11 -IIncludePath'
 "" }}}
-
 "" syntastic settings {{{
 let g:syntastic_ignore_files = ['\m\c\.py$', '\m\c\.pyw$']
 "" }}}
-
 "" pymode settings {{{
 let g:pymode_python = 'python'
 let g:pymode_rope = 0
 let g:pymode_lint_ignore = "E501,E265,C901"
 "" }}}
-
 "" tagbar settings {{{
 let g:tagbar_autofocus = 1
 "" }}}
-
 "" NERDTree settings {{{
 let g:NERDTreeHijackNetrw = 0
 "" }}}
-
 "" adjust configuration for such hostile environment as Windows, and others {{{
 if has("win32") || has("win16")
   set lines=50 columns=130
@@ -112,7 +106,6 @@ endif
 
   inoremap <F11> <Esc><F11>
 "" }}}
-
 "" indentation settings {{{
 filetype indent plugin on
 "" according to
@@ -130,15 +123,13 @@ augroup VimStartup
   autocmd VimEnter * echo ">^.^<"
 augroup END
 "" }}}
-
 "" auto commands for FileType {{{
 augroup FileTypeRelated
   autocmd!
   autocmd Filetype python setlocal expandtab
-  autocmd Filetype vim setlocal tabstop=2 shiftwidth=2 expandtab fdm=marker
+  autocmd Filetype vim setlocal tabstop=2 shiftwidth=2 expandtab foldmethod=marker
 augroup END
 "" }}}
-
 "" auto commands for file reading {{{
 augroup FileReadRelated
   autocmd!
@@ -152,14 +143,12 @@ augroup FileReadRelated
   autocmd BufReadPost fugitive://* set bufhidden=delete
 augroup END
 "" }}}
-
 "" auto commands for file writing {{{
 augroup FileWriteRelated
   autocmd!
   "autocmd BufWritePost vimrc,.vimrc source $MYVIMRC
 augroup END
 "" }}}
-
 "" auto commands for buffering {{{
 augroup BufferRelated
   autocmd!
@@ -192,14 +181,15 @@ nnoremap <Leader>ew :e <C-R>=expand("%:p:h") . "/"<CR>
 
 set pastetoggle=<F3>
 
-nnoremap <F4> :NERDTreeFind<CR>
+nnoremap <F4> :Gblame -w<CR>
 nnoremap <F5> :GundoToggle<CR>
 noremap , <C-W>
 
 nnoremap <F2> :NERDTreeToggle<CR>
+nnoremap <S-F2> :NERDTreeFind<CR>
 nnoremap <F8> :let b:tagbar_ignore = 0 \| TagbarToggle<CR>
-nnoremap <S-F2> :source ~/vim_session<CR>
-nnoremap <S-F3> :mks! ~/vim_session<CR>
+nnoremap <S-F3> :source ~/vim_session<CR>
+nnoremap <S-F4> :mks! ~/vim_session<CR>
 
 noremap <Esc> :noh<bar>pclose<CR><Esc>
 
@@ -241,7 +231,7 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 ""
 ""
 ""
-""add code marking to modification log, OrgLab stuff {{{
+"" add code marking to modification log, OrgLab stuff {{{
 function! AddModificationLog()
 	g/ \*-\+\*\//normal O*	Folger =strftime("%m/%d/%Y") =g:jira=g:codem
 endfun
