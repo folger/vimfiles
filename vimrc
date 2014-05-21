@@ -1,3 +1,4 @@
+"" basic settings {{{
 set nocompatible   "" Disable vi-compatibility
 
 "set virtualedit=all ""let the cursor stray beyond the defined text
@@ -7,11 +8,6 @@ set nocompatible   "" Disable vi-compatibility
 
 set backupdir=~/vimbackup,.
 set dir=~/vimbackup,.
-
-"augroup vimrc
-  "au BufReadPre * setlocal foldmethod=indent
-  "au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
-"augroup END
 
 set hidden
 
@@ -34,19 +30,19 @@ set hlsearch
 set ignorecase
 set smartcase
 
-
 set encoding=utf-8
 let &termencoding=&encoding
 set fileencodings=ucs-bom,utf-8,gbk
 set ambiwidth=double
+"" }}}
 
-""CtrlP settings
+"" CtrlP settings {{{
 let g:ctrlp_by_filename = 1
 let g:ctrlp_max_files = 0
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:30'
+"" }}}
 
-
-""clang_complet
+"" clang_complet {{{
 let g:clang_complete_loaded=1 
 "let g:clang_auto_select = 2 
 "let g:clang_complete_copen=1
@@ -55,23 +51,27 @@ let g:clang_complete_loaded=1
 let g:clang_use_library=1
 let g:clang_close_preview=1
 let g:clang_user_options='-stdlib=libc++ -std=c++11 -IIncludePath'
+"" }}}
 
-
-""syntastic settings
+"" syntastic settings {{{
 let g:syntastic_ignore_files = ['\m\c\.py$', '\m\c\.pyw$']
+"" }}}
 
-""pymode settings
+"" pymode settings {{{
 let g:pymode_python = 'python'
 let g:pymode_rope = 0
 let g:pymode_lint_ignore = "E501,E265,C901"
+"" }}}
 
-""tagbar settings
+"" tagbar settings {{{
 let g:tagbar_autofocus = 1
+"" }}}
 
-""NERDTree settings
+"" NERDTree settings {{{
 let g:NERDTreeHijackNetrw = 0
+"" }}}
 
-"" adjust configuration for such hostile environment as Windows {{{
+"" adjust configuration for such hostile environment as Windows, and others {{{
 if has("win32") || has("win16")
   set lines=50 columns=130
   let g:tagbar_ctags_bin = 'D:\clang_lib\ctags.exe'
@@ -113,28 +113,33 @@ endif
   inoremap <F11> <Esc><F11>
 "" }}}
 
-
+"" indentation settings {{{
 filetype indent plugin on
 "" according to
 "" http://stackoverflow.com/questions/18415492/autoindent-is-subset-of-smartindent-in-vim,
 "" smartindent is deprecated and should not be used
 set autoindent
 "set smartindent
+"" }}}
 
-
+"" auto commands for vim startup {{{
 augroup VimStartup
   autocmd!
   "autocmd VimLeave * mksession! ~/vim_session
   "autocmd VimEnter * source ~/vim_session
   autocmd VimEnter * echo ">^.^<"
 augroup END
+"" }}}
 
+"" auto commands for FileType {{{
 augroup FileTypeRelated
   autocmd!
   autocmd Filetype python setlocal expandtab
-  autocmd Filetype vim setlocal tabstop=2 shiftwidth=2 expandtab
+  autocmd Filetype vim setlocal tabstop=2 shiftwidth=2 expandtab fdm=marker
 augroup END
+"" }}}
 
+"" auto commands for file reading {{{
 augroup FileReadRelated
   autocmd!
   autocmd BufNewFile,BufRead
@@ -146,39 +151,39 @@ augroup FileReadRelated
   autocmd BufNewFile,BufRead *.h,*.c,*.cpp let b:tagbar_ignore = 1
   autocmd BufReadPost fugitive://* set bufhidden=delete
 augroup END
+"" }}}
 
+"" auto commands for file writing {{{
 augroup FileWriteRelated
   autocmd!
   "autocmd BufWritePost vimrc,.vimrc source $MYVIMRC
 augroup END
+"" }}}
 
+"" auto commands for buffering {{{
 augroup BufferRelated
   autocmd!
   autocmd BufWinLeave *.* mkview
   autocmd BufWinEnter *.* silent loadview 
 augroup END
+"" }}}
 
-
-
+"" something other commands {{{
 command! Wrap set wrap linebreak nolist
 command! Nowrap set nowrap nolinebreak nolist
+"" }}}
 
 execute pathogen#infect()
 
-
-
-
-""colorscheme settings
+"" colorscheme settings {{{
 syntax enable
 set background=dark
 "let g:solarized_italic = 0
 "colorscheme solarized
 colorscheme desert
+"" }}}
 
-
-
-
-
+"" keymappings {{{
 nnoremap <Leader>c :tabc<CR>
 nnoremap <Leader>v :vsplit $MYVIMRC<CR>
 nnoremap <Leader>l :set list!<CR>
@@ -227,6 +232,7 @@ nnoremap <space> za
 
 
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+"" }}}
 
 ""
 ""
@@ -235,32 +241,34 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 ""
 ""
 ""
-""add code marking to modification log, OrgLab stuff
+""add code marking to modification log, OrgLab stuff {{{
 function! AddModificationLog()
 	g/ \*-\+\*\//normal O*	Folger =strftime("%m/%d/%Y") =g:jira=g:codem
 endfun
-
+"" }}}
+"" add CodeMarking beginning {{{
 function! AddCodeMakingBegin()
   let l:tt = &formatoptions
   exe "set formatoptions-=cro"
   normal O///------ Folger =strftime("%m/%d/%Y") =g:jira=g:codem
   let &formatoptions = l:tt
 endfun
-
+"" }}}
+"" add CodeMarking ending {{{
 function! AddCodeMakingEnd()
   let l:tt = &formatoptions
   exe "set formatoptions-=cro"
   normal o///------ End =g:codem
   let &formatoptions = l:tt
 endfun
-
-
-""substitute git diff relative path
+"" }}}
+"" substitute git diff relative path {{{
 function! SubGitDiffPath()
 	%s/^diff --git a\/\(\S*\) b\/\(.*\)/diff --git a\/Source\/Moudle\/scintilla\/\1 b\/\Source\/Module\/scintilla\/\2/g
 	%s/^\([-+]\{3} [ab]\)\/\(.*\)/\1\/Source\/Module\/scintilla\/\2/g
 endfunc
-
+"" }}}
+"" pretty xml formatted current buffer {{{
 function! DoPrettyXML()
   " save the filetype so we can restore it later
   let l:origft = &ft
@@ -289,7 +297,8 @@ function! DoPrettyXML()
   exe "set ft=" . l:origft
 endfunction
 command! PrettyXML call DoPrettyXML()
-
+"" }}}
+"" put files in quickfix windows into args {{{
 command! -nargs=0 -bar Qargs execute 'args' QuickfixFileNames()
 function! QuickfixFileNames()
   let buffer_names = {}
@@ -298,3 +307,4 @@ function! QuickfixFileNames()
   endfor
   return join(map(values(buffer_names), 'fnameescape(v:val)'))
 endfun
+"" }}}
