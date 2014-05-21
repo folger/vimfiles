@@ -30,7 +30,6 @@ set shiftwidth=4
 set laststatus=2  "" Always show the statusline
 
 set hlsearch
-set nowrap
 
 set ignorecase
 set smartcase
@@ -92,7 +91,8 @@ if has("win32") || has("win16")
   nnoremap <F11> :call RevealFileInFolder()<CR>
 
   function! BuildProject(file)
-    exe "!start python " . $Checkcode ."/Python/BuildProj/BuildCmd.py " . g:proj . " " . a:file
+    exe "!start python " . $Checkcode ."/Python/BuildProj/BuildCmd.py "
+          \ . g:proj . " " . a:file
   endfun
   nnoremap <C-k><C-b> :call BuildProject("")<CR>
 
@@ -122,19 +122,43 @@ set autoindent
 "set smartindent
 
 
-autocmd Filetype python setlocal expandtab
+augroup VimStartup
+  autocmd!
+  "autocmd VimLeave * mksession! ~/vim_session
+  "autocmd VimEnter * source ~/vim_session
+  autocmd VimEnter * echo ">^.^<"
+augroup END
 
-autocmd Filetype vim setlocal tabstop=2 shiftwidth=2 expandtab
+augroup FileTypeRelated
+  autocmd!
+  autocmd Filetype python setlocal expandtab
+  autocmd Filetype vim setlocal tabstop=2 shiftwidth=2 expandtab
+augroup END
 
-autocmd BufNewFile,BufReadPost *.h,*.c,*.cpp let b:tagbar_ignore = 1
+augroup FileReadRelated
+  autocmd!
+  autocmd BufNewFile,BufRead
+        \ *.h,*.hpp,*.c,*.cpp,*.cxx,
+        \*.py,*pyw,
+        \*,rb,
+        \*.java,*.js
+        \ setlocal nowrap
+  autocmd BufNewFile,BufRead *.h,*.c,*.cpp let b:tagbar_ignore = 1
+  autocmd BufReadPost fugitive://* set bufhidden=delete
+augroup END
 
-"autocmd BufWritePost vimrc,.vimrc source $MYVIMRC
+augroup FileWriteRelated
+  autocmd!
+  "autocmd BufWritePost vimrc,.vimrc source $MYVIMRC
+augroup END
 
-"autocmd VimLeave * mksession! ~/vim_session
-"autocmd VimEnter * source ~/vim_session
-autocmd VimEnter * echo ">^.^<"
+augroup BufferRelated
+  autocmd!
+  autocmd BufWinLeave *.* mkview
+  autocmd BufWinEnter *.* silent loadview 
+augroup END
 
-autocmd BufReadPost fugitive://* set bufhidden=delete
+
 
 command! Wrap set wrap linebreak nolist
 command! Nowrap set nowrap nolinebreak nolist
@@ -153,8 +177,6 @@ colorscheme desert
 
 
 
-autocmd BufWinLeave *.* mkview
-autocmd BufWinEnter *.* silent loadview 
 
 
 nnoremap <Leader>c :tabc<CR>
