@@ -101,10 +101,10 @@ else
   let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/"
   set guifont=Menlo:h11
 
-  nnoremap <Leader>f :!open %:p:h<CR>
+  nnoremap <F11> :!open %:p:h<CR>
 endif
 
-  inoremap <F11> <Esc><F11>
+imap <F11> <Esc><F11>
 "" }}}
 "" indentation settings {{{
 filetype indent plugin on
@@ -222,6 +222,12 @@ nnoremap <space> za
 
 
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+"" }}}
+
+"" repeat commands {{{
+nmap <silent> <Plug>TransposeCharacters xp
+            \:call repeat#set("\<Plug>TransposeCharacters")<CR>
+nmap cp <Plug>TransposeCharacters
 "" }}}
 
 ""
