@@ -158,7 +158,7 @@ augroup END
 "" }}}
 
 "" something other commands {{{
-command! Wrap set wrap linebreak nolist
+command! Dowrap set wrap linebreak nolist
 command! Nowrap set nowrap nolinebreak nolist
 "" }}}
 
@@ -173,8 +173,8 @@ colorscheme desert
 "" }}}
 
 "" keymappings {{{
-nnoremap <Leader>c :tabc<CR>
-nnoremap <Leader>v :vsplit $MYVIMRC<CR>
+nnoremap <Leader>c :tabclose<CR>
+nnoremap <Leader>v :tabedit $MYVIMRC<CR>
 nnoremap <Leader>l :set list!<CR>
 nnoremap <Leader>s :set spell!<CR>
 nnoremap <Leader>ew :e <C-R>=expand("%:p:h") . "/"<CR>
@@ -189,7 +189,7 @@ nnoremap <F2> :NERDTreeToggle<CR>
 nnoremap <S-F2> :NERDTreeFind<CR>
 nnoremap <F8> :let b:tagbar_ignore = 0 \| TagbarToggle<CR>
 nnoremap <S-F3> :source ~/vim_session<CR>
-nnoremap <S-F4> :mks! ~/vim_session<CR>
+nnoremap <S-F4> :mksession! ~/vim_session<CR>
 
 noremap <Esc> :noh<bar>pclose<CR><Esc>
 
@@ -215,8 +215,8 @@ nnoremap <silent> ]B :blast<CR>
 nnoremap <silent> [n :cprevious<CR>
 nnoremap <silent> ]n :cnext<CR>
 
-nnoremap <silent> [t :tabp<CR>
-nnoremap <silent> ]t :tabn<CR>
+nnoremap <silent> [t :tabprevious<CR>
+nnoremap <silent> ]t :tabnext<CR>
 
 nnoremap <space> za
 
