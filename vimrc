@@ -225,7 +225,7 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 "" }}}
 
 "" repeat commands {{{
-nmap <silent> <Plug>TransposeCharacters xp
+nnoremap <silent> <Plug>TransposeCharacters xp
             \:call repeat#set("\<Plug>TransposeCharacters")<CR>
 nmap cp <Plug>TransposeCharacters
 "" }}}
@@ -239,14 +239,14 @@ nmap cp <Plug>TransposeCharacters
 ""
 "" add code marking to modification log, OrgLab stuff {{{
 function! AddModificationLog()
-	g/ \*-\+\*\//normal O*	Folger =strftime("%m/%d/%Y") =g:jira=g:codem
+	g/ \*-\+\*\//normal! O*	Folger =strftime("%m/%d/%Y") =g:jira=g:codem
 endfun
 "" }}}
 "" add CodeMarking beginning {{{
 function! AddCodeMakingBegin()
   let l:tt = &formatoptions
   exe "set formatoptions-=cro"
-  normal O///------ Folger =strftime("%m/%d/%Y") =g:jira=g:codem
+  normal! O///------ Folger =strftime("%m/%d/%Y") =g:jira=g:codem
   let &formatoptions = l:tt
 endfun
 "" }}}
@@ -254,7 +254,7 @@ endfun
 function! AddCodeMakingEnd()
   let l:tt = &formatoptions
   exe "set formatoptions-=cro"
-  normal o///------ End =g:codem
+  normal! o///------ End =g:codem
   let &formatoptions = l:tt
 endfun
 "" }}}
