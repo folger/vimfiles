@@ -173,7 +173,7 @@ colorscheme desert
 "" }}}
 
 "" keymappings {{{
-nnoremap <Leader>c :tabclose<CR>
+nnoremap <Leader>cc :tabclose<CR>
 nnoremap <Leader>v :tabedit $MYVIMRC<CR>
 nnoremap <Leader>l :set list!<CR>
 nnoremap <Leader>s :set spell!<CR>
@@ -197,7 +197,6 @@ nnoremap <C-K><C-o> :Gist -l<CR>
 nnoremap <C-k><C-l> :Gstatus<CR>
 nnoremap <C-k><C-i> :MRU<CR>
 nnoremap <C-k><C-d> :Gdiff<CR>
-nnoremap <C-k><C-p> :CtrlP 
 nnoremap <C-K><C-m> :call AddModificationLog()<CR>
 nnoremap <C-k><C-z> :call AddCodeMakingBegin()<CR>
 nnoremap <C-k><C-x> :call AddCodeMakingEnd()<CR>
@@ -303,4 +302,19 @@ function! QuickfixFileNames()
   endfor
   return join(map(values(buffer_names), 'fnameescape(v:val)'))
 endfun
+"" }}}
+"" toggle quickfix window {{{
+let g:quickfix_is_open = 0
+function! QuickfixToggle()
+  if g:quickfix_is_open
+    cclose
+    let g:quickfix_is_open = 0
+    execute g:quickfix_return_to_window . 'wincmd w'
+  else
+    let g:quickfix_return_to_window = winnr()
+    copen
+    let g:quickfix_is_open = 1
+  endif
+endfunction
+nnoremap <Leader>qq :call QuickfixToggle()<CR>
 "" }}}
