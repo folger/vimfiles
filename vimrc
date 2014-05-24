@@ -95,7 +95,6 @@ if has("win32") || has("win16")
   endfun
   nnoremap <C-k><C-n> :call CompileCurrentFile()<CR>
 
-  nnoremap <Leader>t :set tags=$develop/source/tags<CR>
 else
   let g:tagbar_ctags_bin = '/opt/local/bin/ctags'
   let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/"
@@ -173,7 +172,8 @@ colorscheme desert
 "" }}}
 
 "" keymappings {{{
-nnoremap <Leader>cc :tabclose<CR>
+nnoremap <Leader>tt :tabedit<CR>
+nnoremap <Leader>tr :tabclose<CR>
 nnoremap <Leader>v :tabedit $MYVIMRC<CR>
 nnoremap <Leader>l :set list!<CR>
 nnoremap <Leader>s :set spell!<CR>
@@ -316,5 +316,5 @@ function! QuickfixToggle()
     let g:quickfix_is_open = 1
   endif
 endfunction
-nnoremap <Leader>qq :call QuickfixToggle()<CR>
+nnoremap <Leader>q :call QuickfixToggle()<CR>
 "" }}}
