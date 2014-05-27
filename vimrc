@@ -205,6 +205,7 @@ nnoremap <C-k><C-d> :Gdiff<CR>
 nnoremap <C-K><C-m> :call AddModificationLog()<CR>
 nnoremap <C-k><C-z> :call AddCodeMakingBegin()<CR>
 nnoremap <C-k><C-x> :call AddCodeMakingEnd()<CR>
+nnoremap <C-k><C-j> :call SetupCodeMarking()<CR>
 
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
@@ -241,6 +242,18 @@ nmap cp <Plug>TransposeCharacters
 ""
 ""
 ""
+"" setup codemarking {{{
+function! SetupCodeMarking()
+  let l:codemarks = split(input("Code Mark : "))
+  if len(l:codemarks) > 1
+      let g:jira = l:codemarks[0] . ' '
+      let g:codem = l:codemarks[1]
+  else
+      let g:jira = ' '
+      let g:codem = l:codemarks[0]
+  endif
+endfunction
+"" }}}
 "" add code marking to modification log, OrgLab stuff {{{
 function! AddModificationLog()
 	g/ \*-\+\*\//normal! O*	Folger =strftime("%m/%d/%Y") =g:jira=g:codem
