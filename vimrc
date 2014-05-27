@@ -99,13 +99,16 @@ if has("win32") || has("win16")
     call BuildProject("%:t")
   endfunction
   nnoremap <C-k><C-n> :call CompileCurrentFile()<CR>
-
 else
-  let g:tagbar_ctags_bin = '/opt/local/bin/ctags'
-  let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/"
-  set guifont=Menlo:h11
+  if has("gui_macvim")
+    let g:tagbar_ctags_bin = '/opt/local/bin/ctags'
+    let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/"
+    set guifont=Menlo:h11
 
-  nnoremap <F11> :!open %:p:h<CR>
+    nnoremap <F11> :!open %:p:h<CR>
+  else
+  endif
+
 endif
 
 imap <F11> <Esc><F11>
