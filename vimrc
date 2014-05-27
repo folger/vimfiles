@@ -76,23 +76,28 @@ if has("win32") || has("win16")
   function! OpenContaningFolder()
     let l:path = substitute(expand('%:p:h'), "\/", "\\", "g")
     exe "!start explorer /e," . l:path
-  endfun
+  endfunction
   nnoremap <S-F11> :call OpenContaningFolder()<CR>
   function! RevealFileInFolder()
     let l:path = substitute(expand('%:p'), "\/", "\\", "g")
     exe "!start explorer /select," . l:path
-  endfun
+  endfunction
   nnoremap <F11> :call RevealFileInFolder()<CR>
+
+  function! SetupProj()
+    let g:proj = input('Project/Solution name : ')
+  endfunction
+  nnoremap <C-k><C-p> :call SetupProj()<CR>
 
   function! BuildProject(file)
     exe "!start python " . $Checkcode ."/Python/BuildProj/BuildCmd.py "
           \ . g:proj . " " . a:file
-  endfun
+  endfunction
   nnoremap <C-k><C-b> :call BuildProject("")<CR>
 
   function! CompileCurrentFile()
     call BuildProject("%:t")
-  endfun
+  endfunction
   nnoremap <C-k><C-n> :call CompileCurrentFile()<CR>
 
 else
@@ -239,7 +244,7 @@ nmap cp <Plug>TransposeCharacters
 "" add code marking to modification log, OrgLab stuff {{{
 function! AddModificationLog()
 	g/ \*-\+\*\//normal! O*	Folger =strftime("%m/%d/%Y") =g:jira=g:codem
-endfun
+endfunction
 "" }}}
 "" add CodeMarking beginning {{{
 function! AddCodeMakingBegin()
@@ -247,7 +252,7 @@ function! AddCodeMakingBegin()
   exe "set formatoptions-=cro"
   normal! O///------ Folger =strftime("%m/%d/%Y") =g:jira=g:codem
   let &formatoptions = l:tt
-endfun
+endfunction
 "" }}}
 "" add CodeMarking ending {{{
 function! AddCodeMakingEnd()
@@ -255,7 +260,7 @@ function! AddCodeMakingEnd()
   exe "set formatoptions-=cro"
   normal! o///------ End =g:codem
   let &formatoptions = l:tt
-endfun
+endfunction
 "" }}}
 "" substitute git diff relative path {{{
 function! SubGitDiffPath()
@@ -301,7 +306,7 @@ function! QuickfixFileNames()
     let buffer_names[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
   endfor
   return join(map(values(buffer_names), 'fnameescape(v:val)'))
-endfun
+endfunction
 "" }}}
 "" toggle quickfix window {{{
 let g:quickfix_is_open = 0
