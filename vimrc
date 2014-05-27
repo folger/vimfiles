@@ -245,11 +245,12 @@ nmap cp <Plug>TransposeCharacters
 "" setup codemarking {{{
 function! SetupCodeMarking()
   let l:codemarks = split(input("Code Mark : "))
-  if len(l:codemarks) > 1
+  let l:len = len(l:codemarks)
+  if l:len > 1
       let g:jira = l:codemarks[0] . ' '
       let g:codem = l:codemarks[1]
-  else
-      let g:jira = ' '
+  elseif l:len > 0
+      let g:jira = ''
       let g:codem = l:codemarks[0]
   endif
 endfunction
