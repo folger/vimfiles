@@ -107,6 +107,7 @@ else
 
     nnoremap <F11> :!open %:p:h<CR>
   else
+    nnoremap <F11> :!xdg-open %:p:h<CR>
   endif
 
 endif
