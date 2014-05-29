@@ -85,7 +85,10 @@ if has("win32") || has("win16")
   nnoremap <F11> :call RevealFileInFolder()<CR>
 
   function! SetupProj()
-    let g:proj = input('Project/Solution name : ')
+    let l:proj = input('Project/Solution name : ')
+    if len(l:proj) > 0
+      let g:proj = l:proj
+    endif
   endfunction
   nnoremap <C-k><C-p> :call SetupProj()<CR>
 
