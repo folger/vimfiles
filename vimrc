@@ -163,7 +163,7 @@ augroup END
 "" auto commands for buffering {{{
 augroup BufferRelated
   autocmd!
-  autocmd BufWinLeave *.* mkview
+  autocmd BufWinLeave *.* mkview!
   autocmd BufWinEnter *.* silent loadview 
 augroup END
 "" }}}
