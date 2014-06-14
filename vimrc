@@ -40,6 +40,8 @@ set ambiwidth=double
 let g:ctrlp_by_filename = 1
 let g:ctrlp_max_files = 0
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:30'
+let g:ctrlp_working_path_mode = 'ra'
+let g:backup_ctrlp_working_path_mode = g:ctrlp_working_path_mode
 "" }}}
 "" clang_complet {{{
 let g:clang_complete_loaded=1 
@@ -340,4 +342,12 @@ function! QuickfixToggle()
   endif
 endfunction
 nnoremap <Leader>q :call QuickfixToggle()<CR>
+"" }}}
+"" <a-p> using CtrlP to open current directory {{{
+function! CtrlPCurrentFolder()
+  let g:ctrlp_working_path_mode = 'c'
+  execute 'CtrlP'
+  let g:ctrlp_working_path_mode = g:backup_ctrlp_working_path_mode
+endfunction
+nnoremap <a-p> :call CtrlPCurrentFolder()<CR>
 "" }}}
