@@ -231,6 +231,8 @@ nnoremap <silent> ]n :cnext<CR>
 
 nnoremap <space> za
 
+nnoremap & :&&<CR>
+xnoremap & :&&<CR>
 
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 "" }}}
