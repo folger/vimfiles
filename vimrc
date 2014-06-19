@@ -272,11 +272,11 @@ endfunction
 "" }}}
 "" add CodeMarking {{{
 function! AddCodeMarking() range
-  let l:tt = &formatoptions
+  let l:fo = &formatoptions
   execute "set formatoptions-=cro"
   execute a:firstline . "normal! O///------ Folger =strftime(\"%m/%d/%Y\") =g:jira=g:codem"
   execute a:lastline + 1 . "normal! o///------ End =g:codem"
-  let &formatoptions = l:tt
+  let &formatoptions = l:fo
 endfunction
 "" }}}
 "" substitute git diff relative path {{{
