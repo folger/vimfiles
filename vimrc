@@ -212,8 +212,8 @@ nnoremap <C-k><C-l> :Gstatus<CR>
 nnoremap <C-k><C-i> :MRU<CR>
 nnoremap <C-k><C-d> :Gdiff<CR>
 nnoremap <C-K><C-m> :call AddModificationLog()<CR>
-nnoremap <C-k><C-z> :call AddCodeMakingBegin()<CR>
-nnoremap <C-k><C-x> :call AddCodeMakingEnd()<CR>
+nnoremap <C-k><C-x> :call AddCodeMarking()<CR>
+vnoremap <C-k><C-x> :call AddCodeMarking()<CR>
 nnoremap <C-k><C-j> :call SetupCodeMarking()<CR>
 
 cnoremap <C-p> <Up>
@@ -265,22 +265,17 @@ endfunction
 "" }}}
 "" add code marking to modification log, OrgLab stuff {{{
 function! AddModificationLog()
+  let b:temp = @/
 	g/ \*-\+\*\//normal! O*	Folger =strftime("%m/%d/%Y") =g:jira=g:codem
+  let @/ = b:temp
 endfunction
 "" }}}
-"" add CodeMarking beginning {{{
-function! AddCodeMakingBegin()
+"" add CodeMarking {{{
+function! AddCodeMarking() range
   let l:tt = &formatoptions
-  exe "set formatoptions-=cro"
-  normal! O///------ Folger =strftime("%m/%d/%Y") =g:jira=g:codem
-  let &formatoptions = l:tt
-endfunction
-"" }}}
-"" add CodeMarking ending {{{
-function! AddCodeMakingEnd()
-  let l:tt = &formatoptions
-  exe "set formatoptions-=cro"
-  normal! o///------ End =g:codem
+  execute "set formatoptions-=cro"
+  execute a:firstline . "normal! O///------ Folger =strftime(\"%m/%d/%Y\") =g:jira=g:codem"
+  execute a:lastline + 1 . "normal! o///------ End =g:codem"
   let &formatoptions = l:tt
 endfunction
 "" }}}
