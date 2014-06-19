@@ -77,12 +77,12 @@ if has("win32") || has("win16")
 
   function! OpenContaningFolder()
     let l:path = substitute(expand('%:p:h'), "\/", "\\", "g")
-    exe "!start explorer /e," . l:path
+    execute "!start explorer /e," . l:path
   endfunction
   nnoremap <S-F11> :call OpenContaningFolder()<CR>
   function! RevealFileInFolder()
     let l:path = substitute(expand('%:p'), "\/", "\\", "g")
-    exe "!start explorer /select," . l:path
+    execute "!start explorer /select," . l:path
   endfunction
   nnoremap <F11> :call RevealFileInFolder()<CR>
 
@@ -95,7 +95,7 @@ if has("win32") || has("win16")
   nnoremap <C-k><C-p> :call SetupProj()<CR>
 
   function! BuildProject(file)
-    exe "!start python " . $Checkcode ."/Python/BuildProj/BuildCmd.py "
+    execute "!start python " . $Checkcode ."/Python/BuildProj/BuildCmd.py "
           \ . g:proj . " " . a:file
   endfunction
   nnoremap <C-k><C-b> :call BuildProject("")<CR>
@@ -274,8 +274,8 @@ endfunction
 function! AddCodeMarking() range
   let l:fo = &formatoptions
   execute "set formatoptions-=cro"
+  execute a:lastline . "normal! o///------ End =g:codem"
   execute a:firstline . "normal! O///------ Folger =strftime(\"%m/%d/%Y\") =g:jira=g:codem"
-  execute a:lastline + 1 . "normal! o///------ End =g:codem"
   let &formatoptions = l:fo
 endfunction
 "" }}}
@@ -311,7 +311,7 @@ function! DoPrettyXML()
   " back to home
   1
   " restore the filetype
-  exe "set ft=" . l:origft
+  execute "set ft=" . l:origft
 endfunction
 command! PrettyXML call DoPrettyXML()
 "" }}}
