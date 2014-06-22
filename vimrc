@@ -265,18 +265,21 @@ endfunction
 "" }}}
 "" add code marking to modification log, OrgLab stuff {{{
 function! AddModificationLog()
-  let b:temp = @/
+  let l:temp = @/
 	g/ \*-\+\*\//normal! O*	Folger =strftime("%m/%d/%Y") =g:jira=g:codem
-  let @/ = b:temp
+  let @/ = l:temp
 endfunction
 "" }}}
 "" add CodeMarking {{{
 function! AddCodeMarking() range
   let l:fo = &formatoptions
+  let l:ci = &cindent
   execute "set formatoptions-=cro"
+  execute "set nocindent"
   execute a:lastline . "normal! o///------ End =g:codem"
   execute a:firstline . "normal! O///------ Folger =strftime(\"%m/%d/%Y\") =g:jira=g:codem"
   let &formatoptions = l:fo
+  let &cindent = l:ci
 endfunction
 "" }}}
 "" substitute git diff relative path {{{
