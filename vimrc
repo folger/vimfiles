@@ -72,19 +72,19 @@ if has("win32") || has("win16")
   set lines=50 columns=130
   let g:tagbar_ctags_bin = 'D:\clang_lib\ctags.exe'
   let g:clang_library_path="D:/clang_lib/"
-  set guifont=DejaVu_Sans_Mono:h11
+  set guifont=DejaVu_Sans_Mono:h10
   set guifontwide=NSimSun:h10
 
   function! OpenContaningFolder()
     let l:path = substitute(expand('%:p:h'), "\/", "\\", "g")
-    execute "!start explorer /e," . l:path
+    execute "silent !start explorer /e," . l:path
   endfunction
-  nnoremap <S-F11> :call OpenContaningFolder()<CR>
+  nnoremap <silent> <S-F11> :call OpenContaningFolder()<CR>
   function! RevealFileInFolder()
     let l:path = substitute(expand('%:p'), "\/", "\\", "g")
-    execute "!start explorer /select," . l:path
+    execute "silent !start explorer /select," . l:path
   endfunction
-  nnoremap <F11> :call RevealFileInFolder()<CR>
+  nnoremap <silent> <F11> :call RevealFileInFolder()<CR>
 
   function! SetupProj()
     let l:proj = input('Project/Solution name : ')
@@ -92,32 +92,32 @@ if has("win32") || has("win16")
       let g:proj = l:proj
     endif
   endfunction
-  nnoremap <C-k><C-p> :call SetupProj()<CR>
+  nnoremap <silent> <C-k><C-p> :call SetupProj()<CR>
 
   function! BuildProject(file)
-    execute "!start python " . $Checkcode ."/Python/BuildProj/BuildCmd.py "
+    execute "silent !start python " . $Checkcode ."/Python/BuildProj/BuildCmd.py "
           \ . g:proj . " " . a:file
   endfunction
-  nnoremap <C-k><C-b> :call BuildProject("")<CR>
+  nnoremap <silent> <C-k><C-b> :call BuildProject("")<CR>
 
   function! CompileCurrentFile()
     call BuildProject("%:t")
   endfunction
-  nnoremap <C-k><C-n> :call CompileCurrentFile()<CR>
+  nnoremap <silent> <C-k><C-n> :call CompileCurrentFile()<CR>
 else
   if has("gui_macvim")
     let g:tagbar_ctags_bin = '/opt/local/bin/ctags'
     let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/"
     set guifont=Menlo:h11
 
-    nnoremap <F11> :!open %:p:h<CR>
+    nnoremap <silent> <F11> :!open %:p:h<CR>
   else
-    nnoremap <F11> :!xdg-open %:p:h<CR>
+    nnoremap <silent> <F11> :!xdg-open %:p:h<CR>
   endif
 
 endif
 
-imap <F11> <Esc><F11>
+imap <silent> <F11> <Esc><F11>
 "" }}}
 "" indentation settings {{{
 filetype indent plugin on
@@ -202,8 +202,10 @@ noremap , <C-W>
 nnoremap <F2> :NERDTreeToggle<CR>
 nnoremap <S-F2> :NERDTreeFind<CR>
 nnoremap <F8> :let b:tagbar_ignore = 0 \| TagbarToggle<CR>
-nnoremap <S-F3> :source ~/vim_session<CR>
-nnoremap <S-F4> :mksession! ~/vim_session<CR>
+"nnoremap <S-F3> :source ~/vim_session<CR>
+"nnoremap <S-F4> :mksession! ~/vim_session<CR>
+command! LoadSession source ~/vim_session
+command! SaveSession mksession! ~/vim_session
 
 noremap <Esc> :noh<bar>pclose<CR><Esc>
 
@@ -282,12 +284,6 @@ function! AddCodeMarking() range
   let &cindent = l:ci
 endfunction
 "" }}}
-"" substitute git diff relative path {{{
-function! SubGitDiffPath()
-	%s/^diff --git a\/\(\S*\) b\/\(.*\)/diff --git a\/Source\/Moudle\/scintilla\/\1 b\/\Source\/Module\/scintilla\/\2/g
-	%s/^\([-+]\{3} [ab]\)\/\(.*\)/\1\/Source\/Module\/scintilla\/\2/g
-endfunc
-"" }}}
 "" pretty xml formatted current buffer {{{
 function! DoPrettyXML()
   " save the filetype so we can restore it later
@@ -319,7 +315,6 @@ endfunction
 command! PrettyXML call DoPrettyXML()
 "" }}}
 "" put files in quickfix windows into args {{{
-command! -nargs=0 -bar Qargs execute 'args' QuickfixFileNames()
 function! QuickfixFileNames()
   let buffer_names = {}
   for quickfix_item in getqflist()
@@ -327,6 +322,7 @@ function! QuickfixFileNames()
   endfor
   return join(map(values(buffer_names), 'fnameescape(v:val)'))
 endfunction
+command! -nargs=0 -bar Qargs execute 'args' QuickfixFileNames()
 "" }}}
 "" toggle quickfix window {{{
 let g:quickfix_is_open = 0
@@ -341,7 +337,7 @@ function! QuickfixToggle()
     let g:quickfix_is_open = 1
   endif
 endfunction
-nnoremap <Leader>q :call QuickfixToggle()<CR>
+nnoremap <silent> <Leader>q :call QuickfixToggle()<CR>
 "" }}}
 "" <a-p> using CtrlP to open current directory {{{
 function! CtrlPCurrentFolder()
@@ -349,5 +345,5 @@ function! CtrlPCurrentFolder()
   execute 'CtrlP'
   let g:ctrlp_working_path_mode = g:backup_ctrlp_working_path_mode
 endfunction
-nnoremap <a-p> :call CtrlPCurrentFolder()<CR>
+nnoremap <silent> <a-p> :call CtrlPCurrentFolder()<CR>
 "" }}}
