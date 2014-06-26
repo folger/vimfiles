@@ -347,3 +347,21 @@ function! CtrlPCurrentFolder()
 endfunction
 nnoremap <silent> <a-p> :call CtrlPCurrentFolder()<CR>
 "" }}}
+"" Uniq command to remove duplicate lines {{{
+function! MakeUniq() range
+  let have_already_seen = {}
+  let unique_lines = []
+
+  for original_line in getline(a:firstline, a:lastline)
+    let normalized_line = '<' . original_line
+    if !has_key(have_already_seen, normalized_line)
+      call add(unique_lines, original_line)
+      let have_already_seen[normalized_line] = 1
+    endif
+  endfor
+
+  execute a:firstline . ',' . a:lastline . 'delete'
+  call append(a:firstline-1, unique_lines)
+endfunction
+command! -range Uniq <line1>,<line2>call MakeUniq()
+"" }}}
