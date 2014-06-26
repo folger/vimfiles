@@ -202,10 +202,6 @@ noremap , <C-W>
 nnoremap <F2> :NERDTreeToggle<CR>
 nnoremap <S-F2> :NERDTreeFind<CR>
 nnoremap <F8> :let b:tagbar_ignore = 0 \| TagbarToggle<CR>
-"nnoremap <S-F3> :source ~/vim_session<CR>
-"nnoremap <S-F4> :mksession! ~/vim_session<CR>
-command! LoadSession source ~/vim_session
-command! SaveSession mksession! ~/vim_session
 
 noremap <Esc> :noh<bar>pclose<CR><Esc>
 
@@ -364,4 +360,18 @@ function! MakeUniq() range
   call append(a:firstline-1, unique_lines)
 endfunction
 command! -range Uniq <line1>,<line2>call MakeUniq()
+"" }}}
+"" Save & Load sessions{{{
+function! LoadSession(session)
+    if len(a:session) > 0
+      execute 'source ~/' . a:session . '.vim'
+    endif
+endfunction
+function! SaveSession(session)
+    if len(a:session) > 0
+      execute 'mksession! ~/' . a:session . '.vim'
+    endif
+endfunction
+command! -nargs=1 LS call LoadSession(<f-args>)
+command! -nargs=1 SS call SaveSession(<f-args>)
 "" }}}
