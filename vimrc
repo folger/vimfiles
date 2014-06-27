@@ -147,11 +147,12 @@ augroup END
 augroup FileReadRelated
   autocmd!
   autocmd BufNewFile,BufRead
-        \ *.h,*.hpp,*.c,*.cpp,*.cxx,
+        \ *.h,*.hpp,*.c,*.cpp,*.cxx,*.rc
         \*.py,*pyw,
         \*,rb,
         \*.java,*.js
         \ setlocal nowrap
+  autocmd BufRead *.rc edit ++encoding=cp1252
   autocmd BufNewFile,BufRead *.h,*.c,*.cpp let b:tagbar_ignore = 1
   autocmd BufReadPost fugitive://* set bufhidden=delete
 augroup END
