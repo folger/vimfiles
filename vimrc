@@ -163,6 +163,7 @@ augroup END
 augroup FileWriteRelated
   autocmd!
   "autocmd BufWritePost vimrc,.vimrc :source $MYVIMRC
+  autocmd BufWritePre,FileWritePre *.* :call EnsureDirExists()
 augroup END
 "" }}}
 "" auto commands for buffering {{{
@@ -376,4 +377,13 @@ function! SaveSession(session)
 endfunction
 command! -nargs=1 LS call LoadSession(<f-args>)
 command! -nargs=1 SS call SaveSession(<f-args>)
+"" }}}
+"" Auto make directories {{{
+function! EnsureDirExists()
+  let required_dir = fnamemodify(expand('<afile>'), ':h')
+  echo required_dir
+  if !isdirectory(required_dir)
+    call mkdir(required_dir, 'p')
+  endif
+endfunction
 "" }}}
