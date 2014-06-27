@@ -11,6 +11,8 @@ set dir=~/vimbackup,.
 
 set hidden
 
+set cursorline
+
 set history=200
 
 set go-=m ""remove the menu bar
@@ -133,14 +135,14 @@ augroup VimStartup
   autocmd!
   "autocmd VimLeave * mksession! ~/vim_session
   "autocmd VimEnter * source ~/vim_session
-  autocmd VimEnter * echo ">^.^<"
+  autocmd VimEnter * :echo ">^.^<"
 augroup END
 "" }}}
 "" auto commands for FileType {{{
 augroup FileTypeRelated
   autocmd!
-  autocmd Filetype python setlocal expandtab
-  autocmd Filetype vim setlocal tabstop=2 shiftwidth=2 expandtab foldmethod=marker
+  autocmd Filetype python :setlocal expandtab
+  autocmd Filetype vim :setlocal tabstop=2 shiftwidth=2 expandtab foldmethod=marker
 augroup END
 "" }}}
 "" auto commands for file reading {{{
@@ -151,26 +153,25 @@ augroup FileReadRelated
         \*.py,*pyw,
         \*,rb,
         \*.java,*.js
-        \ setlocal nowrap
-  autocmd BufRead *.rc edit ++encoding=cp1252
-  autocmd BufNewFile,BufRead *.h,*.c,*.cpp let b:tagbar_ignore = 1
-  autocmd BufReadPost fugitive://* set bufhidden=delete
+        \ :setlocal nowrap
+  autocmd BufRead *.rc :edit ++encoding=cp1252
+  autocmd BufNewFile,BufRead *.h,*.c,*.cpp :let b:tagbar_ignore = 1
+  autocmd BufReadPost fugitive://* :set bufhidden=delete
 augroup END
 "" }}}
 "" auto commands for file writing {{{
 augroup FileWriteRelated
   autocmd!
-  "autocmd BufWritePost vimrc,.vimrc source $MYVIMRC
+  "autocmd BufWritePost vimrc,.vimrc :source $MYVIMRC
 augroup END
 "" }}}
 "" auto commands for buffering {{{
 augroup BufferRelated
   autocmd!
-  autocmd BufWinLeave *.* mkview!
-  autocmd BufWinEnter *.* silent loadview 
+  autocmd BufWinLeave *.* :mkview!
+  autocmd BufWinEnter *.* :silent loadview 
 augroup END
 "" }}}
-
 "" something other commands {{{
 command! Dowrap set wrap linebreak nolist
 command! Nowrap set nowrap nolinebreak nolist
