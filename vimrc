@@ -11,8 +11,6 @@ set dir=~/vimbackup,.
 
 set hidden
 
-set cursorline
-
 set history=200
 
 set go-=m ""remove the menu bar
