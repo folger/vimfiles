@@ -227,6 +227,8 @@ nnoremap <silent> ]B :blast<CR>
 
 nnoremap <silent> [n :cprevious<CR>
 nnoremap <silent> ]n :cnext<CR>
+nnoremap <silent> [N :cfirst<CR>
+nnoremap <silent> ]N :clast<CR>
 
 nnoremap <space> za
 
