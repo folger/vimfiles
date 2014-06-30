@@ -76,12 +76,12 @@ if has("win32") || has("win16")
   set guifontwide=NSimSun:h10
 
   function! OpenContaningFolder()
-    let l:path = substitute(expand('%:p:h'), "\/", "\\", "g")
+    let l:path = substitute(expand('%:p:h'), '/', '\', 'g')
     execute "silent !start explorer /e," . l:path
   endfunction
   nnoremap <silent> <S-F11> :call OpenContaningFolder()<CR>
   function! RevealFileInFolder()
-    let l:path = substitute(expand('%:p'), "\/", "\\", "g")
+    let l:path = substitute(expand('%:p'), '/', '\', 'g')
     execute "silent !start explorer /select," . l:path
   endfunction
   nnoremap <silent> <F11> :call RevealFileInFolder()<CR>
@@ -104,6 +104,8 @@ if has("win32") || has("win16")
     call BuildProject("%:t")
   endfunction
   nnoremap <silent> <C-k><C-n> :call CompileCurrentFile()<CR>
+
+  nnoremap <silent> yq :let @+=substitute(expand('%:p'), '/', '\', 'g')<CR>
 else
   if has("gui_macvim")
     let g:tagbar_ctags_bin = '/opt/local/bin/ctags'
@@ -115,6 +117,7 @@ else
     nnoremap <silent> <F11> :!xdg-open %:p:h<CR>
   endif
 
+  nnoremap <silent> yq :let @+=expand('%:p')<CR>
 endif
 
 imap <silent> <F11> <Esc><F11>
