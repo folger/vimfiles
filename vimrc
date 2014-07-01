@@ -130,6 +130,9 @@ filetype indent plugin on
 set autoindent
 "set smartindent
 "" }}}
+"" turn on matchit {{{
+runtime macros/matchit.vim
+"" }}}
 
 "" auto commands for vim startup {{{
 augroup VimStartup
