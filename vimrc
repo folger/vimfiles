@@ -187,8 +187,6 @@ execute pathogen#infect()
 "" colorscheme settings {{{
 syntax enable
 set background=dark
-"let g:solarized_italic = 0
-"colorscheme solarized
 colorscheme desert
 "" }}}
 
