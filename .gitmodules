@@ -66,10 +66,6 @@
 	path = bundle/python-mode
 	url = https://github.com/klen/python-mode
 	ignore = dirty
-[submodule "bundle/mru"]
-	path = bundle/mru
-	url = https://github.com/yegappan/mru
-	ignore = dirty
 [submodule "bundle/vim-visual-star-search"]
 	path = bundle/vim-visual-star-search
 	url = https://github.com/bronson/vim-visual-star-search
