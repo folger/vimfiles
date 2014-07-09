@@ -224,6 +224,7 @@ nnoremap <C-K><C-m> :call AddModificationLog()<CR>
 nnoremap <C-k><C-x> :call AddCodeMarking()<CR>
 vnoremap <C-k><C-x> :call AddCodeMarking()<CR>
 nnoremap <C-k><C-j> :call SetupCodeMarking()<CR>
+nnoremap <C-k><C-y> :YRShow<CR>
 
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
