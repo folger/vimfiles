@@ -133,6 +133,9 @@ set autoindent
 "" turn on matchit {{{
 runtime macros/matchit.vim
 "" }}}
+"" airline settings{{{
+let g:airline#extensions#tabline#enabled = 1
+"" }}}
 
 "" auto commands for vim startup {{{
 augroup VimStartup
@@ -191,12 +194,14 @@ colorscheme desert
 "" }}}
 
 "" keymappings {{{
-nnoremap <Leader>tt :tabedit<CR>
-nnoremap <Leader>tr :tabclose<CR>
-nnoremap <Leader>v :tabedit $MYVIMRC<CR>
-nnoremap <Leader>l :set list!<CR>
-nnoremap <Leader>s :set spell!<CR>
+nnoremap <silent> <Leader>tt :tabedit<CR>
+nnoremap <silent> <Leader>tr :tabclose<CR>
+nnoremap <silent> <Leader>v :tabedit $MYVIMRC<CR>
+nnoremap <silent> <Leader>l :set list!<CR>
+nnoremap <silent> <Leader>s :set spell!<CR>
 nnoremap <Leader>ew :e <C-R>=expand("%:p:h") . "/"<CR>
+nnoremap <silent> <Leader>bb :CtrlPBuffer<CR>
+nnoremap <silent> <Leader>bv :call CtrlPCurrentFolder()<CR>
 
 set pastetoggle=<F3>
 
@@ -212,7 +217,7 @@ noremap <Esc> :noh<bar>pclose<CR><Esc>
 
 nnoremap <C-K><C-o> :Gist -l<CR>
 nnoremap <C-k><C-l> :Gstatus<CR>
-nnoremap <C-k><C-i> :MRU<CR>
+nnoremap <C-k><C-i> :CtrlPMRU<CR>
 nnoremap <C-k><C-d> :Gdiff<CR>
 nnoremap <C-K><C-m> :call AddModificationLog()<CR>
 nnoremap <C-k><C-x> :call AddCodeMarking()<CR>
@@ -342,13 +347,12 @@ function! QuickfixToggle()
 endfunction
 nnoremap <silent> <Leader>q :call QuickfixToggle()<CR>
 "" }}}
-"" <a-p> using CtrlP to open current directory {{{
+"" using CtrlP to open current directory {{{
 function! CtrlPCurrentFolder()
   let g:ctrlp_working_path_mode = 'c'
   execute 'CtrlP'
   let g:ctrlp_working_path_mode = g:backup_ctrlp_working_path_mode
 endfunction
-nnoremap <silent> <a-p> :call CtrlPCurrentFolder()<CR>
 "" }}}
 "" Uniq command to remove duplicate lines {{{
 function! MakeUniq() range
