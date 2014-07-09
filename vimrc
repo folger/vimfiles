@@ -1,5 +1,6 @@
 "" basic settings {{{
 set nocompatible   "" Disable vi-compatibility
+set modelines=0   "" Disable vi-compatibility
 
 "set virtualedit=all ""let the cursor stray beyond the defined text
 
@@ -194,6 +195,7 @@ colorscheme desert
 "" }}}
 
 "" keymappings {{{
+nnoremap <silent> <Leader><Tab> :Scratch<CR>
 nnoremap <silent> <Leader>tt :tabedit<CR>
 nnoremap <silent> <Leader>tr :tabclose<CR>
 nnoremap <silent> <Leader>v :tabedit $MYVIMRC<CR>
