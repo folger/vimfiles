@@ -207,6 +207,7 @@ set pastetoggle=<F3>
 
 nnoremap <F4> :Gblame -w<CR>
 nnoremap <F5> :GundoToggle<CR>
+nmap <F6> <Plug>HexManager
 noremap , <C-W>
 
 nnoremap <F2> :NERDTreeToggle<CR>

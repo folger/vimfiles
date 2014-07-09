@@ -94,3 +94,7 @@
 	path = bundle/vim-airline
 	url = https://github.com/bling/vim-airline
 	ignore = dirty
+[submodule "bundle/hexman"]
+	path = bundle/hexman
+	url = https://github.com/vim-scripts/hexman.vim
+	ignore = dirty
