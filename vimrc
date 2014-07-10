@@ -1,6 +1,6 @@
 "" basic settings {{{
 set nocompatible   "" Disable vi-compatibility
-set modelines=0   "" Disable vi-compatibility
+set modelines=0
 
 "set virtualedit=all ""let the cursor stray beyond the defined text
 
@@ -14,19 +14,23 @@ set hidden
 
 set history=200
 
+set scrolloff=3
+
 set go-=m ""remove the menu bar
 set go-=T ""remove the toolbar
 
+set relativenumber
+set cursorline
 set backspace=2 ""make backspace work like most other apps
 set number
 
+set hlsearch
 set incsearch
+set showmatch
 set tabstop=4
 set shiftwidth=4
 
 set laststatus=2  "" Always show the statusline
-
-set hlsearch
 
 set ignorecase
 set smartcase
@@ -137,6 +141,9 @@ runtime macros/matchit.vim
 "" airline settings{{{
 let g:airline#extensions#tabline#enabled = 1
 "" }}}
+"" YankRing settings{{{
+let g:yankring_replace_n_pkey = ''
+"" }}}
 
 "" auto commands for vim startup {{{
 augroup VimStartup
@@ -191,19 +198,22 @@ execute pathogen#infect()
 "" colorscheme settings {{{
 syntax enable
 set background=dark
-colorscheme desert
+colorscheme Mustang
 "" }}}
 
 "" keymappings {{{
-nnoremap <silent> <Leader><Tab> :Scratch<CR>
-nnoremap <silent> <Leader>tt :tabedit<CR>
-nnoremap <silent> <Leader>tr :tabclose<CR>
-nnoremap <silent> <Leader>v :tabedit $MYVIMRC<CR>
-nnoremap <silent> <Leader>l :set list!<CR>
-nnoremap <silent> <Leader>s :set spell!<CR>
-nnoremap <Leader>ew :e <C-R>=expand("%:p:h") . "/"<CR>
-nnoremap <silent> <Leader>bb :CtrlPBuffer<CR>
-nnoremap <silent> <Leader>bv :call CtrlPCurrentFolder()<CR>
+nnoremap <silent> <Leader><Tab> : Scratch<CR>
+nnoremap <silent> <Leader>tt    : tabedit<CR>
+nnoremap <silent> <Leader>tr    : tabclose<CR>
+nnoremap <silent> <Leader>b     : CtrlPBuffer<CR>
+nnoremap <silent> <Leader>f     : call CtrlPCurrentFolder()<CR>
+nnoremap <silent> <Leader>v     : e $MYVIMRC<CR>
+nnoremap <silent> <Leader>l     : set list!<CR>
+nnoremap <silent> <Leader>s     : set spell!<CR>
+nnoremap <Leader>ew             : e <C-R>=expand("%:p:h") . "/"<CR>
+
+nnoremap <Tab> %
+vnoremap <Tab> %
 
 set pastetoggle=<F3>
 
@@ -243,7 +253,11 @@ nnoremap <silent> ]n :cnext<CR>
 nnoremap <silent> [N :cfirst<CR>
 nnoremap <silent> ]N :clast<CR>
 
+nnoremap j gj
+nnoremap k gk
+
 nnoremap <space> za
+vnoremap <space> za
 
 nnoremap & :&&<CR>
 xnoremap & :&&<CR>
