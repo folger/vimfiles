@@ -212,8 +212,8 @@ nnoremap <silent> <Leader>l     : set list!<CR>
 nnoremap <silent> <Leader>s     : set spell!<CR>
 nnoremap <Leader>ew             : e <C-R>=expand("%:p:h") . "/"<CR>
 
-nnoremap <Tab> %
-vnoremap <Tab> %
+nmap <Tab> %
+vmap <Tab> %
 
 set pastetoggle=<F3>
 
