@@ -212,6 +212,8 @@ nnoremap <silent> <Leader>f     : call CtrlPCurrentFolder()<CR>
 nnoremap <silent> <Leader>v     : e $MYVIMRC<CR>
 nnoremap <silent> <Leader>l     : set list!<CR>
 nnoremap <silent> <Leader>s     : set spell!<CR>
+nnoremap <silent> <Leader>d     : bd<CR>
+nnoremap <silent> <Leader>w     : update<CR>
 nnoremap <Leader>ew             : e <C-R>=expand("%:p:h") . "/"<CR>
 
 nmap <Tab> %
