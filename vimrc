@@ -7,6 +7,8 @@ set modelines=0
 ""Vim kept flashing when press <ESC> when this is on under Windows
 "set vb t_vb= ""get rid of the annoying beeps when command doesn't work
 
+let mapleader=','
+
 set backupdir=~/vimbackup,.
 set dir=~/vimbackup,.
 
@@ -74,7 +76,7 @@ let g:NERDTreeHijackNetrw = 0
 "" }}}
 "" adjust configuration for such hostile environment as Windows, and others {{{
 if has("win32") || has("win16")
-  set lines=50 columns=130
+  set lines=35 columns=100
   let g:tagbar_ctags_bin = 'D:\clang_lib\ctags.exe'
   let g:clang_library_path="D:/clang_lib/"
   set guifont=DejaVu_Sans_Mono:h10
@@ -220,7 +222,7 @@ set pastetoggle=<F3>
 nnoremap <F4> :Gblame -w<CR>
 nnoremap <F5> :GundoToggle<CR>
 nmap <F6> <Plug>HexManager
-noremap , <C-W>
+noremap \ <C-W>
 
 nnoremap <F2> :NERDTreeToggle<CR>
 nnoremap <S-F2> :NERDTreeFind<CR>
