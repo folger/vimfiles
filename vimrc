@@ -145,6 +145,7 @@ let g:airline#extensions#tabline#enabled = 1
 "" }}}
 "" YankRing settings{{{
 let g:yankring_replace_n_pkey = ''
+let g:yankring_replace_n_nkey = ''
 "" }}}
 
 "" auto commands for vim startup {{{
