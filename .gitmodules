@@ -106,3 +106,6 @@
 	path = bundle/scratch.vim
 	url = https://github.com/vim-scripts/scratch.vim
 	ignore = dirty
+[submodule "bundle/flatlandia"]
+	path = bundle/flatlandia
+	url = https://github.com/jordwalke/flatlandia/
