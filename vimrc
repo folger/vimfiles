@@ -201,7 +201,7 @@ execute pathogen#infect()
 "" colorscheme settings {{{
 syntax enable
 set background=dark
-colorscheme flatlandia
+colorscheme railscasts
 "" }}}
 
 "" keymappings {{{
