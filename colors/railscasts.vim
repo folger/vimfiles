@@ -66,8 +66,8 @@ hi PMenuThumb                guibg=#AAAAAA gui=NONE
 
 
 "rubyComment
-hi Comment                   guifg=#BC9458 gui=italic ctermfg=137
-hi Todo                      guifg=#BC9458 guibg=NONE gui=italic ctermfg=94
+hi Comment                   guifg=#BC9458 ctermfg=137
+hi Todo                      guifg=#BC9458 guibg=NONE ctermfg=94
 
 "rubyPseudoVariable
 "nil, self, symbols, etc
