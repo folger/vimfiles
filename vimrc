@@ -200,8 +200,8 @@ execute pathogen#infect()
 
 "" colorscheme settings {{{
 syntax enable
-set background=dark
-colorscheme railscasts
+set background=light
+colorscheme solarized
 "" }}}
 
 "" keymappings {{{
@@ -227,6 +227,7 @@ nnoremap <F5> :GundoToggle<CR>
 nmap <F6> <Plug>HexManager
 noremap \ <C-W>
 
+nnoremap <F1> :Gstatus<CR>
 nnoremap <F2> :NERDTreeToggle<CR>
 nnoremap <S-F2> :NERDTreeFind<CR>
 nnoremap <F8> :let b:tagbar_ignore = 0 \| TagbarToggle<CR>
@@ -234,12 +235,11 @@ nnoremap <F8> :let b:tagbar_ignore = 0 \| TagbarToggle<CR>
 noremap <Esc> :noh<bar>pclose<CR><Esc>
 
 nnoremap <C-K><C-o> :Gist -l<CR>
-nnoremap <C-k><C-l> :Gstatus<CR>
 nnoremap <C-k><C-i> :CtrlPMRU<CR>
 nnoremap <C-k><C-d> :Gdiff<CR>
 nnoremap <C-K><C-m> :call AddModificationLog()<CR>
-nnoremap <C-k><C-x> :call AddCodeMarking()<CR>
-vnoremap <C-k><C-x> :call AddCodeMarking()<CR>
+nnoremap <C-k><C-l> :call AddCodeMarking()<CR>
+vnoremap <C-k><C-l> :call AddCodeMarking()<CR>
 nnoremap <C-k><C-j> :call SetupCodeMarking()<CR>
 nnoremap <C-k><C-y> :YRShow<CR>
 
