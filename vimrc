@@ -418,3 +418,11 @@ function! EnsureDirExists()
   endif
 endfunction
 "" }}}
+"" change dos ending file to unix {{{
+function! DoDOSEndingToUnix()
+  edit ++fileformat=dos
+  setlocal fileformat=unix
+  write
+endfunction
+command! DOSEndingToUnix call DoDOSEndingToUnix()
+"" }}}
