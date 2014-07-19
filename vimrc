@@ -217,8 +217,10 @@ nnoremap <silent> <Leader>d     : bd<CR>
 nnoremap <silent> <Leader>w     : update<CR>
 nnoremap <Leader>ew             : e <C-R>=expand("%:p:h") . "/"<CR>
 
-nmap <C-Tab> %
-vmap <C-Tab> %
+nnoremap <C-Tab> <Tab>
+
+nmap <Tab> %
+vmap <Tab> %
 
 set pastetoggle=<F3>
 
