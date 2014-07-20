@@ -147,6 +147,9 @@ let g:airline#extensions#tabline#enabled = 1
 let g:yankring_replace_n_pkey = ''
 let g:yankring_replace_n_nkey = ''
 "" }}}
+"" solarized settings{{{
+let g:solarized_italic = 0
+"" }}}
 
 "" auto commands for vim startup {{{
 augroup VimStartup
@@ -205,17 +208,17 @@ colorscheme solarized
 "" }}}
 
 "" keymappings {{{
-nnoremap <silent> <Leader><Tab> : Scratch<CR>
-nnoremap <silent> <Leader>tt    : tabedit<CR>
-nnoremap <silent> <Leader>tr    : tabclose<CR>
-nnoremap <silent> <Leader>b     : CtrlPBuffer<CR>
-nnoremap <silent> <Leader>f     : call CtrlPCurrentFolder()<CR>
-nnoremap <silent> <Leader>v     : e $MYVIMRC<CR>
-nnoremap <silent> <Leader>l     : set list!<CR>
-nnoremap <silent> <Leader>s     : set spell!<CR>
-nnoremap <silent> <Leader>d     : bd<CR>
-nnoremap <silent> <Leader>w     : update<CR>
-nnoremap <Leader>ew             : e <C-R>=expand("%:p:h") . "/"<CR>
+nnoremap <silent> <Leader><Tab> :Scratch<CR>
+nnoremap <silent> <Leader>tt    :tabedit<CR>
+nnoremap <silent> <Leader>tr    :tabclose<CR>
+nnoremap <silent> <Leader>b     :CtrlPBuffer<CR>
+nnoremap <silent> <Leader>f     :call CtrlPCurrentFolder()<CR>
+nnoremap <silent> <Leader>v     :e $MYVIMRC<CR>
+nnoremap <silent> <Leader>l     :set list!<CR>
+nnoremap <silent> <Leader>s     :set spell!<CR>
+nnoremap <silent> <Leader>d     :bd<CR>
+nnoremap <silent> <Leader>w     :update<CR>
+nnoremap <Leader>ew             :e <C-R>=expand("%:p:h") . "/"<CR>
 
 nnoremap <C-Tab> <Tab>
 
