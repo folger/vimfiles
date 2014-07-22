@@ -218,6 +218,7 @@ nnoremap <silent> <Leader>l     :set list!<CR>
 nnoremap <silent> <Leader>s     :set spell!<CR>
 nnoremap <silent> <Leader>d     :bd<CR>
 nnoremap <silent> <Leader>w     :update<CR>
+nnoremap <silent> <Leader>n     :enew<CR>
 nnoremap <Leader>ew             :e <C-R>=expand("%:p:h") . "/"<CR>
 
 nnoremap <C-Tab> <Tab>
