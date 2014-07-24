@@ -254,6 +254,11 @@ cnoremap <C-n> <Down>
 cnoremap <C-k> <Left>
 cnoremap <C-l> <Right>
 
+nnoremap <silent> [a :previous<CR>
+nnoremap <silent> ]a :next<CR>
+nnoremap <silent> [A :first<CR>
+nnoremap <silent> ]A :last<CR>
+
 nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
