@@ -51,8 +51,8 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:backup_ctrlp_working_path_mode = g:ctrlp_working_path_mode
 "" }}}
 "" clang_complet {{{
-let g:clang_complete_loaded=1 
-"let g:clang_auto_select = 2 
+let g:clang_complete_loaded=1
+"let g:clang_auto_select = 2
 "let g:clang_complete_copen=1
 "let g:clang_periodic_quickfix=1
 "let g:clang_snippets=1
@@ -102,8 +102,31 @@ if has("win32") || has("win16")
   nnoremap <silent> <C-k><C-p> :call SetupProj()<CR>
 
   function! BuildProject(file)
-    execute "silent !start python " . $Checkcode ."/Python/BuildProj/BuildCmd.py "
-          \ . g:proj . " " . a:file
+    let l:output = system("python ". $Checkcode ."/Python/BuildProj/BuildCmd.py "
+          \ . g:proj . " " . expand(a:file))
+    let l:errors = split(l:output, '\n')
+    let l:proj_path = remove(l:errors, 0)
+    let l:qferrors = []
+    for l:error in l:errors
+      if len(l:error) == 0
+          break
+      endif
+      let l:items = split(substitute(l:error,
+                  \'^  \([^(]\+\)(\(\d\+\)).*',
+                  \'\1|\2', 'g'),
+                  \'|')
+      let l:qferror = {}
+      if len(l:items) == 2
+        let l:qferror['filename'] = l:proj_path . '\' . l:items[0]
+        let l:qferror['lnum'] = l:items[1]
+      endif
+      let l:qferror['text'] = l:error
+      call add(l:qferrors, l:qferror)
+    endfor
+    call setqflist(l:qferrors, 'r')
+    if len(l:qferrors) > 0
+        execute 'cwindow'
+    endif
   endfunction
   nnoremap <silent> <C-k><C-b> :call BuildProject("")<CR>
 
@@ -191,7 +214,7 @@ augroup END
 augroup BufferRelated
   autocmd!
   autocmd BufWinLeave *.* :mkview!
-  autocmd BufWinEnter *.* :silent loadview 
+  autocmd BufWinEnter *.* :silent loadview
 augroup END
 "" }}}
 "" something other commands {{{
@@ -211,7 +234,7 @@ colorscheme solarized
 nnoremap <silent> <Leader><Tab> :Scratch<CR>
 nnoremap <silent> <Leader>tt    :tabedit<CR>
 nnoremap <silent> <Leader>tr    :tabclose<CR>
-nnoremap <silent> <Leader>b     :CtrlPBuffer<CR>
+nnoremap <silent> <Leader>bb    :CtrlPBuffer<CR>
 nnoremap <silent> <Leader>f     :call CtrlPCurrentFolder()<CR>
 nnoremap <silent> <Leader>v     :e $MYVIMRC<CR>
 nnoremap <silent> <Leader>l     :set list!<CR>
