@@ -112,25 +112,33 @@ if has("win32") || has("win16")
           break
       endif
       let l:items = split(substitute(l:error,
-                  \'^  \([^(]\+\)(\(\d\+\)).*',
-                  \'\1|\2', 'g'),
+                  \'^  \([^(]\+\)(\(\d\+\))\(.*\)',
+                  \'\1|\2|\3', 'g'),
                   \'|')
       let l:qferror = {}
-      if len(l:items) == 2
+      if len(l:items) == 3
         let l:qferror['filename'] = l:proj_path . '\' . l:items[0]
         let l:qferror['lnum'] = l:items[1]
+        let l:qferror['text'] = l:items[2]
+      else
+        let l:qferror['text'] = l:error
       endif
-      let l:qferror['text'] = l:error
       call add(l:qferrors, l:qferror)
     endfor
+    let l:noerror = len(l:qferrors) == 0
+    if l:noerror
+      call add(l:qferrors,{'text':'no error found~~~~~~'})
+    endif
     call setqflist(l:qferrors, 'r')
-    if len(l:qferrors) > 0
-        execute 'cwindow'
+    cwindow
+    if !l:noerror
+      crewind
     endif
   endfunction
   nnoremap <silent> <C-k><C-b> :call BuildProject("")<CR>
 
   function! CompileCurrentFile()
+    update
     call BuildProject("%:t")
   endfunction
   nnoremap <silent> <C-k><C-n> :call CompileCurrentFile()<CR>
