@@ -349,8 +349,8 @@ endfunction
 function! AddCodeMarking() range
   let l:fo = &formatoptions
   let l:ci = &cindent
-  execute "set formatoptions-=cro"
-  execute "set nocindent"
+  set formatoptions-=cro
+  set nocindent
   execute a:lastline . "normal! o///------ End =g:codem"
   execute a:firstline . "normal! O///------ Folger =strftime(\"%m/%d/%Y\") =g:jira=g:codem"
   let &formatoptions = l:fo
@@ -415,7 +415,7 @@ nnoremap <silent> <Leader>q :call QuickfixToggle()<CR>
 "" using CtrlP to open current directory {{{
 function! CtrlPCurrentFolder()
   let g:ctrlp_working_path_mode = 'c'
-  execute 'CtrlP'
+  CtrlP
   let g:ctrlp_working_path_mode = g:backup_ctrlp_working_path_mode
 endfunction
 "" }}}
