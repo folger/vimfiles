@@ -181,6 +181,10 @@ let g:yankring_replace_n_nkey = ''
 "" solarized settings{{{
 let g:solarized_italic = 0
 "" }}}
+"" NERDCommenter settings{{{
+let NERDLPlace = '/*'
+let NERDRPlace = '*/'
+"" }}}
 
 "" auto commands for vim startup {{{
 augroup VimStartup
