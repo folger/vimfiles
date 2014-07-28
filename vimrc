@@ -112,7 +112,7 @@ if has("win32") || has("win16")
           break
       endif
       let l:items = split(substitute(l:error,
-                  \'^  \([^(]\+\)(\(\d\+\))\(.*\)',
+                  \'^\%( \+\)\%(\d\+>\)\?\([^(]\+\)(\(\d\+\))\(.*\)',
                   \'\1|\2|\3', 'g'),
                   \'|')
       let l:qferror = {}
