@@ -472,3 +472,18 @@ function! DoDOSEndingToUnix()
 endfunction
 command! DOSEndingToUnix call DoDOSEndingToUnix()
 "" }}}
+"" find symbol in tags file {{{
+function! FindSymbolInTagsFile(tagspath)
+  let l:key = input('Symbol Key : ')
+  let l:pyfile = a:tagspath . 'FindSymbol.py'
+  let l:symbols = system('python ' . l:pyfile . ' "' . l:key . '"')
+  let allsymbols = []
+  for l:symbol in split(l:symbols, '\n')
+    let entries = split(l:symbol, '\t')
+    call add(allsymbols, {'text':entries[0], 'filename':entries[1], 'lnum':entries[2]})
+  endfor
+  call setqflist(l:allsymbols, 'r')
+  cwindow
+endfunction
+nnoremap <c-k><c-x> :call FindSymbolInTagsFile(expand($develop) . '/.git/')<CR>
+"" }}}
