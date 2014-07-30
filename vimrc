@@ -475,6 +475,9 @@ command! DOSEndingToUnix call DoDOSEndingToUnix()
 "" find symbol in tags file {{{
 function! FindSymbolInTagsFile(tagspath)
   let l:key = input('Symbol Key : ')
+  if len(l:key) <= 0
+    return
+  endif
   let l:pyfile = a:tagspath . 'FindSymbol.py'
   let l:symbols = system('python ' . l:pyfile . ' "' . l:key . '"')
   let allsymbols = []
