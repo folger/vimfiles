@@ -11,6 +11,6 @@ pattern = re.compile('(\w|:)*'.join(patterns), re.I)
 with open(os.path.join(currentpath, 'tags')) as f:
     for line in f:
         entry = line.split(';"')[0]
-        name, fname, lnum = entry.split('\t')
+        name = entry.split('\t')[0]
         if pattern.match(name):
-            print('\t'.join([name, os.path.join(currentpath, fname), lnum]))
+            print(entry)

@@ -483,7 +483,7 @@ function! FindSymbolInTagsFile(tagspath)
   let allsymbols = []
   for l:symbol in split(l:symbols, '\n')
     let entries = split(l:symbol, '\t')
-    call add(allsymbols, {'text':entries[0], 'filename':entries[1], 'lnum':entries[2]})
+    call add(allsymbols, {'text':entries[0], 'filename':a:tagspath . entries[1], 'lnum':entries[2]})
   endfor
   call setqflist(l:allsymbols, 'r')
   cwindow
