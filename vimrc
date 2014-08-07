@@ -117,7 +117,11 @@ if has("win32") || has("win16")
                   \'|')
       let l:qferror = {}
       if len(l:items) == 3
-        let l:qferror['filename'] = l:proj_path . '\' . l:items[0]
+        let l:file = l:items[0]
+        if l:file !~ '^\w:\'
+          let l:file = l:proj_path . '\' . l:file
+        endif
+        let l:qferror['filename'] = l:file
         let l:qferror['lnum'] = l:items[1]
         let l:qferror['text'] = l:items[2]
       else
@@ -482,8 +486,8 @@ function! FindSymbolInTagsFile(tagspath)
   let l:symbols = system('python ' . l:pyfile . ' "' . l:key . '"')
   let allsymbols = []
   for l:symbol in split(l:symbols, '\n')
-    let entries = split(l:symbol, '\t')
-    call add(allsymbols, {'text':entries[0], 'filename':a:tagspath . entries[1], 'lnum':entries[2]})
+    let l:entries = split(l:symbol, '\t')
+    call add(allsymbols, {'text':entries[0], 'filename':a:tagspath . l:entries[1], 'lnum':l:entries[2]})
   endfor
   call setqflist(l:allsymbols, 'r')
   cwindow
