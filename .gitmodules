@@ -98,10 +98,6 @@
 	path = bundle/hexman
 	url = https://github.com/vim-scripts/hexman.vim
 	ignore = dirty
-[submodule "bundle/YankRing.vim"]
-	path = bundle/YankRing.vim
-	url = https://github.com/vim-scripts/YankRing.vim
-	ignore = dirty
 [submodule "bundle/scratch.vim"]
 	path = bundle/scratch.vim
 	url = https://github.com/vim-scripts/scratch.vim
