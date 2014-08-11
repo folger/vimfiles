@@ -16,9 +16,11 @@ def match(name):
 
 with open(os.path.join(currentpath, 'tags')) as f:
     for line in f:
+        if line[0] == '!':
+            continue
         entries = line.split(';"')
         name = entries[0].split('\t')[0]
+        if entries[1].find('class:') > 0 and name.find('::') < 0:
+            continue
         if match(name):
-            if entries[1].find('class:') > 0 and name.find('::') < 0:
-                continue
             print(entries[0])
