@@ -23,7 +23,7 @@ with open(os.path.join(currentpath, 'tags')) as f:
         entries = line.split(';"')
         names = entries[0].split('\t')
         name = names[0]
-        if entries[1].find('class:') > 0 and name.find('::') < 0:
+        if (entries[1].find('::') > 0 or entries[1].find('class:') > 0) and name.find('::') < 0:
             continue
         if match(name):
             sig = entries[1].find(signature)
