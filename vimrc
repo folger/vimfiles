@@ -203,6 +203,7 @@ augroup FileTypeRelated
   autocmd!
   autocmd Filetype python :setlocal expandtab
   autocmd Filetype vim :setlocal tabstop=2 shiftwidth=2 expandtab foldmethod=marker
+  autocmd Filetype lua :setlocal tabstop=2 shiftwidth=2 expandtab
 augroup END
 "" }}}
 "" auto commands for file reading {{{
