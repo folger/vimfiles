@@ -251,7 +251,7 @@ colorscheme solarized
 nnoremap <silent> <Leader><Tab> :Scratch<CR>
 nnoremap <silent> <Leader>tt    :tabedit<CR>
 nnoremap <silent> <Leader>tr    :tabclose<CR>
-nnoremap <silent> <Leader>bb    :CtrlPBuffer<CR>
+nnoremap <silent> <Leader>b     :CtrlPBuffer<CR>
 nnoremap <silent> <Leader>f     :call CtrlPCurrentFolder()<CR>
 nnoremap <silent> <Leader>v     :e $MYVIMRC<CR>
 nnoremap <silent> <Leader>l     :set list!<CR>
@@ -472,7 +472,7 @@ endfunction
 function! DoDOSEndingToUnix()
   edit ++fileformat=dos
   setlocal fileformat=unix
-  write
+  write!
 endfunction
 command! DOSEndingToUnix call DoDOSEndingToUnix()
 "" }}}
