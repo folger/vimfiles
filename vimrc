@@ -21,7 +21,7 @@ set scrolloff=3
 set go-=m ""remove the menu bar
 set go-=T ""remove the toolbar
 
-set relativenumber
+"set relativenumber
 set cursorline
 set backspace=2 ""make backspace work like most other apps
 set number
@@ -243,7 +243,7 @@ execute pathogen#infect()
 
 "" colorscheme settings {{{
 syntax enable
-set background=light
+set background=dark
 colorscheme solarized
 "" }}}
 
