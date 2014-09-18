@@ -287,6 +287,8 @@ nnoremap <C-K><C-m> :call AddModificationLog()<CR>
 nnoremap <C-k><C-l> :call AddCodeMarking()<CR>
 vnoremap <C-k><C-l> :call AddCodeMarking()<CR>
 nnoremap <C-k><C-j> :call SetupCodeMarking()<CR>
+nnoremap <C-k><C-u> :call AddIfDef()<CR>
+vnoremap <C-k><C-u> :call AddIfDef()<CR>
 
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
@@ -363,6 +365,18 @@ function! AddCodeMarking() range
   execute a:lastline . "+1 normal! o///------ End =g:codem"
   let &formatoptions = l:fo
   let &cindent = l:ci
+endfunction
+"" }}}
+"" add IfDef {{{
+function! AddIfDef() range
+  let l:ci = &cindent
+  let l:ai = &autoindent
+  set nocindent
+  set noautoindent
+  execute a:firstline . "normal! O#ifdef =g:define"
+  execute a:lastline . "+1 normal! o#endif /// =g:define"
+  let &cindent = l:ci
+  let &autoindent = l:ai
 endfunction
 "" }}}
 "" pretty xml formatted current buffer {{{
