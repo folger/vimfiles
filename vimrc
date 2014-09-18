@@ -359,8 +359,8 @@ function! AddCodeMarking() range
   let l:ci = &cindent
   set formatoptions-=cro
   set nocindent
-  execute a:lastline . "normal! o///------ End =g:codem"
   execute a:firstline . "normal! O///------ Folger =strftime(\"%m/%d/%Y\") =g:jira=g:codem"
+  execute a:lastline . "+1 normal! o///------ End =g:codem"
   let &formatoptions = l:fo
   let &cindent = l:ci
 endfunction
