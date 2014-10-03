@@ -477,10 +477,11 @@ command! -nargs=1 SS call SaveSession(<f-args>)
 "" Auto make directories {{{
 function! EnsureDirExists()
   let required_dir = fnamemodify(expand('<afile>'), ':h')
-  echo required_dir
-  if !isdirectory(required_dir)
-    call mkdir(required_dir, 'p')
-  endif
+  if len(required_dir) != 0
+    if !isdirectory(required_dir)
+      call mkdir(required_dir, 'p')
+    endif
+  end
 endfunction
 "" }}}
 "" change dos ending file to unix {{{
