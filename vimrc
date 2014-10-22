@@ -216,7 +216,7 @@ augroup FileReadRelated
         \*,rb,
         \*.java,*.js
         \ :setlocal nowrap
-  autocmd BufRead *.rc :edit ++encoding=cp1252
+  "autocmd BufRead *.rc :edit ++encoding=cp1252
   autocmd BufNewFile,BufRead *.h,*.c,*.cpp :let b:tagbar_ignore = 1
   autocmd BufReadPost fugitive://* :set bufhidden=delete
 augroup END
@@ -272,6 +272,7 @@ set pastetoggle=<F3>
 nnoremap <F4> :Gblame -w<CR>
 nnoremap <F5> :GundoToggle<CR>
 nmap <F6> <Plug>HexManager
+nnoremap <F7> :Bufferlist<CR>
 noremap \ <C-W>
 
 nnoremap <F1> :Gstatus<CR>
