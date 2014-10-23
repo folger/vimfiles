@@ -255,12 +255,12 @@ nnoremap <silent> <Leader>tr    :tabclose<CR>
 nnoremap <silent> <Leader>b     :CtrlPBuffer<CR>
 nnoremap <silent> <Leader>f     :call CtrlPCurrentFolder()<CR>
 nnoremap <silent> <Leader>v     :e $MYVIMRC<CR>
-nnoremap <silent> <Leader>l     :set list!<CR>
-nnoremap <silent> <Leader>s     :set spell!<CR>
 nnoremap <silent> <Leader>d     :bd<CR>
 nnoremap <silent> <Leader>w     :update<CR>
 nnoremap <silent> <Leader>n     :enew<CR>
 nnoremap <Leader>ew             :e <C-R>=expand("%:p:h") . "/"<CR>
+nnoremap <Leader>l              :set list!<Bar>set list?<CR>
+nnoremap <Leader>s              :set spell!<Bar>set spell?<CR>
 
 nnoremap <C-Tab> <Tab>
 
@@ -276,6 +276,7 @@ nnoremap <F7> :Bufferlist<CR>
 noremap \ <C-W>
 
 nnoremap <F1> :Gstatus<CR>
+nnoremap <C-F1> :e ++enc=
 nnoremap <F2> :NERDTreeToggle<CR>
 nnoremap <S-F2> :NERDTreeFind<CR>
 nnoremap <F8> :let b:tagbar_ignore = 0 \| TagbarToggle<CR>
