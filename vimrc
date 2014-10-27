@@ -149,7 +149,6 @@ if has("win32") || has("win16")
   nnoremap <silent> <C-k><C-n> :call CompileCurrentFile()<CR>
 
   nnoremap <silent> yq :let @+=substitute(expand('%:p'), '/', '\', 'g')<CR>
-  nnoremap <silent> <C-b> :wall!<Bar>!mingw32-make<CR>
   nnoremap <silent> <C-b><C-b> :wall!<Bar>!mingw32-make<CR>
   nnoremap <silent> <C-b><C-v> :!mingw32-make clean<CR>
 else
@@ -164,7 +163,7 @@ else
   endif
 
   nnoremap <silent> yq :let @+=expand('%:p')<CR>
-  nnoremap <silent> <C-b> :wall!<Bar>!make<CR>
+  nnoremap <silent> <C-b><C-b> :wall!<Bar>!make<CR>
   nnoremap <silent> <C-b><C-v> :!make clean<CR>
 endif
 
