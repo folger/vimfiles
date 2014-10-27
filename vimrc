@@ -149,6 +149,9 @@ if has("win32") || has("win16")
   nnoremap <silent> <C-k><C-n> :call CompileCurrentFile()<CR>
 
   nnoremap <silent> yq :let @+=substitute(expand('%:p'), '/', '\', 'g')<CR>
+  nnoremap <silent> <C-b> :wall!<Bar>!mingw32-make<CR>
+  nnoremap <silent> <C-b><C-b> :wall!<Bar>!mingw32-make<CR>
+  nnoremap <silent> <C-b><C-v> :!mingw32-make clean<CR>
 else
   if has("gui_macvim")
     let g:tagbar_ctags_bin = '/opt/local/bin/ctags'
@@ -161,6 +164,8 @@ else
   endif
 
   nnoremap <silent> yq :let @+=expand('%:p')<CR>
+  nnoremap <silent> <C-b> :wall!<Bar>!make<CR>
+  nnoremap <silent> <C-b><C-v> :!make clean<CR>
 endif
 
 imap <silent> <F11> <Esc><F11>
