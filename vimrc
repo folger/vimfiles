@@ -39,7 +39,7 @@ set smartcase
 
 set encoding=utf-8
 let &termencoding=&encoding
-set fileencodings=ucs-bom,utf-8,gbk
+set fileencodings=ucs-bom,utf-8,sjis,gbk
 set ambiwidth=double
 "" }}}
 
@@ -276,7 +276,7 @@ nnoremap <F7> :Bufferlist<CR>
 noremap \ <C-W>
 
 nnoremap <F1> :Gstatus<CR>
-nnoremap <C-F1> :e ++enc=
+nnoremap <C-F1> :e ++enc=cp1252<CR>
 nnoremap <F2> :NERDTreeToggle<CR>
 nnoremap <S-F2> :NERDTreeFind<CR>
 nnoremap <F8> :let b:tagbar_ignore = 0 \| TagbarToggle<CR>
