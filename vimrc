@@ -130,13 +130,11 @@ if has("win32") || has("win16")
       endif
       call add(l:qferrors, l:qferror)
     endfor
-    let l:noerror = len(l:qferrors) == 0
-    if l:noerror
-      call add(l:qferrors,{'text':'no error found~~~~~~'})
-    endif
     call setqflist(l:qferrors, 'r')
-    cwindow
-    if !l:noerror
+    if len(l:qferrors) == 0
+      echomsg 'no error found~~~~~~'
+    else
+      cwindow
       crewind
     endif
   endfunction
