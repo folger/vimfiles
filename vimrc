@@ -144,7 +144,7 @@ if has("win32") || has("win16")
     update
     call BuildProject("%:t")
   endfunction
-  nnoremap <silent> <C-k><C-n> :call CompileCurrentFile()<CR>
+  nnoremap <silent> <C-F7> :call CompileCurrentFile()<CR>
 
   nnoremap <silent> yq :let @+=substitute(expand('%:p'), '/', '\', 'g')<CR>
   nnoremap <silent> <C-k><C-b> :wall!<Bar>!mingw32-make<CR>
