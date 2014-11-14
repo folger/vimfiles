@@ -113,3 +113,8 @@
 [submodule "bundle/buffet.vim"]
 	path = bundle/buffet.vim
 	url = https://github.com/vim-scripts/buffet.vim
+	ignore = dirty
+[submodule "bundle/summerfruit256.vim"]
+	path = bundle/summerfruit256.vim
+	url = https://github.com/vim-scripts/summerfruit256.vim
+	ignore = dirty

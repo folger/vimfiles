@@ -246,8 +246,8 @@ execute pathogen#infect()
 
 "" colorscheme settings {{{
 syntax enable
-set background=dark
-colorscheme solarized
+set background=light
+colorscheme summerfruit256
 "" }}}
 
 "" keymappings {{{
