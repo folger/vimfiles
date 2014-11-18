@@ -1,0 +1,16 @@
+gundo
+webapi-vim
+vim-visual-star-search
+gist-vim
+vim-fugitive
+vim-easymotion
+vim-airline
+summerfruit256.vim
+vim-multiple-cursors
+vim-exchange
+vim-surround
+snipmate.vim
+nerdcommenter
+delimitMate
+ctrlp.vim
+a.vim

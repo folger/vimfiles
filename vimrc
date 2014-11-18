@@ -328,9 +328,9 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 "" }}}
 
 "" repeat commands {{{
-nnoremap <silent> <Plug>TransposeCharacters xp
-            \:call repeat#set("\<Plug>TransposeCharacters")<CR>
-nmap cp <Plug>TransposeCharacters
+"nnoremap <silent> <Plug>TransposeCharacters xp
+            "\:call repeat#set("\<Plug>TransposeCharacters")<CR>
+"nmap cp <Plug>TransposeCharacters
 "" }}}
 
 ""
