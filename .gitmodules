@@ -118,3 +118,6 @@
 	path = bundle/summerfruit256.vim
 	url = https://github.com/vim-scripts/summerfruit256.vim
 	ignore = dirty
+[submodule "bundle/gitv"]
+	path = bundle/gitv
+	url = https://github.com/gregsexton/gitv

@@ -24,7 +24,7 @@ set go-=T ""remove the toolbar
 "set relativenumber
 set cursorline
 set backspace=2 ""make backspace work like most other apps
-set number
+"set number
 
 set hlsearch
 set incsearch
@@ -315,8 +315,8 @@ nnoremap <silent> ]n :cnext<CR>
 nnoremap <silent> [N :cfirst<CR>
 nnoremap <silent> ]N :clast<CR>
 
-nnoremap j gj
-nnoremap k gk
+"nnoremap j gj
+"nnoremap k gk
 
 nnoremap <space> za
 vnoremap <space> za
