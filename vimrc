@@ -278,6 +278,7 @@ nnoremap <F7> :Bufferlist<CR>
 noremap \ <C-W>
 
 nnoremap <F1> :Gstatus<CR>
+nnoremap <S-F1> :Gitv<CR>
 nnoremap <C-F1> :e ++enc=cp1252<CR>
 nnoremap <F2> :NERDTreeToggle<CR>
 nnoremap <S-F2> :NERDTreeFind<CR>
