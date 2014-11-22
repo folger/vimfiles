@@ -495,7 +495,7 @@ function! DoDOSEndingToUnix()
   setlocal fileformat=unix
   write!
 endfunction
-command! DOSEndingToUnix call DoDOSEndingToUnix()
+command! -bar DOSEndingToUnix call DoDOSEndingToUnix()
 "" }}}
 "" find symbol in tags file {{{
 function! FindSymbolInTagsFile(tagspath)
