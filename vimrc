@@ -192,6 +192,10 @@ let g:solarized_italic = 0
 let NERDLPlace = '/*'
 let NERDRPlace = '*/'
 "" }}}
+"" gitv settings{{{
+let g:Gitv_OpenPreviewOnLaunch = 0
+let g:Gitv_CommitStep = 100
+"" }}}
 
 "" auto commands for vim startup {{{
 augroup VimStartup
@@ -263,6 +267,9 @@ nnoremap <silent> <Leader>n     :enew<CR>
 nnoremap <Leader>ew             :e <C-R>=expand("%:p:h") . "/"<CR>
 nnoremap <Leader>l              :set list!<Bar>set list?<CR>
 nnoremap <Leader>s              :set spell!<Bar>set spell?<CR>
+nnoremap <leader>gv             :Gitv --all<cr>
+nnoremap <leader>gV             :Gitv! --all<cr>
+vnoremap <leader>gV             :Gitv! --all<cr>
 
 nnoremap <C-Tab> <Tab>
 
@@ -278,10 +285,13 @@ nnoremap <F7> :Bufferlist<CR>
 noremap \ <C-W>
 
 nnoremap <F1> :Gstatus<CR>
-nnoremap <S-F1> :Gitv<CR>
 nnoremap <C-F1> :e ++enc=cp1252<CR>
-nnoremap <F2> :NERDTreeToggle<CR>
-nnoremap <S-F2> :NERDTreeFind<CR>
+vnoremap <S-F1> :call BCDiffFile()<CR>
+"nnoremap <F2> :NERDTreeToggle<CR>
+"nnoremap <S-F2> :NERDTreeFind<CR>
+nnoremap <F2> :Git difftool % -y<CR>
+nnoremap <S-F2> :Git mergetool % -y<CR>
+nnoremap <C-F2> :call DiffFile()<CR>
 nnoremap <F8> :let b:tagbar_ignore = 0 \| TagbarToggle<CR>
 
 noremap <Esc> :noh<bar>pclose<CR><Esc>
@@ -514,4 +524,19 @@ function! FindSymbolInTagsFile(tagspath)
   cwindow
 endfunction
 nnoremap <c-k><c-x> :call FindSymbolInTagsFile(expand($develop) . '/.git/')<CR>
+"" }}}
+"" Git external diff tool to diff file {{{
+function! DiffFile()
+  let l:line = getline(line('.') + 1)
+  let l:hashes = split(l:line, ' ')
+  if (len(l:hashes) == 3)
+    execute 'Git difftool -y ' l:hashes[1]
+  endif
+endfunction
+"" }}}
+"" Git external diff tool to diff file {{{
+function! BCDiffFile() range
+  execute "'<,'>w! ~/vimbackup/temp.diff"
+  execute '!"' . $diff . '" ' . $home . '/vimbackup/temp.diff'
+endfunction
 "" }}}
