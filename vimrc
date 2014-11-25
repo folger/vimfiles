@@ -194,7 +194,7 @@ let NERDRPlace = '*/'
 "" }}}
 "" gitv settings{{{
 let g:Gitv_OpenPreviewOnLaunch = 0
-let g:Gitv_CommitStep = 100
+let g:Gitv_CommitStep = 50
 "" }}}
 
 "" auto commands for vim startup {{{
@@ -286,7 +286,7 @@ noremap \ <C-W>
 
 nnoremap <F1> :Gstatus<CR>
 nnoremap <C-F1> :e ++enc=cp1252<CR>
-vnoremap <S-F1> :call BCDiffFile()<CR>
+nnoremap <S-F1> :call BCDiffFile()<CR>
 "nnoremap <F2> :NERDTreeToggle<CR>
 "nnoremap <S-F2> :NERDTreeFind<CR>
 nnoremap <F2> :Git difftool % -y<CR>
@@ -527,16 +527,28 @@ nnoremap <c-k><c-x> :call FindSymbolInTagsFile(expand($develop) . '/.git/')<CR>
 "" }}}
 "" Git external diff tool to diff file {{{
 function! DiffFile()
-  let l:line = getline(line('.') + 1)
-  let l:hashes = split(l:line, ' ')
-  if (len(l:hashes) == 3)
-    execute 'Git difftool -y ' l:hashes[1]
+  let l:firstline = getline(1)
+  if l:firstline =~ '^tree '
+    let l:line = getline(line('.') + 1)
+    let l:hashes = split(l:line, ' ')
+    if len(l:hashes) == 3
+      execute 'Git difftool -y ' l:hashes[1]
+    endif
+  else
+    let l:currentfile = expand('%')
+    if l:currentfile =~ '^fugitive'
+      let l:gitpath = strpart(l:currentfile, 11, stridx(l:currentfile, '\.git') - 11)
+    else
+      let l:gitpath = strpart(l:currentfile, 0, stridx(l:currentfile, '\.git'))
+    endif
+    let l:file = strpart(split(getline('.'), ' ')[2], 1)
+    execute 'Git difftool -y ' l:gitpath . l:file
   endif
 endfunction
 "" }}}
-"" Git external diff tool to diff file {{{
-function! BCDiffFile() range
-  execute "'<,'>w! ~/vimbackup/temp.diff"
+"" show diff file using default($diff) diff tool {{{
+function! BCDiffFile()
+  execute "1,$w! ~/vimbackup/temp.diff"
   execute '!"' . $diff . '" ' . $home . '/vimbackup/temp.diff'
 endfunction
 "" }}}
