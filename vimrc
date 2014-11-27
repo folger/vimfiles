@@ -535,11 +535,11 @@ function! DiffFile()
       execute 'Git difftool -y ' l:hashes[1]
     endif
   else
-    let l:currentfile = expand('%')
+    let l:currentfile = expand('%:p')
     if l:currentfile =~ '^fugitive'
-      let l:gitpath = strpart(l:currentfile, 11, stridx(l:currentfile, '\.git') - 11)
+      let l:gitpath = strpart(l:currentfile, 11, stridx(l:currentfile, '.git') - 12)
     else
-      let l:gitpath = strpart(l:currentfile, 0, stridx(l:currentfile, '\.git'))
+      let l:gitpath = strpart(l:currentfile, 0, stridx(l:currentfile, '.git') - 1)
     endif
     let l:file = strpart(split(getline('.'), ' ')[2], 1)
     execute 'Git difftool -y ' l:gitpath . l:file
