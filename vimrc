@@ -217,9 +217,10 @@ augroup END
 augroup FileReadRelated
   autocmd!
   autocmd BufNewFile,BufRead
-        \ *.h,*.hpp,*.c,*.cpp,*.cxx,*.rc
-        \*.py,*pyw,
-        \*,rb,
+        \ *.vim,
+        \*.h,*.hpp,*.c,*.cc,*.cpp,*.cxx,*.rc,
+        \*.py,*.pyw,
+        \*.rb,
         \*.java,*.js
         \ :setlocal nowrap
   "autocmd BufRead *.rc :edit ++encoding=cp1252
@@ -237,7 +238,7 @@ augroup END
 "" auto commands for buffering {{{
 augroup BufferRelated
   autocmd!
-  autocmd BufWinLeave *.* :mkview!
+  autocmd BufWinLeave *.* :call MakeView()
   autocmd BufWinEnter *.* :silent loadview
 augroup END
 "" }}}
@@ -550,5 +551,14 @@ endfunction
 function! BCDiffFile()
   execute "1,$w! ~/vimbackup/temp.diff"
   execute '!"' . $diff . '" ' . $home . '/vimbackup/temp.diff'
+endfunction
+"" }}}
+"" Make file view {{{
+function! MakeView()
+  let filename = expand('%')
+  if filename =~ '^fugitive'
+    return
+  end
+  mkview!
 endfunction
 "" }}}
