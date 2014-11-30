@@ -49,6 +49,10 @@ let g:ctrlp_max_files = 0
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:30'
 let g:ctrlp_working_path_mode = 'ra'
 let g:backup_ctrlp_working_path_mode = g:ctrlp_working_path_mode
+set wildignore+=*.o,*.obj,*.lib,*.dll,*.exe,
+      \*.pdb,*.exp,*.ilk,*.tlog,*.pch,*.idb,*.cache,
+      \*.emf,*.jpg,*.jpeg,*.png,*.bmp,*.chm,
+      \*.otp,*.otw,*.otm,*.opj
 "" }}}
 "" clang_complet {{{
 let g:clang_complete_loaded=1
@@ -245,6 +249,9 @@ augroup END
 "" something other commands {{{
 command! Dowrap set wrap linebreak nolist
 command! Nowrap set nowrap nolinebreak nolist
+"" }}}
+"" commands abbreviation {{{
+cabbrev git Git
 "" }}}
 
 execute pathogen#infect()
