@@ -44,7 +44,7 @@ set ambiwidth=double
 "" }}}
 
 "" CtrlP settings {{{
-"let g:ctrlp_by_filename = 1
+let g:ctrlp_by_filename = 1
 let g:ctrlp_max_files = 0
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:30'
 let g:ctrlp_working_path_mode = 'ra'
@@ -182,21 +182,21 @@ set autoindent
 "" turn on matchit {{{
 runtime macros/matchit.vim
 "" }}}
-"" airline settings{{{
+"" airline settings {{{
 let g:airline#extensions#tabline#enabled = 1
 "" }}}
-"" YankRing settings{{{
+"" YankRing settings {{{
 let g:yankring_replace_n_pkey = ''
 let g:yankring_replace_n_nkey = ''
 "" }}}
-"" solarized settings{{{
+"" solarized settings {{{
 let g:solarized_italic = 0
 "" }}}
-"" NERDCommenter settings{{{
+"" NERDCommenter settings {{{
 let NERDLPlace = '/*'
 let NERDRPlace = '*/'
 "" }}}
-"" gitv settings{{{
+"" gitv settings {{{
 let g:Gitv_OpenPreviewOnLaunch = 0
 let g:Gitv_CommitStep = 50
 "" }}}
@@ -286,6 +286,7 @@ vmap <Tab> %
 
 set pastetoggle=<F3>
 
+nnoremap <C-F3> :Gfetch --all<CR>
 nnoremap <F4> :Gblame -w<CR>
 nnoremap <F5> :GundoToggle<CR>
 nmap <F6> <Plug>HexManager
@@ -483,7 +484,7 @@ function! MakeUniq() range
 endfunction
 command! -range Uniq <line1>,<line2>call MakeUniq()
 "" }}}
-"" Save & Load sessions{{{
+"" Save & Load sessions {{{
 function! LoadSession(session)
     if len(a:session) > 0
       execute 'source ~/' . a:session . '.vim'
