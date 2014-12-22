@@ -275,7 +275,7 @@ nnoremap <silent> <Leader>n     :enew<CR>
 nnoremap <Leader>ew             :e <C-R>=expand("%:p:h") . "/"<CR>
 nnoremap <Leader>l              :set list!<Bar>set list?<CR>
 nnoremap <Leader>s              :set spell!<Bar>set spell?<CR>
-nnoremap <leader>gv             :Gitv --all<cr>
+nnoremap <leader>gv             :Gitv --all --date-order<cr>
 nnoremap <leader>gV             :Gitv! --all<cr>
 vnoremap <leader>gV             :Gitv! --all<cr>
 
