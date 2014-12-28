@@ -144,11 +144,6 @@ if has("win32") || has("win16")
   endfunction
   "nnoremap <silent> <C-k><C-b> :call BuildProject("")<CR>
 
-  function! CompileCurrentFile()
-    update
-    call BuildProject("%:t")
-  endfunction
-  nnoremap <silent> <C-F7> :call CompileCurrentFile()<CR>
 
   nnoremap <silent> yq :let @+=substitute(expand('%:p'), '/', '\', 'g')<CR>
   nnoremap <silent> <C-k><C-b> :wall!<Bar>!mingw32-make<CR>
@@ -164,10 +159,22 @@ else
     nnoremap <silent> <F11> :!xdg-open %:p:h<CR>
   endif
 
+  function! BuildProject(file)
+  endfunction
+
   nnoremap <silent> yq :let @+=expand('%:p')<CR>
   nnoremap <silent> <C-k><C-b> :wall!<Bar>!make<CR>
   nnoremap <silent> <C-k><C-v> :!make clean<CR>
 endif
+
+function! CompileCurrentFile()
+  update
+  if &filetype == 'python'
+    !python %
+  else
+    call BuildProject("%:t")
+  endif
+endfunction
 
 imap <silent> <F11> <Esc><F11>
 "" }}}
@@ -290,7 +297,8 @@ nnoremap <C-F3> :Gfetch --all<CR>
 nnoremap <F4> :Gblame -w<CR>
 nnoremap <F5> :GundoToggle<CR>
 nmap <F6> <Plug>HexManager
-nnoremap <F7> :Bufferlist<CR>
+"nnoremap <F7> :Bufferlist<CR>
+nnoremap <silent> <F7> :call CompileCurrentFile()<CR>
 noremap \ <C-W>
 
 nnoremap <F1> :Gstatus<CR>
