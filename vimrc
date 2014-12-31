@@ -353,6 +353,8 @@ nnoremap & :&&<CR>
 xnoremap & :&&<CR>
 
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
+vnoremap S<space> :call SurroundWithSpace()<CR>
 "" }}}
 
 "" repeat commands {{{
@@ -576,5 +578,12 @@ function! MakeView()
     return
   end
   mkview!
+endfunction
+"" }}}
+"" Surround selection with space {{{
+function! SurroundWithSpace()
+  normal! gv"zy
+  let @z = ' ' . @z . ' '
+  normal! gv"zp
 endfunction
 "" }}}
