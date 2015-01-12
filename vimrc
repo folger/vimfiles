@@ -293,7 +293,7 @@ vmap <Tab> %
 
 set pastetoggle=<F3>
 
-nnoremap <C-F3> :Gfetch --all<CR>
+nnoremap <C-F3> :Git fetch --all<CR>
 nnoremap <F4> :Gblame -w<CR>
 nnoremap <F5> :GundoToggle<CR>
 nmap <F6> <Plug>HexManager
@@ -354,7 +354,7 @@ xnoremap & :&&<CR>
 
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
-vnoremap S<space> :call SurroundWithSpace()<CR>
+vnoremap <silent> S<space> :call SurroundWithSpace()<CR>
 "" }}}
 
 "" repeat commands {{{
@@ -582,8 +582,10 @@ endfunction
 "" }}}
 "" Surround selection with space {{{
 function! SurroundWithSpace()
+  let tmp = @z
   normal! gv"zy
   let @z = ' ' . @z . ' '
   normal! gv"zp
+  let @z = tmp
 endfunction
 "" }}}
