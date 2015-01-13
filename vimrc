@@ -41,6 +41,8 @@ set encoding=utf-8
 let &termencoding=&encoding
 set fileencodings=ucs-bom,utf-8,sjis,gbk
 set ambiwidth=double
+
+set dictionary=~/vimfiles/mystuff/dict/3esl.txt
 "" }}}
 
 "" CtrlP settings {{{
