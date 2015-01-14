@@ -234,8 +234,8 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     " }}}
 
     " Global
-    call <SID>X("Normal", "000000", "e8e8e8", "")
-    call <SID>X("NonText", "438ec3", "b7dce8", "")
+    call <SID>X("Normal", "000000", "cce8cf", "")
+    call <SID>X("NonText", "438ec3", "cce8cf", "")
 
     " Search
     call <SID>X("Search", "800000", "ffae00", "")
