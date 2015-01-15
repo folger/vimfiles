@@ -295,7 +295,7 @@ vmap <Tab> %
 
 set pastetoggle=<F3>
 
-nnoremap <C-F3> :Git fetch --all<CR>
+nnoremap <C-F3> :Gfetch --all<CR>
 nnoremap <F4> :Gblame -w<CR>
 nnoremap <F5> :GundoToggle<CR>
 nmap <F6> <Plug>HexManager
@@ -470,6 +470,21 @@ function! QuickfixToggle()
   endif
 endfunction
 nnoremap <silent> <Leader>q :call QuickfixToggle()<CR>
+"" }}}
+"" toggle location window {{{
+let g:location_is_open = 0
+function! LocationToggle()
+  if g:location_is_open
+    lclose
+    let g:location_is_open = 0
+    execute g:quickfix_return_to_window . 'wincmd w'
+  else
+    let g:quickfix_return_to_window = winnr()
+    lopen
+    let g:location_is_open = 1
+  endif
+endfunction
+nnoremap <silent> <Leader>o :call LocationToggle()<CR>
 "" }}}
 "" using CtrlP to open current directory {{{
 function! CtrlPCurrentFolder()
