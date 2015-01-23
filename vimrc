@@ -56,30 +56,30 @@ set wildignore+=*.o,*.obj,*.lib,*.dll,*.exe,
       \*.emf,*.jpg,*.jpeg,*.png,*.bmp,*.chm,
       \*.otp,*.otw,*.otm,*.opj
 "" }}}
-"" clang_complet {{{
-let g:clang_complete_loaded=1
+"" clang_complete {{{
+"let g:clang_complete_loaded=1
 "let g:clang_auto_select = 2
 "let g:clang_complete_copen=1
 "let g:clang_periodic_quickfix=1
 "let g:clang_snippets=1
-let g:clang_use_library=1
-let g:clang_close_preview=1
-let g:clang_user_options='-stdlib=libc++ -std=c++11 -IIncludePath'
+"let g:clang_use_library=1
+"let g:clang_close_preview=1
+"let g:clang_user_options='-stdlib=libc++ -std=c++11 -IIncludePath'
 "" }}}
 "" syntastic settings {{{
-let g:syntastic_ignore_files = ['\m\c\.py$', '\m\c\.pyw$']
+"let g:syntastic_ignore_files = ['\m\c\.py$', '\m\c\.pyw$']
 "" }}}
 "" pymode settings {{{
-let g:pymode_python = 'python'
-let g:pymode_rope = 0
-let g:pymode_lint_ignore = "E501,E265,C901"
-let g:pymode_breakpoint_bind = ''
+"let g:pymode_python = 'python'
+"let g:pymode_rope = 0
+"let g:pymode_lint_ignore = "E501,E265,C901"
+"let g:pymode_breakpoint_bind = ''
 "" }}}
 "" tagbar settings {{{
-let g:tagbar_autofocus = 1
+"let g:tagbar_autofocus = 1
 "" }}}
 "" NERDTree settings {{{
-let g:NERDTreeHijackNetrw = 0
+"let g:NERDTreeHijackNetrw = 0
 "" }}}
 "" adjust configuration for such hostile environment as Windows, and others {{{
 if has("win32") || has("win16")
@@ -194,12 +194,8 @@ runtime macros/matchit.vim
 "" airline settings {{{
 let g:airline#extensions#tabline#enabled = 1
 "" }}}
-"" YankRing settings {{{
-let g:yankring_replace_n_pkey = ''
-let g:yankring_replace_n_nkey = ''
-"" }}}
 "" solarized settings {{{
-let g:solarized_italic = 0
+"let g:solarized_italic = 0
 "" }}}
 "" NERDCommenter settings {{{
 let NERDLPlace = '/*'
