@@ -341,8 +341,8 @@ nnoremap <silent> ]n :cnext<CR>
 nnoremap <silent> [N :cfirst<CR>
 nnoremap <silent> ]N :clast<CR>
 
-nnoremap <Up> gj
-nnoremap <Down> gk
+nnoremap <Up> gk
+nnoremap <Down> gj
 
 nnoremap <space> za
 vnoremap <space> za
