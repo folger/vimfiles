@@ -83,7 +83,7 @@ set wildignore+=*.o,*.obj,*.lib,*.dll,*.exe,
 "" }}}
 "" adjust configuration for such hostile environment as Windows, and others {{{
 if has("win32") || has("win16")
-  set lines=35 columns=100
+  set lines=40 columns=120
   let g:tagbar_ctags_bin = 'D:\clang_lib\ctags.exe'
   let g:clang_library_path="D:/clang_lib/"
   set guifont=DejaVu_Sans_Mono:h10
