@@ -33,6 +33,7 @@ set tabstop=4
 set shiftwidth=4
 
 set laststatus=2  "" Always show the statusline
+set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
 
 set ignorecase
 set smartcase
@@ -192,7 +193,7 @@ set autoindent
 runtime macros/matchit.vim
 "" }}}
 "" airline settings {{{
-let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#enabled = 1
 "" }}}
 "" solarized settings {{{
 "let g:solarized_italic = 0
