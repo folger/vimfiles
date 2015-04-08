@@ -33,7 +33,7 @@ set tabstop=4
 set shiftwidth=4
 
 set laststatus=2  "" Always show the statusline
-set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
+set statusline=%t\%{fugitive#statusline()}[%{strlen(&fenc)?&fenc:'none'},\ %{&ff}]%m%r%y%=[%l,\ %c]/%L\ %P
 
 set ignorecase
 set smartcase
