@@ -33,7 +33,16 @@ set tabstop=4
 set shiftwidth=4
 
 set laststatus=2  "" Always show the statusline
-set statusline=%t\%{fugitive#statusline()}[%{strlen(&fenc)?&fenc:'none'},\ %{&ff}]%m%r%y%=[%l,\ %c]/%L\ %P
+set statusline=
+set statusline+=%6*[%n]                              "buffernr
+set statusline+=%6*\ %<%F                            "Filename
+set statusline+=%6*\ %{fugitive#statusline()}        "Git current branch
+set statusline+=%2*\ %y                              "FileType
+set statusline+=%3*\ %{&fenc!=''?&fenc:'none'}       "Encoding
+set statusline+=%3*\ %{&bomb?\"BOM\":''}             "Encoding2
+set statusline+=%4*\ %{&ff}                          "FileFormaqt
+set statusline+=%7*\ %=%{v:register}[%l,\ %c]/%L     "Active buffer, line, row, total rows, top/bot
+set statusline+=%8*\ \ %m%r%P
 
 set ignorecase
 set smartcase
@@ -268,6 +277,18 @@ set background=light
 colorscheme summerfruit256
 "" }}}
 
+"" statusline color settings {{{
+hi User1 guifg=#ffdad8 guibg=#880c0e
+hi User2 guifg=#000000 guibg=#F4905C
+hi User3 guifg=#292b00 guibg=#f4f597
+hi User4 guifg=#112605 guibg=#aefe7B
+hi User5 guifg=#051d00 guibg=#7dcc7d
+hi User6 guifg=#ffffff guibg=#880c0e gui=bold
+hi User7 guifg=#ffffff guibg=#5b7fbb
+hi User8 guifg=#ffffff guibg=#810085
+hi User9 guifg=#ffffff guibg=#094afe
+"" }}}
+
 "" keymappings {{{
 nnoremap <silent> <Leader><Tab> :Scratch<CR>
 nnoremap <silent> <Leader>tt    :tabedit<CR>
@@ -301,7 +322,7 @@ nnoremap <silent> <F7> :call CompileCurrentFile()<CR>
 noremap \ <C-W>
 
 nnoremap <F1> :Gstatus<CR>
-nnoremap <C-F1> :e ++enc=cp1252<CR>
+nnoremap <C-F1> :e ++enc=cp1252
 nnoremap <S-F1> :call BCDiffFile()<CR>
 "nnoremap <F2> :NERDTreeToggle<CR>
 "nnoremap <S-F2> :NERDTreeFind<CR>
