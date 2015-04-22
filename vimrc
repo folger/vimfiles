@@ -245,6 +245,7 @@ augroup FileReadRelated
   "autocmd BufRead *.rc :edit ++encoding=cp1252
   autocmd BufNewFile,BufRead *.h,*.c,*.cpp :let b:tagbar_ignore = 1
   autocmd BufReadPost fugitive://* :set bufhidden=delete
+  autocmd BufReadPost * :call CheckFileEncoding()
 augroup END
 "" }}}
 "" auto commands for file writing {{{
@@ -622,5 +623,12 @@ function! SurroundWithSpace()
   let @z = ' ' . @z . ' '
   normal! gv"zp
   let @z = tmp
+endfunction
+"" }}}
+"" Check File Encoding is successfully detected {{{
+function! CheckFileEncoding()
+  if &fileencoding == ''
+    echoerr 'File Encoding is NONE, reload with proper encoding before making any changes!!!'
+  endif
 endfunction
 "" }}}
