@@ -245,7 +245,7 @@ augroup FileReadRelated
   "autocmd BufRead *.rc :edit ++encoding=cp1252
   autocmd BufNewFile,BufRead *.h,*.c,*.cpp :let b:tagbar_ignore = 1
   autocmd BufReadPost fugitive://* :set bufhidden=delete
-  autocmd BufReadPost * :call CheckFileEncoding()
+  autocmd BufReadPost *.* :call CheckFileEncoding()
 augroup END
 "" }}}
 "" auto commands for file writing {{{
