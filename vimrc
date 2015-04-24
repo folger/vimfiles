@@ -244,8 +244,7 @@ augroup FileReadRelated
         \ :setlocal nowrap
   "autocmd BufRead *.rc :edit ++encoding=cp1252
   autocmd BufNewFile,BufRead *.h,*.c,*.cpp :let b:tagbar_ignore = 1
-  autocmd BufReadPost fugitive://* :set bufhidden=delete
-  autocmd BufReadPost *.* :call CheckFileEncoding()
+  autocmd BufRead fugitive://* :set bufhidden=delete
 augroup END
 "" }}}
 "" auto commands for file writing {{{
@@ -260,6 +259,7 @@ augroup BufferRelated
   autocmd!
   autocmd BufWinLeave *.* :call MakeView()
   autocmd BufWinEnter *.* :silent loadview
+  autocmd BufWinEnter *.* :call CheckFileEncoding()
 augroup END
 "" }}}
 "" something other commands {{{
