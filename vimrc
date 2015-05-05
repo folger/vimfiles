@@ -587,7 +587,9 @@ function! DiffFile()
     let l:line = getline(line('.') + 1)
     let l:hashes = split(l:line, ' ')
     if len(l:hashes) == 3
-      execute 'Git difftool -y ' l:hashes[1]
+      "execute 'Git difftool -y ' l:hashes[1]
+      let l:blobs = split(l:hashes[1], '\.\.')
+      execute 'Git difftool -y ' . l:blobs[0] . ' ' . l:blobs[1]
     endif
   else
     let l:currentfile = expand('%:p')
@@ -628,6 +630,7 @@ endfunction
 "" Check File Encoding is successfully detected {{{
 function! CheckFileEncoding()
   if &fileencoding == ''
+    echomsg expand('%')
     echoerr 'File Encoding is NONE, reload with proper encoding before making any changes!!!'
   endif
 endfunction
