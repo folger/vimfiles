@@ -357,9 +357,12 @@ hi def link diffBDiffer		Constant
 hi def link diffIsA		Constant
 hi def link diffNoEOL		Constant
 hi def link diffCommon		Constant
-hi def link diffRemoved		Special
-hi def link diffChanged		PreProc
-hi def link diffAdded		Identifier
+"hi def link diffRemoved		Special
+"hi def link diffChanged		PreProc
+"hi def link diffAdded		Identifier
+hi diffRemoved guibg=LightRed
+hi diffChanged guibg=LightBlue
+hi diffAdded guibg=LightGreen
 hi def link diffLine		Statement
 hi def link diffSubname		PreProc
 hi def link diffComment		Comment
