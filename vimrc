@@ -315,6 +315,7 @@ vmap <Tab> %
 set pastetoggle=<F3>
 
 nnoremap <C-F3> :Gfetch --all<CR>
+nnoremap <S-F3> :Gpull<CR>
 nnoremap <F4> :Gblame -w<CR>
 nnoremap <F5> :GundoToggle<CR>
 nmap <F6> <Plug>HexManager
