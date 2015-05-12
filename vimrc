@@ -312,9 +312,9 @@ nnoremap <C-Tab> <Tab>
 nmap <Tab> %
 vmap <Tab> %
 
-set pastetoggle=<F3>
+"set pastetoggle=<F3>
 
-nnoremap <C-F3> :Gfetch --all<CR>
+nnoremap <F3> :Gfetch --all<CR>
 nnoremap <S-F3> :Gpull<CR>
 nnoremap <F4> :Gblame -w<CR>
 nnoremap <F5> :GundoToggle<CR>
@@ -328,7 +328,8 @@ nnoremap <C-F1> :e ++enc=cp1252
 nnoremap <S-F1> :call BCDiffFile()<CR>
 "nnoremap <F2> :NERDTreeToggle<CR>
 "nnoremap <S-F2> :NERDTreeFind<CR>
-nnoremap <F2> :Git difftool % -y<CR>
+"nnoremap <F2> :Git difftool % -y<CR>
+nnoremap <F2> :Gdiff<CR>
 nnoremap <S-F2> :Git mergetool % -y<CR>
 nnoremap <C-F2> :call DiffFile()<CR>
 nnoremap <F8> :let b:tagbar_ignore = 0 \| TagbarToggle<CR>
@@ -337,7 +338,7 @@ noremap <Esc> :noh<bar>pclose<CR><Esc>
 
 nnoremap <C-K><C-o> :Gist -l<CR>
 nnoremap <C-k><C-i> :CtrlPMRU<CR>
-nnoremap <C-k><C-d> :Gdiff<CR>
+"nnoremap <C-k><C-d> :Gdiff<CR>
 nnoremap <C-K><C-m> :call AddModificationLog()<CR>
 nnoremap <C-k><C-l> :call AddCodeMarking()<CR>
 vnoremap <C-k><C-l> :call AddCodeMarking()<CR>
@@ -584,7 +585,7 @@ nnoremap <c-k><c-x> :call FindSymbolInTagsFile(expand($develop) . '/.git/')<CR>
 "" Git external diff tool to diff file {{{
 function! DiffFile()
   let l:firstline = getline(1)
-  if l:firstline =~ '^\(tree\|From\) '
+  if l:firstline =~ '^\(tree\|From\) [0-9a-z]\+'
     let l:line = getline(line('.') + 1)
     let l:hashes = split(l:line, ' ')
     if len(l:hashes) == 3
@@ -594,13 +595,18 @@ function! DiffFile()
     endif
   else
     let l:currentfile = expand('%:p')
-    if l:currentfile =~ '^fugitive'
-      let l:gitpath = strpart(l:currentfile, 11, stridx(l:currentfile, '.git') - 12)
+    let l:gitindex = stridx(l:currentfile, '.git')
+    if l:gitindex > 0
+      if l:currentfile =~ '^fugitive'
+        let l:gitpath = strpart(l:currentfile, 11, l:gitindex - 12)
+      else
+        let l:gitpath = strpart(l:currentfile, 0, l:gitindex - 1)
+      endif
+      let l:file = strpart(split(getline('.'), ' ')[2], 1)
+      execute 'Git difftool -y ' l:gitpath . l:file
     else
-      let l:gitpath = strpart(l:currentfile, 0, stridx(l:currentfile, '.git') - 1)
+      execute 'Git difftool -y %'
     endif
-    let l:file = strpart(split(getline('.'), ' ')[2], 1)
-    execute 'Git difftool -y ' l:gitpath . l:file
   endif
 endfunction
 "" }}}
