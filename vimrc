@@ -314,31 +314,32 @@ vmap <Tab> %
 
 "set pastetoggle=<F3>
 
-nnoremap <F3> :Gfetch --all<CR>
-nnoremap <S-F3> :Gpull<CR>
-nnoremap <F4> :Gblame -w<CR>
-nnoremap <F5> :GundoToggle<CR>
-nmap <F6> <Plug>HexManager
-"nnoremap <F7> :Bufferlist<CR>
-nnoremap <silent> <F7> :call CompileCurrentFile()<CR>
-noremap \ <C-W>
-
 nnoremap <F1> :Gstatus<CR>
-nnoremap <C-F1> :e ++enc=cp1252
-nnoremap <S-F1> :call BCDiffFile()<CR>
+nnoremap <C-F1> :e ++enc=cp1252<CR>
+nnoremap <S-F1> :e ++enc=
 "nnoremap <F2> :NERDTreeToggle<CR>
 "nnoremap <S-F2> :NERDTreeFind<CR>
-"nnoremap <F2> :Git difftool % -y<CR>
-nnoremap <F2> :Gdiff<CR>
+nnoremap <F2> :call DiffFile()<CR>
+nnoremap <C-F2> :call BCDiffFile()<CR>
 nnoremap <S-F2> :Git mergetool % -y<CR>
-nnoremap <C-F2> :call DiffFile()<CR>
-nnoremap <F8> :let b:tagbar_ignore = 0 \| TagbarToggle<CR>
+nnoremap <F3> :Gfetch --all<CR>
+nnoremap <C-F3> :Gpull<CR>
+nnoremap <F4> :Gblame -w<CR>
+"nnoremap <F5> :GundoToggle<CR>
+"nmap <F6> <Plug>HexManager
+"nnoremap <F7> :Bufferlist<CR>
+"nnoremap <F8> :let b:tagbar_ignore = 0 \| TagbarToggle<CR>
+nnoremap <silent> <F7> :call CompileCurrentFile()<CR>
+
+
+noremap \ <C-W>
+
 
 noremap <Esc> :noh<bar>pclose<CR><Esc>
 
 nnoremap <C-K><C-o> :Gist -l<CR>
 nnoremap <C-k><C-i> :CtrlPMRU<CR>
-"nnoremap <C-k><C-d> :Gdiff<CR>
+nnoremap <C-k><C-d> :Gdiff<CR>
 nnoremap <C-K><C-m> :call AddModificationLog()<CR>
 nnoremap <C-k><C-l> :call AddCodeMarking()<CR>
 vnoremap <C-k><C-l> :call AddCodeMarking()<CR>
