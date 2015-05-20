@@ -267,7 +267,7 @@ command! Dowrap set wrap linebreak nolist
 command! Nowrap set nowrap nolinebreak nolist
 "" }}}
 "" commands abbreviation {{{
-cabbrev git Git
+"cabbrev git Git
 "" }}}
 
 execute pathogen#infect()
