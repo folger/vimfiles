@@ -337,12 +337,12 @@ noremap \ <C-W>
 
 noremap <Esc> :noh<bar>pclose<CR><Esc>
 
-nnoremap <C-K><C-o> :Gist -l<CR>
+nnoremap <C-k><C-o> :Gist -l<CR>
 nnoremap <C-k><C-i> :CtrlPMRU<CR>
 nnoremap <C-k><C-d> :Gdiff<CR>
 nnoremap <C-K><C-m> :call AddModificationLog()<CR>
-nnoremap <C-k><C-l> :call AddCodeMarking()<CR>
-vnoremap <C-k><C-l> :call AddCodeMarking()<CR>
+nnoremap <C-l> :call AddCodeMarking()<CR>
+vnoremap <C-l> :call AddCodeMarking()<CR>
 nnoremap <C-k><C-j> :call SetupCodeMarking()<CR>
 nnoremap <C-k><C-u> :call AddIfDef()<CR>
 vnoremap <C-k><C-u> :call AddIfDef()<CR>
