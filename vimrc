@@ -257,7 +257,7 @@ augroup END
 "" auto commands for buffering {{{
 augroup BufferRelated
   autocmd!
-  autocmd BufWinLeave *.* :call MakeView()
+  autocmd BufWinLeave *.* :call MyMakeView()
   autocmd BufWinEnter *.* :silent loadview
   autocmd BufWinEnter *.* :call CheckFileEncoding()
 augroup END
@@ -644,5 +644,13 @@ function! CheckFileEncoding()
     echomsg expand('%')
     echoerr 'File Encoding is NONE, reload with proper encoding before making any changes!!!'
   endif
+endfunction
+"" }}}
+"" Customize MakeView() {{{
+function! MyMakeView()
+  if &bin
+    return
+  endif
+  call MakeView()
 endfunction
 "" }}}
