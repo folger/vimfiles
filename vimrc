@@ -637,6 +637,9 @@ endfunction
 "" }}}
 "" Check File Encoding is successfully detected {{{
 function! CheckFileEncoding()
+  if &bin
+    return
+  endif
   if &fileencoding == ''
     echomsg expand('%')
     echoerr 'File Encoding is NONE, reload with proper encoding before making any changes!!!'
