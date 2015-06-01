@@ -637,20 +637,18 @@ endfunction
 "" }}}
 "" Check File Encoding is successfully detected {{{
 function! CheckFileEncoding()
-  if &bin
-    return
-  endif
-  if &fileencoding == ''
-    echomsg expand('%')
-    echoerr 'File Encoding is NONE, reload with proper encoding before making any changes!!!'
+  if !&bin
+    if &fileencoding == ''
+      echomsg expand('%')
+      echoerr 'File Encoding is NONE, reload with proper encoding before making any changes!!!'
+    endif
   endif
 endfunction
 "" }}}
 "" Customize MakeView() {{{
 function! MyMakeView()
-  if &bin
-    return
+  if !&bin
+    call MakeView()
   endif
-  call MakeView()
 endfunction
 "" }}}
