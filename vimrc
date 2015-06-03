@@ -379,6 +379,8 @@ xnoremap & :&&<CR>
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 vnoremap <silent> S<space> :call SurroundWithSpace()<CR>
+
+nnoremap zz ZZ
 "" }}}
 
 "" repeat commands {{{
