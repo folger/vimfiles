@@ -257,7 +257,7 @@ augroup END
 "" auto commands for buffering {{{
 augroup BufferRelated
   autocmd!
-  autocmd BufWinLeave *.* :call MyMakeView()
+  autocmd BufWinLeave *.* :call MakeView()
   autocmd BufWinEnter *.* :silent loadview
   autocmd BufWinEnter *.* :call CheckFileEncoding()
 augroup END
@@ -622,11 +622,9 @@ endfunction
 "" }}}
 "" Make file view {{{
 function! MakeView()
-  let filename = expand('%')
-  if filename =~ '^fugitive'
-    return
+  if !&bin && expand('%') !~ '^fugitive'
+    mkview!
   end
-  mkview!
 endfunction
 "" }}}
 "" Surround selection with space {{{
@@ -640,18 +638,9 @@ endfunction
 "" }}}
 "" Check File Encoding is successfully detected {{{
 function! CheckFileEncoding()
-  if !&bin
-    if &fileencoding == ''
-      echomsg expand('%')
-      echoerr 'File Encoding is NONE, reload with proper encoding before making any changes!!!'
-    endif
-  endif
-endfunction
-"" }}}
-"" Customize MakeView() {{{
-function! MyMakeView()
-  if !&bin
-    call MakeView()
+  if !&bin && filereadable(expand('%')) && &fileencoding == ''
+    echomsg expand('%')
+    echoerr 'File Encoding is NONE, reload with proper encoding before making any changes!!!'
   endif
 endfunction
 "" }}}
