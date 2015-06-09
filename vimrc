@@ -326,6 +326,7 @@ nnoremap <F3> :Gfetch --all<CR>
 nnoremap <C-F3> :Gpull<CR>
 nnoremap <S-F3> :Gcommit<CR>
 nnoremap <F4> :Gblame -w<CR>
+nnoremap <F5> :call DiffCurrentFile()<CR>
 "nnoremap <F5> :GundoToggle<CR>
 "nmap <F6> <Plug>HexManager
 "nnoremap <F7> :Bufferlist<CR>
@@ -643,5 +644,17 @@ function! CheckFileEncoding()
     echomsg expand('%')
     echoerr 'File Encoding is NONE, reload with proper encoding before making any changes!!!'
   endif
+endfunction
+"" }}}
+"" Show Diff File for Current file {{{
+function! DiffCurrentFile()
+  let l:file = expand('%:p')
+  let l:dir = expand('%:p:h')
+  let l:oldDir = getcwd()
+  execute 'cd ' l:dir
+  execute 'enew | read !git diff -- ' l:file
+  normal gg
+  write! ~/vimbackup/temp.diff
+  execute 'cd ' l:oldDir
 endfunction
 "" }}}
