@@ -473,6 +473,12 @@ function! DoPrettyXML()
 endfunction
 command! PrettyXML call DoPrettyXML()
 "" }}}
+"" pretty json formatted current buffer {{{
+function! DoPrettyJSON()
+  %!python -m json.tool
+endfunction
+command! PrettyJSON call DoPrettyJSON()
+"" }}}
 "" put files in quickfix windows into args {{{
 function! QuickfixFileNames()
   let buffer_names = {}
