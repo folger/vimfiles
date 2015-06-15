@@ -342,6 +342,7 @@ noremap <Esc> :noh<bar>pclose<CR><Esc>
 nnoremap <C-k><C-o> :Gist -l<CR>
 nnoremap <C-k><C-i> :CtrlPMRU<CR>
 nnoremap <C-k><C-d> :Gdiff<CR>
+nnoremap <C-K><C-l> :Gwrite:0<CR>
 nnoremap <C-K><C-m> :call AddModificationLog()<CR>
 nnoremap <C-l> :call AddCodeMarking()<CR>
 vnoremap <C-l> :call AddCodeMarking()<CR>
