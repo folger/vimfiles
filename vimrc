@@ -327,6 +327,7 @@ nnoremap <C-F3> :Gpull<CR>
 nnoremap <S-F3> :Gcommit<CR>
 nnoremap <F4> :Gblame -w<CR>
 nnoremap <F5> :call DiffCurrentFile()<CR>
+nnoremap <C-F5> :Gwrite:0<CR>
 "nnoremap <F5> :GundoToggle<CR>
 "nmap <F6> <Plug>HexManager
 "nnoremap <F7> :Bufferlist<CR>
@@ -342,7 +343,6 @@ noremap <Esc> :noh<bar>pclose<CR><Esc>
 nnoremap <C-k><C-o> :Gist -l<CR>
 nnoremap <C-k><C-i> :CtrlPMRU<CR>
 nnoremap <C-k><C-d> :Gdiff<CR>
-nnoremap <C-K><C-l> :Gwrite:0<CR>
 nnoremap <C-K><C-m> :call AddModificationLog()<CR>
 nnoremap <C-l> :call AddCodeMarking()<CR>
 vnoremap <C-l> :call AddCodeMarking()<CR>
