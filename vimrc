@@ -51,8 +51,6 @@ set encoding=utf-8
 let &termencoding=&encoding
 set fileencodings=ucs-bom,utf-8,sjis,gbk
 set ambiwidth=double
-
-set dictionary=~/vimfiles/mystuff/dict/3esl.txt
 "" }}}
 
 "" CtrlP settings {{{
@@ -160,6 +158,7 @@ if has("win32") || has("win16")
   nnoremap <silent> yq :let @+=substitute(expand('%:p'), '/', '\', 'g')<CR>
   nnoremap <silent> <C-k><C-b> :wall!<Bar>!mingw32-make<CR>
   nnoremap <silent> <C-k><C-v> :!mingw32-make clean<CR>
+  set dictionary=~/vimfiles/mystuff/dict/3esl.txt
 else
   if has("gui_macvim")
     let g:tagbar_ctags_bin = '/opt/local/bin/ctags'
@@ -177,6 +176,7 @@ else
   nnoremap <silent> yq :let @+=expand('%:p')<CR>
   nnoremap <silent> <C-k><C-b> :wall!<Bar>!make<CR>
   nnoremap <silent> <C-k><C-v> :!make clean<CR>
+  set dictionary=~/.vim/mystuff/dict/3esl.txt
 endif
 
 function! CompileCurrentFile()
