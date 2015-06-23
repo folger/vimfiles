@@ -51,6 +51,7 @@ set encoding=utf-8
 let &termencoding=&encoding
 set fileencodings=ucs-bom,utf-8,sjis,gbk
 set ambiwidth=double
+set complete+=k
 "" }}}
 
 "" CtrlP settings {{{
