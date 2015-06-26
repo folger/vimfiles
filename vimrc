@@ -662,7 +662,7 @@ function! DiffCurrentFile()
   let l:oldDir = getcwd()
   execute 'cd ' l:dir
   execute 'enew | read !git diff -- ' l:file
-  normal gg
+  normal ggdd
   write! ~/vimbackup/temp.diff
   edit
   execute 'cd ' l:oldDir
