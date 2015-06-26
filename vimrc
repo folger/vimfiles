@@ -664,6 +664,7 @@ function! DiffCurrentFile()
   execute 'enew | read !git diff -- ' l:file
   normal gg
   write! ~/vimbackup/temp.diff
+  edit
   execute 'cd ' l:oldDir
 endfunction
 "" }}}
