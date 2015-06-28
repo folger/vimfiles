@@ -667,6 +667,7 @@ function! DiffCurrentFile()
   normal ggdd
   write! ~/vimbackup/temp.diff
   edit
+  normal gg
   execute 'cd ' l:oldDir
 endfunction
 "" }}}
