@@ -331,6 +331,7 @@ nnoremap <F4> :Gwrite:0<CR>
 nnoremap <C-F4> :Gcommit<CR>
 nnoremap <S-F4> :Gblame -w<CR>
 nnoremap <F5> :call DiffCurrentFile()<CR>
+nnoremap <C-F5> :Gread<bar>w!<CR>
 "nnoremap <F5> :GundoToggle<CR>
 "nmap <F6> <Plug>HexManager
 "nnoremap <F7> :Bufferlist<CR>
