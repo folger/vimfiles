@@ -52,6 +52,9 @@ let &termencoding=&encoding
 set fileencodings=ucs-bom,utf-8,sjis,gbk
 set ambiwidth=double
 set complete+=k
+
+set undofile
+set undodir=~/vimbackup
 "" }}}
 
 "" CtrlP settings {{{
