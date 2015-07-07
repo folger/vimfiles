@@ -327,8 +327,8 @@ nnoremap <S-F1> :e ++enc=
 nnoremap <F2> :call DiffFile()<CR>
 nnoremap <C-F2> :call BCDiffFile()<CR>
 nnoremap <S-F2> :Git mergetool % -y<CR>
-nnoremap <F3> :Gfetch --all<CR>
-nnoremap <C-F3> :Gpull<CR>
+nnoremap <F3> :Git fetch --all<CR>
+nnoremap <C-F3> :Git pull<CR>
 nnoremap <S-F3> :Git push<CR>
 nnoremap <F4> :Gwrite:0<CR>
 nnoremap <C-F4> :Gcommit<CR>
