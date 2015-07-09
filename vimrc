@@ -320,8 +320,8 @@ vmap <Tab> %
 "set pastetoggle=<F3>
 
 nnoremap <F1> :Gstatus<CR>
-nnoremap <C-F1> :e ++enc=cp1252<CR>
-nnoremap <S-F1> :e ++enc=
+nnoremap <C-F1> :Gblame -w<CR>
+nnoremap <S-F1> :Gread<bar>w!<CR>
 "nnoremap <F2> :NERDTreeToggle<CR>
 "nnoremap <S-F2> :NERDTreeFind<CR>
 nnoremap <F2> :call DiffFile()<CR>
@@ -333,11 +333,11 @@ nnoremap <S-F3> :Git push<CR>
 nnoremap <F4> :Gwrite:0<CR>
 nnoremap <C-F4> :Gcommit<CR>
 nnoremap <S-F4> :Gcommit --amend<CR>
-nnoremap <F5> :call DiffCurrentFile()<CR>
-nnoremap <C-F5> :Gblame -w<CR>
-nnoremap <S-F5> :Gread<bar>w!<CR>
 "nnoremap <F5> :GundoToggle<CR>
+nnoremap <F5> :call DiffCurrentFile()<CR>
 "nmap <F6> <Plug>HexManager
+nnoremap <F6> :e ++enc=cp1252<CR>
+nnoremap <C-F6> :e ++enc=
 "nnoremap <F7> :Bufferlist<CR>
 "nnoremap <F8> :let b:tagbar_ignore = 0 \| TagbarToggle<CR>
 nnoremap <silent> <F7> :call CompileCurrentFile()<CR>
