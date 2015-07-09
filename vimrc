@@ -382,7 +382,7 @@ nnoremap <Up> gk
 nnoremap <Down> gj
 
 nnoremap <space> za
-vnoremap <space> za
+vnoremap <space> zf
 
 nnoremap & :&&<CR>
 xnoremap & :&&<CR>
