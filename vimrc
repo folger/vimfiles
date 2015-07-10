@@ -340,6 +340,7 @@ nnoremap <F6> :e ++enc=cp1252<CR>
 nnoremap <C-F6> :e ++enc=
 "nnoremap <F7> :Bufferlist<CR>
 "nnoremap <F8> :let b:tagbar_ignore = 0 \| TagbarToggle<CR>
+nnoremap <F8> :call PEP8()<CR>
 nnoremap <silent> <F7> :call CompileCurrentFile()<CR>
 
 
@@ -673,5 +674,36 @@ function! DiffCurrentFile()
   edit
   1
   execute 'cd ' l:oldDir
+endfunction
+"" }}}
+"" PEP8 {{{
+function! PEP8()
+  let l:filename = expand('%')
+  let l:output = system("pep8 " . l:filename)
+  let l:errors = split(l:output, '\n')
+  let l:qferrors = []
+  for l:error in l:errors
+    let l:items = split(substitute(l:error,
+                \'^[^:]\+:\(\d\+\):\(\d\+\): \(.*\)$',
+                \'\1|\2|\3', 'g'),
+                \'|')
+    let l:qferror = {}
+    if len(l:items) == 3
+      let l:qferror['filename'] = l:filename
+      let l:qferror['lnum'] = l:items[0]
+      let l:qferror['col'] = l:items[1]
+      let l:qferror['text'] = l:items[2]
+    else
+      let l:qferror['text'] = l:error
+    endif
+    call add(l:qferrors, l:qferror)
+  endfor
+  call setqflist(l:qferrors, 'r')
+  if len(l:qferrors) == 0
+    echomsg 'GOOOOOOOOD PEP8 ~~~~~~'
+  else
+    cwindow
+    crewind
+  endif
 endfunction
 "" }}}
