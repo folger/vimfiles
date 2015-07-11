@@ -88,7 +88,7 @@ set wildignore+=*.o,*.obj,*.lib,*.dll,*.exe,
 "let g:pymode_breakpoint_bind = ''
 "" }}}
 "" tagbar settings {{{
-"let g:tagbar_autofocus = 1
+let g:tagbar_autofocus = 1
 "" }}}
 "" NERDTree settings {{{
 "let g:NERDTreeHijackNetrw = 0
@@ -339,8 +339,8 @@ nnoremap <F5> :call DiffCurrentFile()<CR>
 nnoremap <F6> :e ++enc=cp1252<CR>
 nnoremap <C-F6> :e ++enc=
 "nnoremap <F7> :Bufferlist<CR>
-"nnoremap <F8> :let b:tagbar_ignore = 0 \| TagbarToggle<CR>
-nnoremap <F8> :call PEP8()<CR>
+nnoremap <F8> :let b:tagbar_ignore = 0 \| TagbarToggle<CR>
+nnoremap <F9> :call PEP8()<CR>
 nnoremap <silent> <F7> :call CompileCurrentFile()<CR>
 
 
