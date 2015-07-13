@@ -308,9 +308,9 @@ nnoremap <silent> <Leader>n     :enew<CR>
 nnoremap <Leader>ew             :e <C-R>=expand("%:p:h") . "/"<CR>
 nnoremap <Leader>l              :set list!<Bar>set list?<CR>
 nnoremap <Leader>s              :set spell!<Bar>set spell?<CR>
-nnoremap <leader>gv             :Gitv --all --date-order<cr>
-nnoremap <leader>gV             :Gitv! --all<cr>
-vnoremap <leader>gV             :Gitv! --all<cr>
+nnoremap <silent> <leader>gv    :Gitv --all --date-order<cr>
+nnoremap <silent> <leader>gV    :Gitv! --all<cr>
+vnoremap <silent> <leader>gV    :Gitv! --all<cr>
 
 nnoremap <C-Tab> <Tab>
 
@@ -319,28 +319,28 @@ vmap <Tab> %
 
 "set pastetoggle=<F3>
 
-nnoremap <F1> :Gstatus<CR>
-nnoremap <C-F1> :Gblame -w<CR>
-nnoremap <S-F1> :Gread<bar>w!<CR>
+nnoremap <silent> <F1> :Gstatus<CR>
+nnoremap <silent> <C-F1> :Gblame -w<CR>
+nnoremap <silent> <S-F1> :Gread<bar>w!<CR>
 "nnoremap <F2> :NERDTreeToggle<CR>
 "nnoremap <S-F2> :NERDTreeFind<CR>
-nnoremap <F2> :call DiffFile()<CR>
-nnoremap <C-F2> :call BCDiffFile()<CR>
-nnoremap <S-F2> :Git mergetool % -y<CR>
-nnoremap <F3> :Git fetch --all<CR>
-nnoremap <C-F3> :Git pull<CR>
-nnoremap <S-F3> :Git push<CR>
-nnoremap <F4> :Gwrite:0<CR>
-nnoremap <C-F4> :Gcommit<CR>
-nnoremap <S-F4> :Gcommit --amend<CR>
+nnoremap <silent> <F2> :call DiffFile()<CR>
+nnoremap <silent> <C-F2> :call BCDiffFile()<CR>
+nnoremap <silent> <S-F2> :Git mergetool % -y<CR>
+nnoremap <silent> <F3> :Git fetch --all<CR>
+nnoremap <silent> <C-F3> :Git pull<CR>
+nnoremap <silent> <S-F3> :Git push<CR>
+nnoremap <silent> <F4> :Gwrite:0<CR>
+nnoremap <silent> <C-F4> :Gcommit<CR>
+nnoremap <silent> <S-F4> :Gcommit --amend<CR>
 "nnoremap <F5> :GundoToggle<CR>
-nnoremap <F5> :call DiffCurrentFile()<CR>
+nnoremap <silent> <F5> :call DiffCurrentFile()<CR>
 "nmap <F6> <Plug>HexManager
-nnoremap <F6> :e ++enc=cp1252<CR>
-nnoremap <C-F6> :e ++enc=
+nnoremap <silent> <F6> :e ++enc=cp1252<CR>
+nnoremap <silent> <C-F6> :e ++enc=
 "nnoremap <F7> :Bufferlist<CR>
-nnoremap <F8> :let b:tagbar_ignore = 0 \| TagbarToggle<CR>
-nnoremap <F9> :call PEP8()<CR>
+nnoremap <silent> <F8> :let b:tagbar_ignore = 0 \| TagbarToggle<CR>
+nnoremap <silent> <F9> :call PEP8()<CR>
 nnoremap <silent> <F7> :call CompileCurrentFile()<CR>
 
 
