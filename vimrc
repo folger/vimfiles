@@ -166,7 +166,7 @@ if has("win32") || has("win16")
   set dictionary=~/vimfiles/mystuff/dict/3esl.txt
 else
   if has("gui_macvim")
-    let g:tagbar_ctags_bin = '/opt/local/bin/ctags'
+    let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
     let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/"
     set guifont=DejaVu_Sans_Mono:h12
 
@@ -187,7 +187,11 @@ endif
 function! CompileCurrentFile()
   update
   if &filetype == 'python'
-    !python %
+    if has("win32") || has("win16")
+      !python %
+    else
+      !python3 %
+    endif
   else
     call BuildProject("%:t")
   endif
