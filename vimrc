@@ -89,6 +89,7 @@ set wildignore+=*.o,*.obj,*.lib,*.dll,*.exe,
 "" }}}
 "" tagbar settings {{{
 let g:tagbar_autofocus = 1
+let g:tagbar_sort = 0
 "" }}}
 "" NERDTree settings {{{
 "let g:NERDTreeHijackNetrw = 0
