@@ -683,32 +683,36 @@ endfunction
 "" }}}
 "" PEP8 {{{
 function! PEP8()
-  let l:filename = expand('%')
-  let l:output = system("pep8 " . l:filename)
-  let l:errors = split(l:output, '\n')
-  let l:qferrors = []
-  for l:error in l:errors
-    let l:items = split(substitute(l:error,
-                \'^\D\+\(\d\+\):\(\d\+\): \(.*\)$',
-                \'\1|\2|\3', 'g'),
-                \'|')
-    let l:qferror = {}
-    if len(l:items) == 3
-      let l:qferror['filename'] = l:filename
-      let l:qferror['lnum'] = l:items[0]
-      let l:qferror['col'] = l:items[1]
-      let l:qferror['text'] = l:items[2]
+  if &filetype == 'python'
+    let l:filename = expand('%')
+    let l:output = system("pep8 " . l:filename)
+    let l:errors = split(l:output, '\n')
+    let l:qferrors = []
+    for l:error in l:errors
+      let l:items = split(substitute(l:error,
+                  \'^\D\+\(\d\+\):\(\d\+\): \(.*\)$',
+                  \'\1|\2|\3', 'g'),
+                  \'|')
+      let l:qferror = {}
+      if len(l:items) == 3
+        let l:qferror['filename'] = l:filename
+        let l:qferror['lnum'] = l:items[0]
+        let l:qferror['col'] = l:items[1]
+        let l:qferror['text'] = l:items[2]
+      else
+        let l:qferror['text'] = l:error
+      endif
+      call add(l:qferrors, l:qferror)
+    endfor
+    call setqflist(l:qferrors, 'r')
+    if len(l:qferrors) == 0
+      echomsg 'GOOOOOOOOD PEP8 ~~~~~~'
     else
-      let l:qferror['text'] = l:error
+      cwindow
+      crewind
     endif
-    call add(l:qferrors, l:qferror)
-  endfor
-  call setqflist(l:qferrors, 'r')
-  if len(l:qferrors) == 0
-    echomsg 'GOOOOOOOOD PEP8 ~~~~~~'
   else
-    cwindow
-    crewind
+    echomsg 'Not a python file~~'
   endif
 endfunction
 "" }}}
