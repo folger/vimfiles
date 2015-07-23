@@ -121,3 +121,6 @@
 [submodule "bundle/gitv"]
 	path = bundle/gitv
 	url = https://github.com/gregsexton/gitv
+[submodule "bundle/bclose.vim"]
+	path = bundle/bclose.vim
+	url = https://github.com/rbgrouleff/bclose.vim

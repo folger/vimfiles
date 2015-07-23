@@ -307,7 +307,7 @@ nnoremap <silent> <Leader>tr    :tabclose<CR>
 nnoremap <silent> <Leader>b     :CtrlPBuffer<CR>
 nnoremap <silent> <Leader>f     :call CtrlPCurrentFolder()<CR>
 nnoremap <silent> <Leader>v     :e $MYVIMRC<CR>
-nnoremap <silent> <Leader>d     :bd<CR>
+nnoremap <silent> <Leader>d     :Bclose<CR>
 nnoremap <silent> <Leader>w     :update<CR>
 nnoremap <silent> <Leader>n     :enew<CR>
 nnoremap <Leader>ew             :e <C-R>=expand("%:p:h") . "/"<CR>
