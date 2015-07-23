@@ -307,7 +307,7 @@ nnoremap <silent> <Leader>tr    :tabclose<CR>
 nnoremap <silent> <Leader>b     :CtrlPBuffer<CR>
 nnoremap <silent> <Leader>f     :call CtrlPCurrentFolder()<CR>
 nnoremap <silent> <Leader>v     :e $MYVIMRC<CR>
-nnoremap <silent> <Leader>d     :Bclose<CR>
+nnoremap <silent> <Leader>d     :bdelete<CR>
 nnoremap <silent> <Leader>w     :update<CR>
 nnoremap <silent> <Leader>n     :enew<CR>
 nnoremap <Leader>ew             :e <C-R>=expand("%:p:h") . "/"<CR>
@@ -673,7 +673,7 @@ function! DiffCurrentFile()
   let l:dir = expand('%:p:h')
   let l:oldDir = getcwd()
   execute 'cd ' l:dir
-  execute 'enew | read !git diff -- ' l:file
+  execute 'new | read !git diff -- ' l:file
   1d
   write! ~/vimbackup/temp.diff
   edit
