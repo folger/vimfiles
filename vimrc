@@ -386,6 +386,8 @@ nnoremap <silent> ]N :clast<CR>
 
 nnoremap <Up> gk
 nnoremap <Down> gj
+nnoremap <C-Up> :cprevious<CR>
+nnoremap <C-Down> :cnext<CR>
 
 nnoremap <space> za
 vnoremap <space> zf
