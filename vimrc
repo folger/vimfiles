@@ -692,7 +692,7 @@ function! PEP8()
     let l:qferrors = []
     for l:error in l:errors
       let l:items = split(substitute(l:error,
-                  \'^\D\+\(\d\+\):\(\d\+\): \(.*\)$',
+                  \'^.\{-}\(\d\+\):\(\d\+\): \(.*\)$',
                   \'\1|\2|\3', 'g'),
                   \'|')
       let l:qferror = {}
