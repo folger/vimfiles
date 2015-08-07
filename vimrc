@@ -558,6 +558,7 @@ function! MakeUniq() range
 
   execute a:firstline . ',' . a:lastline . 'delete'
   call append(a:firstline-1, unique_lines)
+  delete
 endfunction
 command! -range Uniq <line1>,<line2>call MakeUniq()
 "" }}}
@@ -676,7 +677,7 @@ function! DiffCurrentFile()
   let l:oldDir = getcwd()
   execute 'cd ' l:dir
   execute 'new | read !git diff -- ' l:file
-  1d
+  1delete
   write! ~/vimbackup/temp.diff
   edit
   1
