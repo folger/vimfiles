@@ -547,6 +547,7 @@ endfunction
 function! MakeUniq() range
   let have_already_seen = {}
   let unique_lines = []
+  let l:alllines = a:firstline == 1 && a:lastline == line('$')
 
   for original_line in getline(a:firstline, a:lastline)
     let normalized_line = '<' . original_line
@@ -558,7 +559,9 @@ function! MakeUniq() range
 
   execute a:firstline . ',' . a:lastline . 'delete'
   call append(a:firstline-1, unique_lines)
-  delete
+  if l:alllines
+    delete
+  endif
 endfunction
 command! -range Uniq <line1>,<line2>call MakeUniq()
 "" }}}
