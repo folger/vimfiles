@@ -690,6 +690,7 @@ endfunction
 "" PEP8 {{{
 function! PEP8()
   if &filetype == 'python'
+    update
     let l:filename = expand('%')
     let l:output = system("pep8 " . l:filename)
     let l:errors = split(l:output, '\n')
