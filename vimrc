@@ -388,6 +388,8 @@ nnoremap <Up> gk
 nnoremap <Down> gj
 nnoremap <C-Up> :cprevious<CR>
 nnoremap <C-Down> :cnext<CR>
+nnoremap <A-Up> :normal [c<CR>
+nnoremap <A-Down> :normal ]c<CR>
 
 nnoremap <space> za
 vnoremap <space> zf
