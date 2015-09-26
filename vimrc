@@ -123,42 +123,47 @@ if has("win32") || has("win16")
 
   function! BuildProject(file)
     let l:output = system("python ". $folscode ."/Python/BuildProj/BuildCmd.py "
-          \ . g:proj . " " . expand(a:file))
+          \ . g:proj . ' --file="' . expand(a:file) . '" --platform=' . g:platform)
     let l:errors = split(l:output, '\n')
-    let l:proj_path = remove(l:errors, 0)
-    let l:qferrors = []
-    for l:error in l:errors
-      if len(l:error) == 0
-          break
-      endif
-      let l:items = split(substitute(l:error,
-                  \'^\%( \+\)\%(\d\+>\)\?\([^(]\+\)(\(\d\+\))\(.*\)',
-                  \'\1|\2|\3', 'g'),
-                  \'|')
-      let l:qferror = {}
-      if len(l:items) == 3
-        let l:file = l:items[0]
-        if l:file !~ '^\w:\'
-          let l:file = l:proj_path . '\' . l:file
-        endif
-        let l:qferror['filename'] = l:file
-        let l:qferror['lnum'] = l:items[1]
-        let l:qferror['text'] = l:items[2]
-      else
-        let l:qferror['text'] = l:error
-      endif
-      call add(l:qferrors, l:qferror)
-    endfor
-    call setqflist(l:qferrors, 'r')
-    if len(l:qferrors) == 0
-      echomsg 'no error found~~~~~~'
+    if len(l:errors) == 1
+      echomsg l:errors[0]
     else
-      cwindow
-      crewind
+      let l:proj_path = remove(l:errors, 0)
+      let l:qferrors = []
+      for l:error in l:errors
+        if len(l:error) == 0
+            break
+        endif
+        let l:items = split(substitute(l:error,
+                    \'^\%( \+\)\%(\d\+>\)\?\([^(]\+\)(\(\d\+\))\(.*\)',
+                    \'\1|\2|\3', 'g'),
+                    \'|')
+        let l:qferror = {}
+        if len(l:items) == 3
+          let l:file = l:items[0]
+          if l:file !~ '^\w:\'
+            let l:file = l:proj_path . '\' . l:file
+          endif
+          let l:qferror['filename'] = l:file
+          let l:qferror['lnum'] = l:items[1]
+          let l:qferror['text'] = l:items[2]
+        else
+          let l:qferror['text'] = l:error
+        endif
+        call add(l:qferrors, l:qferror)
+      endfor
+      call setqflist(l:qferrors, 'r')
+      if len(l:qferrors) == 0
+        echomsg 'no error found~~~~~~'
+      else
+        cwindow
+        crewind
+      endif
     endif
   endfunction
   "nnoremap <silent> <C-k><C-b> :call BuildProject("")<CR>
   let g:proj='ok80'
+  let g:platform='x64'
 
 
   nnoremap <silent> yq :let @+=substitute(expand('%:p'), '/', '\', 'g')<CR>
