@@ -347,7 +347,7 @@ nnoremap <silent> <S-F4> :Gcommit --amend<CR>
 nnoremap <silent> <F5> :call DiffCurrentFile()<CR>
 "nmap <F6> <Plug>HexManager
 nnoremap <silent> <F6> :e ++enc=cp1252<CR>
-nnoremap <silent> <C-F6> :e ++enc=
+nnoremap <C-F6> :e ++enc=
 "nnoremap <F7> :Bufferlist<CR>
 nnoremap <silent> <F8> :let b:tagbar_ignore = 0 \| TagbarToggle<CR>
 nnoremap <silent> <F9> :call PEP8()<CR>
