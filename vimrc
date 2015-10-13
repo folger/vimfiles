@@ -368,8 +368,8 @@ vnoremap <C-l> :call AddCodeMarking()<CR>
 nnoremap <C-k><C-j> :call SetupCodeMarking()<CR>
 nnoremap <C-k><C-u> :call AddIfDef()<CR>
 vnoremap <C-k><C-u> :call AddIfDef()<CR>
-nnoremap <C-k><C-l> :call SurroundWithTryCatch()<CR>
-vnoremap <C-k><C-l> :call SurroundWithTryCatch()<CR>
+nnoremap <C-k><C-l> :call SurroundWithExceptionHandler()<CR>
+vnoremap <C-k><C-l> :call SurroundWithExceptionHandler()<CR>
 
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
@@ -733,7 +733,7 @@ function! PEP8()
 endfunction
 "" }}}
 "" Surround code with Exception Handler {{{
-function! SurroundWithTryCatch() range
+function! SurroundWithExceptionHandler() range
   if &filetype == 'python'
     execute a:firstline . "normal! Otry:"
     execute a:lastline . "+1 normal! oexcept Exception:pass"
