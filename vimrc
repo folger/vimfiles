@@ -198,6 +198,8 @@ function! CompileCurrentFile()
     else
       !python3 %
     endif
+  elseif &filetype == 'markdown'
+    execute '!"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" "%"'
   else
     call BuildProject("%:t")
   endif
@@ -243,6 +245,7 @@ augroup END
 augroup FileTypeRelated
   autocmd!
   autocmd Filetype python :setlocal expandtab
+  autocmd Filetype markdown :setlocal expandtab
   autocmd Filetype vim :setlocal tabstop=2 shiftwidth=2 expandtab foldmethod=marker
   autocmd Filetype lua :setlocal tabstop=2 shiftwidth=2 expandtab
 augroup END
