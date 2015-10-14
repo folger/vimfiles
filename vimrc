@@ -31,6 +31,7 @@ set incsearch
 set showmatch
 set tabstop=4
 set shiftwidth=4
+set shellslash
 
 set laststatus=2  "" Always show the statusline
 set statusline=
