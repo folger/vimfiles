@@ -354,9 +354,11 @@ nnoremap <silent> <F5> :call DiffCurrentFile()<CR>
 nnoremap <silent> <F6> :e ++enc=cp1252<CR>
 nnoremap <C-F6> :e ++enc=
 "nnoremap <F7> :Bufferlist<CR>
+nnoremap <silent> <F7> :call CompileCurrentFile()<CR>
 nnoremap <silent> <F8> :let b:tagbar_ignore = 0 \| TagbarToggle<CR>
 nnoremap <silent> <F9> :call PEP8()<CR>
-nnoremap <silent> <F7> :call CompileCurrentFile()<CR>
+let g:init_columns = &columns
+nnoremap <silent> <F10> :let &columns=g:init_columns + 80 - &columns<CR>
 
 
 noremap \ <C-W>
