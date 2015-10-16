@@ -100,8 +100,8 @@ if has("win32") || has("win16")
   set lines=40 columns=120
   let g:tagbar_ctags_bin = 'D:\clang_lib\ctags.exe'
   let g:clang_library_path="D:/clang_lib/"
-  set guifont=DejaVu_Sans_Mono:h10
-  set guifontwide=NSimSun:h10
+  set guifont=DejaVu_Sans_Mono:h11
+  set guifontwide=NSimSun:h11
 
   function! OpenContaningFolder()
     let l:path = substitute(expand('%:p:h'), '/', '\', 'g')
@@ -404,6 +404,8 @@ nnoremap <C-Up> :cprevious<CR>
 nnoremap <C-Down> :cnext<CR>
 nnoremap <A-Up> :normal [c<CR>
 nnoremap <A-Down> :normal ]c<CR>
+nnoremap <A-Left> :call ChangeFontSize(-1)<CR>
+nnoremap <A-Right> :call ChangeFontSize(1)<CR>
 
 nnoremap <space> za
 vnoremap <space> zf
@@ -750,5 +752,14 @@ function! SurroundWithExceptionHandler() range
     execute a:lastline . "+2 normal! o}catch (...){}"
     execute a:firstline . "+2," . a:lastline . "+2 normal! >>"
   endif
+endfunction
+"" }}}
+"" Increase/Descrease font size {{{
+function! ChangeFontSize(delta)
+  let l:fonts = split(&guifont, ':')
+  let l:fontsize = str2nr(l:fonts[1][1:])
+  let l:fontsize += a:delta
+  let &guifont = l:fonts[0] . ':h' . string(l:fontsize)
+  echoerr &guifont
 endfunction
 "" }}}
