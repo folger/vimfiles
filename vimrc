@@ -350,6 +350,7 @@ nnoremap <silent> <C-F4> :Gcommit<CR>
 nnoremap <silent> <S-F4> :Gcommit --amend<CR>
 "nnoremap <F5> :GundoToggle<CR>
 nnoremap <silent> <F5> :call DiffCurrentFile()<CR>
+nnoremap <silent> <C-F5> :!gitex browse %:p:h<CR>
 "nmap <F6> <Plug>HexManager
 nnoremap <silent> <F6> :e ++enc=cp1252<CR>
 nnoremap <C-F6> :e ++enc=
