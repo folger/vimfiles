@@ -200,7 +200,7 @@ function! CompileCurrentFile()
       !python3 %
     endif
   elseif &filetype == 'markdown'
-    execute '!"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" "%"'
+    execute '!"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" "%:p"'
   else
     call BuildProject("%:t")
   endif
