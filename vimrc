@@ -336,7 +336,7 @@ vmap <Tab> %
 "set pastetoggle=<F3>
 
 nnoremap <silent> <F1> :Gstatus<CR>
-nnoremap <silent> <C-F1> :Gblame -w<CR>
+nnoremap <silent> <C-F1> :!gitex browse %:p:h<CR>
 nnoremap <silent> <S-F1> :Gread<bar>w!<CR>
 "nnoremap <F2> :NERDTreeToggle<CR>
 "nnoremap <S-F2> :NERDTreeFind<CR>
@@ -351,7 +351,7 @@ nnoremap <silent> <C-F4> :Gcommit<CR>
 nnoremap <silent> <S-F4> :Gcommit --amend<CR>
 "nnoremap <F5> :GundoToggle<CR>
 nnoremap <silent> <F5> :call DiffCurrentFile()<CR>
-nnoremap <silent> <C-F5> :!gitex browse %:p:h<CR>
+nnoremap <silent> <C-F5> :Gblame -w<CR>
 "nmap <F6> <Plug>HexManager
 nnoremap <silent> <F6> :e ++enc=cp1252<CR>
 nnoremap <C-F6> :e ++enc=
