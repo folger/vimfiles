@@ -240,7 +240,7 @@ augroup VimStartup
   autocmd!
   "autocmd VimLeave * mksession! ~/vim_session
   "autocmd VimEnter * source ~/vim_session
-  autocmd VimEnter * :echo ">^.^<"
+  "autocmd VimEnter * :echo ">^.^<"
 augroup END
 "" }}}
 "" auto commands for FileType {{{
@@ -311,7 +311,7 @@ hi User9 guifg=#ffffff guibg=#094afe
 "" }}}
 
 "" keymappings {{{
-nnoremap <silent> <Leader><Tab> :Scratch<CR>
+"nnoremap <silent> <Leader><Tab> :Scratch<CR>
 nnoremap <silent> <Leader>tt    :tabedit<CR>
 nnoremap <silent> <Leader>tr    :tabclose<CR>
 nnoremap <silent> <Leader>b     :CtrlPBuffer<CR>
@@ -367,19 +367,19 @@ nnoremap <silent> <F10> :let &columns=g:init_columns + 80 - &columns<CR>
 noremap \ <C-W>
 
 
-noremap <Esc> :noh<bar>pclose<CR><Esc>
+noremap <silent> <Esc> :noh<bar>pclose<CR><Esc>
 
-nnoremap <C-k><C-o> :Gist -l<CR>
-nnoremap <C-k><C-i> :CtrlPMRU<CR>
-nnoremap <C-k><C-d> :Gdiff<CR>
-nnoremap <C-K><C-m> :call AddModificationLog()<CR>
-nnoremap <C-l> :call AddCodeMarking()<CR>
-vnoremap <C-l> :call AddCodeMarking()<CR>
-nnoremap <C-k><C-j> :call SetupCodeMarking()<CR>
-nnoremap <C-k><C-u> :call AddIfDef()<CR>
-vnoremap <C-k><C-u> :call AddIfDef()<CR>
-nnoremap <C-k><C-l> :call SurroundWithExceptionHandler()<CR>
-vnoremap <C-k><C-l> :call SurroundWithExceptionHandler()<CR>
+nnoremap <silent> <C-k><C-o> :Gist -l<CR>
+nnoremap <silent> <C-k><C-i> :CtrlPMRU<CR>
+nnoremap <silent> <C-k><C-d> :Gdiff<CR>
+nnoremap <silent> <C-K><C-m> :call AddModificationLog()<CR>
+nnoremap <silent> <C-l> :call AddCodeMarking()<CR>
+vnoremap <silent> <C-l> :call AddCodeMarking()<CR>
+nnoremap <silent> <C-k><C-j> :call SetupCodeMarking()<CR>
+nnoremap <silent> <C-k><C-u> :call AddIfDef()<CR>
+vnoremap <silent> <C-k><C-u> :call AddIfDef()<CR>
+nnoremap <silent> <C-k><C-l> :call SurroundWithExceptionHandler()<CR>
+vnoremap <silent> <C-k><C-l> :call SurroundWithExceptionHandler()<CR>
 
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
@@ -403,18 +403,18 @@ nnoremap <silent> ]N :clast<CR>
 
 nnoremap <Up> gk
 nnoremap <Down> gj
-nnoremap <C-Up> :cprevious<CR>
-nnoremap <C-Down> :cnext<CR>
-nnoremap <A-Up> :normal [c<CR>
-nnoremap <A-Down> :normal ]c<CR>
-nnoremap <A-Left> :call ChangeFontSize(-1)<CR>
-nnoremap <A-Right> :call ChangeFontSize(1)<CR>
+nnoremap <silent> <C-Up> :cprevious<CR>
+nnoremap <silent> <C-Down> :cnext<CR>
+nnoremap <silent> <A-Up> :normal [c<CR>
+nnoremap <silent> <A-Down> :normal ]c<CR>
+nnoremap <silent> <A-Left> :call ChangeFontSize(-1)<CR>
+nnoremap <silent> <A-Right> :call ChangeFontSize(1)<CR>
 
 nnoremap <space> za
 vnoremap <space> zf
 
-nnoremap & :&&<CR>
-xnoremap & :&&<CR>
+nnoremap <silent> & :&&<CR>
+xnoremap <silent> & :&&<CR>
 
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
