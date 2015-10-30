@@ -277,9 +277,8 @@ augroup END
 "" auto commands for buffering {{{
 augroup BufferRelated
   autocmd!
-  autocmd BufWinLeave *.* :call MakeView()
-  autocmd BufWinEnter *.* :silent loadview
-  autocmd BufWinEnter *.* :call CheckFileEncoding()
+  autocmd BufWinLeave * :call OnBufWinLeave()
+  autocmd BufWinEnter * :call OnBufWinEnter()
 augroup END
 "" }}}
 "" something other commands {{{
@@ -319,7 +318,6 @@ nnoremap <silent> <Leader>f     :call CtrlPCurrentFolder()<CR>
 nnoremap <silent> <Leader>v     :e $MYVIMRC<CR>
 nnoremap <silent> <Leader>d     :bdelete<CR>
 nnoremap <silent> <Leader>w     :update<CR>
-nnoremap <silent> <CR>          :update<CR>
 nnoremap <silent> <Leader>n     :enew<CR>
 nnoremap <Leader>ew             :e <C-R>=expand("%:p:h") . "/"<CR>
 nnoremap <Leader>l              :set list!<Bar>set list?<CR>
@@ -670,13 +668,6 @@ function! BCDiffFile()
   execute '!"' . $diff . '" ' . $home . '/vimbackup/temp.diff'
 endfunction
 "" }}}
-"" Make file view {{{
-function! MakeView()
-  if !&bin && expand('%') !~ '^fugitive'
-    mkview!
-  end
-endfunction
-"" }}}
 "" Surround selection with space {{{
 function! SurroundWithSpace()
   let tmp = @z
@@ -686,11 +677,36 @@ function! SurroundWithSpace()
   let @z = tmp
 endfunction
 "" }}}
+"" Make file view {{{
+function! OnBufWinLeave()
+  let l:filename = expand('%')
+  if len(l:filename) <= 0
+    return
+  endif
+
+  " make view
+  if !&bin && l:filename !~ '^fugitive'
+    mkview!
+  end
+endfunction
+"" }}}
 "" Check File Encoding is successfully detected {{{
-function! CheckFileEncoding()
-  if !&bin && filereadable(expand('%')) && &fileencoding == ''
-    echomsg expand('%')
+function! OnBufWinEnter()
+  let l:filename = expand('%')
+  if len(l:filename) <= 0
+    return
+  endif
+
+  silent loadview
+
+  "check file encoding
+  if !&bin && filereadable(l:filename) && &fileencoding == ''
     echoerr 'File Encoding is NONE, reload with proper encoding before making any changes!!!'
+  endif
+
+  "map <CR> to update
+  if &modifiable
+    nnoremap <buffer> <silent> <CR> :update<CR>
   endif
 endfunction
 "" }}}
