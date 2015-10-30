@@ -372,7 +372,7 @@ noremap <silent> <Esc> :noh<bar>pclose<CR><Esc>
 nnoremap <silent> <C-k><C-o> :Gist -l<CR>
 nnoremap <silent> <C-k><C-i> :CtrlPMRU<CR>
 nnoremap <silent> <C-k><C-d> :Gdiff<CR>
-nnoremap <silent> <C-K><C-m> :call AddModificationLog()<CR>
+"nnoremap <silent> <C-K><C-m> :call AddModificationLog()<CR>
 nnoremap <silent> <C-l> :call AddCodeMarking()<CR>
 vnoremap <silent> <C-l> :call AddCodeMarking()<CR>
 nnoremap <silent> <C-k><C-j> :call SetupCodeMarking()<CR>
@@ -451,11 +451,11 @@ function! SetupCodeMarking()
 endfunction
 "" }}}
 "" add code marking to modification log, OrgLab stuff {{{
-function! AddModificationLog()
-  let l:temp = @/
-	g/ \*-\+\*\//normal! O*	Folger =strftime("%m/%d/%Y") =g:jira=g:codem
-  let @/ = l:temp
-endfunction
+"function! AddModificationLog()
+  "let l:temp = @/
+	"g/ \*-\+\*\//normal! O*	Folger =strftime("%m/%d/%Y") =g:jira=g:codem
+  "let @/ = l:temp
+"endfunction
 "" }}}
 "" add CodeMarking {{{
 function! AddCodeMarking() range
