@@ -686,7 +686,8 @@ function! OnBufWinLeave()
   endif
 
   " make view
-  if !&bin && l:filename !~ '^fugitive'
+  if !&bin && l:filename !~ '^fugitive' &&
+            \ l:filename !~ '/\.git/index$'
     mkview!
   end
 endfunction
