@@ -473,8 +473,8 @@ function! AddIfDef() range
   let l:ai = &autoindent
   set nocindent
   set noautoindent
-  execute a:firstline . "normal! O#ifdef =g:define"
-  execute a:lastline . "+1 normal! o#endif /// =g:define"
+  execute a:firstline . "normal! O#ifdef =g:def"
+  execute a:lastline . "+1 normal! o#endif /// =g:def"
   let &cindent = l:ci
   let &autoindent = l:ai
 endfunction
