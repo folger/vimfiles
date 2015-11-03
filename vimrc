@@ -362,7 +362,8 @@ let g:init_columns = &columns
 nnoremap <silent> <F10> :let &columns=g:init_columns + 80 - &columns<CR>
 
 
-noremap \ <C-W>
+nnoremap \ <C-W>
+nnoremap \\ <C-W>W
 
 
 noremap <silent> <Esc> :noh<bar>pclose<CR><Esc>
