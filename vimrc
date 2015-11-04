@@ -412,8 +412,8 @@ nnoremap <silent> <A-Right> :call ChangeFontSize(1)<CR>
 nnoremap <space> za
 vnoremap <space> zf
 
-nnoremap <silent> & :&&<CR>
-xnoremap <silent> & :&&<CR>
+nnoremap & "*
+xnoremap & "*
 
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
