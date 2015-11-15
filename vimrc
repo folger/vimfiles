@@ -638,7 +638,7 @@ nnoremap <c-k><c-x> :call FindSymbolInTagsFile(expand($develop) . '/.git/')<CR>
 "" Git external diff tool to diff file {{{
 function! DiffFile()
   let l:firstline = getline(1)
-  if l:firstline =~ '^\(tree\|From\) [0-9a-z]\+'
+  if l:firstline =~ '^tree [0-9a-z]\+$'
     let l:line = getline(line('.') + 1)
     let l:hashes = split(l:line, ' ')
     if len(l:hashes) == 3
