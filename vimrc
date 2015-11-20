@@ -786,3 +786,34 @@ function! ChangeFontSize(delta)
   echoerr &guifont
 endfunction
 "" }}}
+"" Fill Quickfix window with wanrings/errors {{{
+function! FillQuickfixWindow() range
+  let l:qferrors = []
+  for line in getline(a:firstline, a:lastline)
+    let l:items = split(line, ':')
+    let l:qferror = {}
+    let l:offset = -1
+    if len(l:items) == 4
+      let l:offset = 0
+    elseif len(l:items) == 5
+      let l:offset = 1
+    endif
+    if l:offset >= 0
+      if l:offset == 1
+        let l:qferror['filename'] = join(l:items[:1], ':')
+      else
+        let l:qferror['filename'] = l:items[0]
+      endif
+      let l:qferror['lnum'] = l:items[l:offset+1]
+      let l:qferror['col'] = l:items[l:offset+2]
+      let l:qferror['text'] = l:items[l:offset+3]
+      call add(l:qferrors, l:qferror)
+    endif
+  endfor
+  call setqflist(l:qferrors, 'r')
+  if len(l:qferrors) != 0
+    cwindow
+    crewind
+  endif
+endfunction
+"" }}}
