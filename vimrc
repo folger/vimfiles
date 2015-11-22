@@ -768,7 +768,7 @@ endfunction
 function! SurroundWithExceptionHandler() range
   if &filetype == 'python'
     execute a:firstline . "normal! Otry:"
-    execute a:lastline . "+1 normal! oexcept Exception:pass"
+    execute a:lastline . "+1 normal! oexcept:pass"
     execute a:firstline . "+1," . a:lastline . "+1 normal! >>"
   else
     execute a:firstline . "normal! Otry{"
