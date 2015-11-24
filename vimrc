@@ -293,10 +293,10 @@ execute pathogen#infect()
 
 "" colorscheme settings {{{
 syntax enable
-"set background=light
-"colorscheme summerfruit256
-set background=dark
-colorscheme flatland
+set background=light
+colorscheme summerfruit256
+"set background=dark
+"colorscheme flatland
 "" }}}
 
 "" statusline color settings {{{
