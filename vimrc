@@ -786,8 +786,8 @@ function! ChangeFontSize(delta)
   echoerr &guifont
 endfunction
 "" }}}
-"" Fill Quickfix window with wanrings/errors {{{
-function! FillQuickfixWindow() range
+"" Fill Quickfix window with xcode wanrings/errors {{{
+function! XcodeFillQuickfixWindow() range
   let l:qferrors = []
   for line in getline(a:firstline, a:lastline)
     let l:items = split(line, ':')
@@ -809,6 +809,31 @@ function! FillQuickfixWindow() range
       let l:qferror['text'] = l:items[l:offset+3]
       call add(l:qferrors, l:qferror)
     endif
+  endfor
+  call setqflist(l:qferrors, 'r')
+  if len(l:qferrors) != 0
+    cwindow
+    crewind
+  endif
+endfunction
+"" }}}
+"" Fill Quickfix window with VC find results {{{
+function! VCFindFillQuickfixWindow()
+  let l:qferrors = []
+  for line in split(@+, '\n')
+    let l:items = split(substitute(line,
+                \'^  \(\S\{-}\)(\(\d\+\)):\(.*\)$',
+                \'\1|\2|\3', 'g'),
+                \'|')
+    if len(l:items) != 3
+      continue
+    endif
+
+    let l:qferror = {}
+    let l:qferror['filename'] = l:items[0]
+    let l:qferror['lnum'] = l:items[1]
+    let l:qferror['text'] = l:items[2]
+    call add(l:qferrors, l:qferror)
   endfor
   call setqflist(l:qferrors, 'r')
   if len(l:qferrors) != 0
