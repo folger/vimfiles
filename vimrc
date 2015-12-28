@@ -733,7 +733,7 @@ function! PEP8()
   if &filetype == 'python'
     update
     let l:filename = expand('%')
-    let l:output = system("pep8 " . l:filename)
+    let l:output = system("pep8 --ignore=E116 " . l:filename)
     let l:errors = split(l:output, '\n')
     let l:qferrors = []
     for l:error in l:errors
