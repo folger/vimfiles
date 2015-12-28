@@ -100,7 +100,7 @@ if has("win32") || has("win16")
   set lines=40 columns=120
   let g:tagbar_ctags_bin = 'D:\clang_lib\ctags.exe'
   let g:clang_library_path="D:/clang_lib/"
-  set guifont=DejaVu_Sans_Mono:h11
+  set guifont=Consolas:h11
   set guifontwide=NSimSun:h11
 
   function! OpenContaningFolder()
