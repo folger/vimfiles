@@ -97,7 +97,7 @@ let g:tagbar_sort = 0
 "" }}}
 "" adjust configuration for such hostile environment as Windows, and others {{{
 if has("win32") || has("win16")
-  set lines=40 columns=162
+  set lines=40 columns=170
   let g:tagbar_ctags_bin = 'D:\clang_lib\ctags.exe'
   let g:clang_library_path="D:/clang_lib/"
   set guifont=Consolas:h11
