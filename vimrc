@@ -354,8 +354,8 @@ nnoremap <silent> <F5> :call DiffCurrentFile()<CR>
 nnoremap <silent> <C-F5> :Gblame -w<CR>
 nnoremap <silent> <S-F5> :Gread<bar>w!<CR>
 "nmap <F6> <Plug>HexManager
-nnoremap <silent> <F6> :e ++enc=cp1252<CR>
-nnoremap <C-F6> :e ++enc=
+nnoremap <silent> <F6> :e ++enc=cp1252
+nnoremap <C-F6> :set fileencoding=utf8<Bar>set bomb
 "nnoremap <F7> :Bufferlist<CR>
 nnoremap <silent> <F7> :call ExecuteCurrentFile()<CR>
 nnoremap <silent> <F8> :let b:tagbar_ignore = 0 \| TagbarToggle<CR>
