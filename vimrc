@@ -407,8 +407,8 @@ nnoremap <Up> gk
 nnoremap <Down> gj
 nnoremap <silent> <C-Up> :cprevious<CR>
 nnoremap <silent> <C-Down> :cnext<CR>
-nnoremap <silent> <A-Up> :normal [c<CR>
-nnoremap <silent> <A-Down> :normal ]c<CR>
+nnoremap <silent> <A-Up> [c
+nnoremap <silent> <A-Down> ]c
 nnoremap <silent> <A-Left> :call ChangeFontSize(-1)<CR>
 nnoremap <silent> <A-Right> :call ChangeFontSize(1)<CR>
 
