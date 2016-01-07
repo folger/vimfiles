@@ -340,8 +340,8 @@ nnoremap <silent> <C-F1> :!gitex browse %:p<CR>
 nnoremap <silent> <S-F1> :!gitex filehistory %:p<CR>
 "nnoremap <F2> :NERDTreeToggle<CR>
 "nnoremap <S-F2> :NERDTreeFind<CR>
-nnoremap <silent> <F2> :call DiffFile()<CR>
-nnoremap <silent> <C-F2> :call BCDiffFile()<CR>
+nnoremap <silent> <F2> :call DiffCurrentFile()<CR>
+nnoremap <silent> <C-F2> :call DiffFile()<CR>
 nnoremap <silent> <S-F2> :Git mergetool % -y<CR>
 nnoremap <silent> <F3> :Git fetch --all<CR>
 nnoremap <silent> <C-F3> :Git pull<CR>
@@ -350,7 +350,7 @@ nnoremap <silent> <F4> :Gwrite:0<CR>
 nnoremap <silent> <C-F4> :Gcommit<CR>
 nnoremap <silent> <S-F4> :Gcommit --amend<CR>
 "nnoremap <F5> :GundoToggle<CR>
-nnoremap <silent> <F5> :call DiffCurrentFile()<CR>
+nnoremap <silent> <F5> :!gitex commit %:p<CR>
 nnoremap <silent> <C-F5> :Gblame -w<CR>
 nnoremap <silent> <S-F5> :Gread<bar>w!<CR>
 "nmap <F6> <Plug>HexManager
