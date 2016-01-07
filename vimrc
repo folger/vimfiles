@@ -659,9 +659,9 @@ function! DiffFile()
         let l:gitpath = strpart(l:currentfile, 0, l:gitindex - 1)
       endif
       let l:file = strpart(split(getline('.'), ' ')[2], 1)
-      execute 'Git difftool -y ' l:gitpath . l:file
+      execute 'Git difftool -y "' . l:gitpath . l:file . '"'
     else
-      execute 'Git difftool -y %'
+      execute 'Git difftool -y "%"'
     endif
   endif
 endfunction
@@ -720,8 +720,8 @@ function! DiffCurrentFile()
   let l:file = expand('%:p')
   let l:dir = expand('%:p:h')
   let l:oldDir = getcwd()
-  execute 'cd ' l:dir
-  execute 'new | read !git diff -- ' l:file
+  execute 'cd ' . l:dir
+  execute 'new | read !git diff -- "' . l:file . '"'
   1delete
   write! ~/vimbackup/temp.diff
   edit
