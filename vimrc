@@ -724,7 +724,10 @@ function! DiffCurrentFile()
   execute 'new | read !git diff -- "' . l:file . '"'
   1delete
   write! ~/vimbackup/temp.diff
-  edit
+  view
+  setlocal nomodifiable
+  setlocal previewwindow
+  setlocal bufhidden=delete
   1
   execute 'cd ' l:oldDir
 endfunction
