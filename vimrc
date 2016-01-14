@@ -358,7 +358,7 @@ nnoremap <F6> :e ++enc=cp1252
 nnoremap <C-F6> :set fileencoding=utf8<Bar>set bomb
 nnoremap <S-F6> /<C-R>*<CR>
 "nnoremap <F7> :Bufferlist<CR>
-nnoremap <silent> <F7> :call ExecuteCurrentFile()<CR>
+nnoremap <silent> <F7> :call ExecuteCurrentFile()<CR><CR>
 nnoremap <silent> <F8> :let b:tagbar_ignore = 0 \| TagbarToggle<CR>
 nnoremap <silent> <F9> :call PEP8()<CR>
 let g:init_columns = &columns
