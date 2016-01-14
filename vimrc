@@ -363,6 +363,8 @@ nnoremap <silent> <F8> :let b:tagbar_ignore = 0 \| TagbarToggle<CR>
 nnoremap <silent> <F9> :call PEP8()<CR>
 let g:init_columns = &columns
 nnoremap <silent> <F10> :let &columns=g:init_columns + 80 - &columns<CR>
+nnoremap <silent> <F12> :Git add .<CR><CR>
+nnoremap <silent> <S-F12> :Git reset<CR><CR>
 
 
 nnoremap \ <C-W>
