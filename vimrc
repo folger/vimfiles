@@ -341,11 +341,11 @@ nnoremap <silent> <S-F1> :!start gitex.cmd filehistory %:p<CR>
 "nnoremap <F2> :NERDTreeToggle<CR>
 "nnoremap <S-F2> :NERDTreeFind<CR>
 nnoremap <silent> <F2> :call DiffCurrentFile()<CR>
-nnoremap <silent> <C-F2> :call DiffFile()<CR>
-nnoremap <silent> <S-F2> :Git mergetool % -y<CR>
-nnoremap <silent> <F3> :Git fetch --all<CR>
-nnoremap <silent> <C-F3> :Git pull<CR>
-nnoremap <silent> <S-F3> :Git push<CR>
+nnoremap <silent> <C-F2> :call DiffFile()<CR><CR>
+nnoremap <silent> <S-F2> :Git mergetool % -y<CR><CR>
+nnoremap <silent> <F3> :Git fetch --all<CR><CR>
+nnoremap <silent> <C-F3> :Git pull<CR><CR>
+nnoremap <silent> <S-F3> :Git push<CR><CR>
 nnoremap <silent> <F4> :Gwrite:0<CR>
 nnoremap <silent> <C-F4> :Gcommit<CR>
 nnoremap <silent> <S-F4> :Gcommit --amend<CR>
