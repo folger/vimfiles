@@ -826,11 +826,11 @@ function! XcodeFillQuickfixWindow() range
 endfunction
 "" }}}
 "" Fill Quickfix window with VC find results {{{
-function! VCFindFillQuickfixWindow()
+function! DoVCFindFillQuickfixWindow()
   let l:qferrors = []
   for line in split(@+, '\n')
     let l:items = split(substitute(line,
-                \'^  \(\S\{-}\)(\(\d\+\)):\(.*\)$',
+                \'^  \(.\{-}\)(\(\d\+\)):\(.*\)$',
                 \'\1|\2|\3', 'g'),
                 \'|')
     if len(l:items) != 3
@@ -849,4 +849,5 @@ function! VCFindFillQuickfixWindow()
     crewind
   endif
 endfunction
+command! VCFindFillQuickfixWindow call DoVCFindFillQuickfixWindow()
 "" }}}
