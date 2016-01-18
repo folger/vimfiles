@@ -59,6 +59,7 @@ set undodir=~/vimbackup
 "" }}}
 
 "" CtrlP settings {{{
+let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_by_filename = 1
 let g:ctrlp_max_files = 0
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:30'
