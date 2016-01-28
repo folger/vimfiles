@@ -282,6 +282,8 @@ augroup BufferRelated
   autocmd!
   autocmd BufWinLeave * :call OnBufWinLeave()
   autocmd BufWinEnter * :call OnBufWinEnter()
+  autocmd BufEnter * :call OnBufEnter()
+  autocmd BufDelete * :call OnBufDelete()
 augroup END
 "" }}}
 "" something other commands {{{
@@ -365,7 +367,8 @@ nnoremap <silent> <F7> :call ExecuteCurrentFile()<CR><CR>
 nnoremap <silent> <F8> :let b:tagbar_ignore = 0 \| TagbarToggle<CR>
 nnoremap <silent> <F9> :call PEP8()<CR>
 let g:init_columns = &columns
-nnoremap <silent> <F10> :let &columns=g:init_columns + 80 - &columns<CR>
+nnoremap <silent> <F10> :call ReopenLastBuffer()<CR>
+nnoremap <silent> <C-F10> :let &columns=g:init_columns + 80 - &columns<CR>
 nnoremap <silent> <F12> :Git add .<CR><CR>
 nnoremap <silent> <S-F12> :Git reset<CR><CR>
 
@@ -686,7 +689,7 @@ function! SurroundWithSpace()
   let @z = tmp
 endfunction
 "" }}}
-"" Make file view {{{
+"" Buffer event {{{
 function! OnBufWinLeave()
   let l:filename = expand('%')
   if len(l:filename) <= 0
@@ -699,8 +702,6 @@ function! OnBufWinLeave()
     mkview!
   end
 endfunction
-"" }}}
-"" Check File Encoding is successfully detected {{{
 function! OnBufWinEnter()
   let l:filename = expand('%')
   if len(l:filename) <= 0
@@ -718,6 +719,12 @@ function! OnBufWinEnter()
   if &modifiable
     nnoremap <buffer> <silent> <CR> :update<CR>
   endif
+endfunction
+function! OnBufEnter()
+  call RemoveFromLastBuffers()
+endfunction
+function! OnBufDelete()
+  call AddLastBuffer()
 endfunction
 "" }}}
 "" Show Diff File for Current file {{{
@@ -851,4 +858,29 @@ function! DoVCFindFillQuickfixWindow()
   endif
 endfunction
 command! VCFindFillQuickfixWindow call DoVCFindFillQuickfixWindow()
+"" }}}
+"" Reopen last buffer {{{
+let g:lastbuffers = []
+function! AddLastBuffer()
+  let l:lastbuffer = expand('%:p')
+  if len(l:lastbuffer) > 0 &&
+    \ l:lastbuffer !~ '^fugitive' &&
+    \ l:lastbuffer !~ '/\.git/index$' &&
+    \ !&previewwindow &&
+    \ index(g:lastbuffers, l:lastbuffer) < 0
+    call add(g:lastbuffers, l:lastbuffer)
+  endif
+endfunction
+function! RemoveFromLastBuffers()
+  let l:index = index(g:lastbuffers, expand('%:p'))
+  if l:index >= 0
+    call remove(g:lastbuffers, l:index)
+  endif
+endfunction
+function! ReopenLastBuffer()
+  let l:size = len(g:lastbuffers)
+  if l:size > 0
+    execute 'edit ' . g:lastbuffers[l:size-1]
+  endif
+endfunction
 "" }}}
