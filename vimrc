@@ -172,6 +172,10 @@ if has("win32") || has("win16")
   nnoremap <silent> <C-k><C-b> :wall!<Bar>!mingw32-make<CR>
   nnoremap <silent> <C-k><C-v> :!mingw32-make clean<CR>
   set dictionary=~/vimfiles/mystuff/dict/3esl.txt
+
+  function OneMoreCR()
+    normal 
+  endfunction
 else
   if has("gui_macvim")
     let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
@@ -190,6 +194,9 @@ else
   nnoremap <silent> <C-k><C-b> :wall!<Bar>!make<CR>
   nnoremap <silent> <C-k><C-v> :!make clean<CR>
   set dictionary=~/.vim/mystuff/dict/3esl.txt
+
+  function OneMoreCR()
+  endfunction
 endif
 
 function! ExecuteCurrentFile()
@@ -348,7 +355,7 @@ nnoremap <silent> <S-F1> :!start gitex.cmd filehistory %:p<CR>
 nnoremap <silent> <F2> :call DiffCurrentFile()<CR>
 nnoremap <silent> <C-F2> :call DiffFile()<CR><CR>
 nnoremap <silent> <S-F2> :Git mergetool % -y<CR><CR>
-nnoremap <silent> <F3> :Git fetch --all<CR><CR>
+nnoremap <silent> <F3> :Git fetch --all<Bar>call OneMoreCR()<CR>
 nnoremap <silent> <C-F3> :Git pull<CR><CR>
 nnoremap <silent> <S-F3> :Git push<CR><CR>
 nnoremap <silent> <F4> :Gwrite:0<CR>
