@@ -176,7 +176,7 @@ else
   if has("gui_macvim")
     let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
     let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/"
-    set guifont=DejaVu_Sans_Mono:h12
+    set guifont=Microsoft_YaHei_Mono:h14
 
     nnoremap <silent> <F11> :!open %:p:h<CR>
   else
