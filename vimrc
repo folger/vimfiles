@@ -370,7 +370,7 @@ let g:init_columns = &columns
 nnoremap <silent> <F10> :call ReopenLastBuffer()<CR>
 nnoremap <silent> <C-F10> :let &columns=g:init_columns + 80 - &columns<CR>
 nnoremap <silent> <F12> :Git add .<CR><CR>
-nnoremap <silent> <S-F12> :Git reset<CR><CR>
+nnoremap <S-F12> :Git reset 
 
 
 nnoremap \ <C-W>
