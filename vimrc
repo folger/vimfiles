@@ -267,7 +267,6 @@ augroup FileReadRelated
   autocmd BufNewFile,BufRead *.h,*.c,*.cpp :let b:tagbar_ignore = 1
   autocmd BufRead fugitive://* :set bufhidden=delete
   autocmd BufNewFile,BufRead *.oxf,*.vcxproj :set filetype=xml
-  "autocmd BufRead *.rc :edit ++encoding=cp1252
 augroup END
 "" }}}
 "" auto commands for file writing {{{
