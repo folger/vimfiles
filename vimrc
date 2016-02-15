@@ -175,9 +175,10 @@ else
     let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/"
     set guifont=Microsoft_YaHei_Mono:h14
 
-    nnoremap <silent> <F11> :!open %:p:h<CR>
+    nnoremap <silent> <F11> :silent !open %:p:h<CR>
+    nnoremap <silent> <C-F11> :silent !open -a Terminal "%:p:h"<CR>
   else
-    nnoremap <silent> <F11> :!xdg-open %:p:h<CR>
+    nnoremap <silent> <F11> :silent !xdg-open %:p:h<CR>
   endif
 
   function! BuildProject(file)
