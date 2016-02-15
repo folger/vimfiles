@@ -125,7 +125,7 @@ if has("win32") || has("win16")
 
   function! BuildProject(file)
     let l:output = system("python ". $folscode ."/Python/BuildProj/BuildCmd.py "
-          \ . g:proj . ' --file="' . expand(a:file) . '" --platform=' . g:platform)
+          \ . g:proj . ' --file="' . expand(a:file) . '" --platform=' . g:platform . ' --configuration=' . g:buildconfig)
     let l:errors = split(l:output, '\n')
     if len(l:errors) == 1
       echomsg l:errors[0]
@@ -166,6 +166,7 @@ if has("win32") || has("win16")
   "nnoremap <silent> <C-k><C-b> :call BuildProject("")<CR>
   let g:proj='ok80'
   let g:platform='x64'
+  let g:buildconfig='Debug'
 
 
   nnoremap <silent> yq :let @+=substitute(expand('%:p'), '/', '\', 'g')<CR>
@@ -202,7 +203,7 @@ function! ExecuteCurrentFile()
       !python3 %
     endif
   elseif &filetype == 'markdown'
-    execute '!"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" "%:p"'
+    call system('"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" "' . expand('%:p') . '"')
   else
     call BuildProject("%:t")
   endif
@@ -362,7 +363,7 @@ nnoremap <F6> :e ++enc=cp1252
 nnoremap <C-F6> :set fileencoding=utf8<Bar>set bomb
 nnoremap <S-F6> /<C-R>*<CR>
 "nnoremap <F7> :Bufferlist<CR>
-nnoremap <silent> <F7> :call ExecuteCurrentFile()<CR><CR>
+nnoremap <silent> <F7> :call ExecuteCurrentFile()<CR>
 nnoremap <silent> <F8> :let b:tagbar_ignore = 0 \| TagbarToggle<CR>
 nnoremap <silent> <F9> :call PEP8()<CR>
 let g:init_columns = &columns
