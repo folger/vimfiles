@@ -343,9 +343,9 @@ nnoremap <silent> <S-F1> :!start gitex.cmd filehistory "%:p"<CR>
 "nnoremap <F2> :NERDTreeToggle<CR>
 "nnoremap <S-F2> :NERDTreeFind<CR>
 nnoremap <silent> <F2> :call DiffCurrentFile()<CR>
-nnoremap <silent> <C-F2> :call DiffFile()<CR><CR>
-nnoremap <silent> <S-F2> :Git mergetool % -y<CR><CR>
-nnoremap <silent> <F3> :Git fetch --all<CR><CR>
+nnoremap <silent> <C-F2> :silent call DiffFile()<CR>
+nnoremap <silent> <S-F2> :silent Git mergetool % -y<CR>
+nnoremap <silent> <F3> :silent Git fetch --all<CR>
 nnoremap <silent> <C-F3> :Git pull<CR><CR>
 nnoremap <silent> <S-F3> :Git push<CR><CR>
 nnoremap <silent> <F4> :Gwrite:0<CR>
@@ -366,7 +366,7 @@ nnoremap <silent> <F9> :call PEP8()<CR>
 let g:init_columns = &columns
 nnoremap <silent> <F10> :call ReopenLastBuffer()<CR>
 nnoremap <silent> <C-F10> :let &columns=g:init_columns + 80 - &columns<CR>
-nnoremap <silent> <F12> :Git add .<CR><CR>
+nnoremap <silent> <F12> :silent Git add .<CR>
 nnoremap <S-F12> :Git reset 
 
 
