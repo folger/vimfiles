@@ -104,16 +104,12 @@ if has("win32") || has("win16")
   set guifont=Microsoft_YaHei_Mono:h11
   "set guifontwide=NSimSun:h11
 
-  function! OpenContaningFolder()
-    let l:path = substitute(expand('%:p:h'), '/', '\', 'g')
-    execute "silent !start explorer /e," . l:path
+  function! MakeWindowsPath(path)
+    return substitute(expand(a:path), '/', '\', 'g')
   endfunction
-  nnoremap <silent> <S-F11> :call OpenContaningFolder()<CR>
-  function! RevealFileInFolder()
-    let l:path = substitute(expand('%:p'), '/', '\', 'g')
-    execute "silent !start explorer /select," . l:path
-  endfunction
-  nnoremap <silent> <F11> :call RevealFileInFolder()<CR>
+  nnoremap <silent> <F11> :execute 'silent !start explorer /select,' . MakeWindowsPath('%:p')<CR>
+  nnoremap <silent> <S-F11> :execute 'silent !start explorer /e,' . MakeWindowsPath('%:p:h')<CR>
+  nnoremap <silent> <C-F11> :execute 'silent !start cmd.exe /K cd /D ' . MakeWindowsPath('%:p:h')<CR>
 
   function! SetupProj()
     let l:proj = input('Project/Solution name : ')
