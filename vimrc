@@ -338,8 +338,8 @@ vmap <Tab> %
 "set pastetoggle=<F3>
 
 nnoremap <silent> <F1> :Gstatus<CR>
-nnoremap <silent> <C-F1> :!start gitex.cmd browse "%:p"<CR>
-nnoremap <silent> <S-F1> :!start gitex.cmd filehistory "%:p"<CR>
+nnoremap <silent> <C-F1> :silent !start gitex.cmd browse "%:p"<CR>
+nnoremap <silent> <S-F1> :silent !start gitex.cmd filehistory "%:p"<CR>
 "nnoremap <F2> :NERDTreeToggle<CR>
 "nnoremap <S-F2> :NERDTreeFind<CR>
 nnoremap <silent> <F2> :call DiffCurrentFile()<CR>
@@ -352,7 +352,7 @@ nnoremap <silent> <F4> :Gwrite:0<CR>
 nnoremap <silent> <C-F4> :Gcommit<CR>
 nnoremap <silent> <S-F4> :Gcommit --amend<CR>
 "nnoremap <F5> :GundoToggle<CR>
-nnoremap <silent> <F5> :!start gitex.cmd commit "%:p"<CR>
+nnoremap <silent> <F5> :silent !start gitex.cmd commit "%:p"<CR>
 nnoremap <silent> <C-F5> :Gblame -w<CR>
 nnoremap <silent> <S-F5> :Gread<bar>w!<CR>
 "nmap <F6> <Plug>HexManager
