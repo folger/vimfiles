@@ -2,10 +2,6 @@
 	path = bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive
 	ignore = dirty
-[submodule "bundle/nerdtree"]
-	path = bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree
-	ignore = dirty
 [submodule "bundle/tagbar"]
 	path = bundle/tagbar
 	url = https://github.com/majutsushi/tagbar
@@ -13,10 +9,6 @@
 [submodule "bundle/ctrlp.vim"]
 	path = bundle/ctrlp.vim
 	url = https://github.com/kien/ctrlp.vim
-	ignore = dirty
-[submodule "bundle/syntastic"]
-	path = bundle/syntastic
-	url = https://github.com/scrooloose/syntastic
 	ignore = dirty
 [submodule "bundle/delimitMate"]
 	path = bundle/delimitMate
@@ -34,10 +26,6 @@
 	path = bundle/vim-easymotion
 	url = https://github.com/Lokaltog/vim-easymotion
 	ignore = dirty
-[submodule "bundle/sparkup"]
-	path = bundle/sparkup
-	url = https://github.com/rstacruz/sparkup
-	ignore = dirty
 [submodule "bundle/nerdcommenter"]
 	path = bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter
@@ -45,10 +33,6 @@
 [submodule "bundle/snipmate.vim"]
 	path = bundle/snipmate.vim
 	url = https://github.com/msanders/snipmate.vim
-	ignore = dirty
-[submodule "bundle/clang_complete"]
-	path = bundle/clang_complete
-	url = https://github.com/Rip-Rip/clang_complete
 	ignore = dirty
 [submodule "bundle/webapi-vim"]
 	path = bundle/webapi-vim
@@ -58,10 +42,6 @@
 	path = bundle/gist-vim
 	url = https://github.com/mattn/gist-vim
 	ignore = dirty
-[submodule "bundle/python-mode"]
-	path = bundle/python-mode
-	url = https://github.com/klen/python-mode
-	ignore = dirty
 [submodule "bundle/vim-visual-star-search"]
 	path = bundle/vim-visual-star-search
 	url = https://github.com/bronson/vim-visual-star-search
@@ -70,53 +50,9 @@
 	path = bundle/vim-exchange
 	url = https://github.com/tommcdo/vim-exchange
 	ignore = dirty
-[submodule "bundle/tabular"]
-	path = bundle/tabular
-	url = https://github.com/godlygeek/tabular
-	ignore = dirty
-[submodule "bundle/gundo"]
-	path = bundle/gundo
-	url = https://github.com/sjl/gundo.vim
-	ignore = dirty
-[submodule "bundle/vim-abolish"]
-	path = bundle/vim-abolish
-	url = https://github.com/tpope/vim-abolish
-	ignore = dirty
-[submodule "bundle/vim-repeat"]
-	path = bundle/vim-repeat
-	url = https://github.com/tpope/vim-repeat
-	ignore = dirty
 [submodule "bundle/vim-multiple-cursors"]
 	path = bundle/vim-multiple-cursors
 	url = https://github.com/terryma/vim-multiple-cursors
-	ignore = dirty
-[submodule "bundle/vim-airline"]
-	path = bundle/vim-airline
-	url = https://github.com/bling/vim-airline
-	ignore = dirty
-[submodule "bundle/hexman"]
-	path = bundle/hexman
-	url = https://github.com/vim-scripts/hexman.vim
-	ignore = dirty
-[submodule "bundle/scratch.vim"]
-	path = bundle/scratch.vim
-	url = https://github.com/vim-scripts/scratch.vim
-	ignore = dirty
-[submodule "bundle/flatlandia"]
-	path = bundle/flatlandia
-	url = https://github.com/jordwalke/flatlandia/
-	ignore = dirty
-[submodule "bundle/vim-colors-solarized"]
-	path = bundle/vim-colors-solarized
-	url = https://github.com/altercation/vim-colors-solarized
-	ignore = dirty
-[submodule "bundle/buffet.vim"]
-	path = bundle/buffet.vim
-	url = https://github.com/vim-scripts/buffet.vim
-	ignore = dirty
-[submodule "bundle/summerfruit256.vim"]
-	path = bundle/summerfruit256.vim
-	url = https://github.com/vim-scripts/summerfruit256.vim
 	ignore = dirty
 [submodule "bundle/gitv"]
 	path = bundle/gitv
