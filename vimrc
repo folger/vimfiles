@@ -881,3 +881,13 @@ function! ReopenLastBuffer()
   endif
 endfunction
 "" }}}
+"" Git Rebase on master then push {{{
+function! DoRebaseThenPush()
+  let l:dir = expand('%:p:h')
+  let l:oldDir = getcwd()
+  execute 'cd ' . l:dir
+  execute '!git fetch --all & git checkout master & git rebase origin/master & git push origin master'
+  execute 'cd ' . l:oldDir
+endfunction
+command! RebaseThenPush silent call DoRebaseThenPush()
+"" }}}
