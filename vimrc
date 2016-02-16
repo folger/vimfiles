@@ -346,8 +346,8 @@ nnoremap <silent> <F2> :call DiffCurrentFile()<CR>
 nnoremap <silent> <C-F2> :silent call DiffFile()<CR>
 nnoremap <silent> <S-F2> :silent Git mergetool % -y<CR>
 nnoremap <silent> <F3> :silent Git fetch --all<CR>
-nnoremap <silent> <C-F3> :Git pull<CR><CR>
-nnoremap <silent> <S-F3> :Git push<CR><CR>
+nnoremap <silent> <C-F3> :Git pull<CR>
+nnoremap <silent> <S-F3> :Git push<CR>
 nnoremap <silent> <F4> :Gwrite:0<CR>
 nnoremap <silent> <C-F4> :Gcommit<CR>
 nnoremap <silent> <S-F4> :Gcommit --amend<CR>
@@ -886,8 +886,11 @@ function! DoRebaseThenPush()
   let l:dir = expand('%:p:h')
   let l:oldDir = getcwd()
   execute 'cd ' . l:dir
-  execute '!git fetch --all & git checkout master & git rebase origin/master & git push origin master'
+  execute '!git fetch --all &&' .
+          \' git checkout master &&' .
+          \' git rebase origin/master &&' .
+          \' git push origin master'
   execute 'cd ' . l:oldDir
 endfunction
-command! RebaseThenPush silent call DoRebaseThenPush()
+command! RebaseThenPush call DoRebaseThenPush()
 "" }}}
