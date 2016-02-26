@@ -367,6 +367,7 @@ let g:init_columns = &columns
 nnoremap <silent> <F10> :call ReopenLastBuffer()<CR>
 nnoremap <silent> <C-F10> :let &columns=g:init_columns + 80 - &columns<CR>
 nnoremap <silent> <F12> :silent Git add .<CR>
+nnoremap <C-F12> :call RebaseThenPush()<CR><CR>
 nnoremap <S-F12> :Git reset 
 
 
@@ -882,7 +883,7 @@ function! ReopenLastBuffer()
 endfunction
 "" }}}
 "" Git Rebase on master then push {{{
-function! DoRebaseThenPush()
+function! RebaseThenPush()
   let l:dir = expand('%:p:h')
   let l:oldDir = getcwd()
   execute 'cd ' . l:dir
@@ -892,5 +893,4 @@ function! DoRebaseThenPush()
           \' git push origin master'
   execute 'cd ' . l:oldDir
 endfunction
-command! RebaseThenPush call DoRebaseThenPush()
 "" }}}
