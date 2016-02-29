@@ -42,7 +42,7 @@ set statusline+=%2*\ %y                              "FileType
 set statusline+=%3*\ %{&fenc!=''?&fenc:'none'}       "Encoding
 set statusline+=%3*\ %{&bomb?\"BOM\":''}             "Encoding2
 set statusline+=%4*\ %{&ff}                          "FileFormaqt
-set statusline+=%5*\ %{g:platform}\ %{g:buildconfig}\ %{g:proj} "Build platform, config, project
+set statusline+=%5*\ %{BuildInfo()}                  "Build Info
 set statusline+=%7*\ %=%{v:register}[%l,\ %c]/%L     "Active buffer, line, row, total rows, top/bot
 set statusline+=%8*\ \ %m%r%P
 
@@ -907,5 +907,12 @@ function! RebaseThenPush()
           \' git rebase origin/master &&' .
           \' git push origin master'
   execute 'cd ' . l:oldDir
+endfunction
+"" statusline build info {{{
+function! BuildInfo()
+  if &filetype == 'c' || &filetype == 'cpp'
+    return g:platform . ' ' . g:buildconfig . ' '. g:proj
+  endif
+  return ''
 endfunction
 "" }}}
