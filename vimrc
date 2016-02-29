@@ -42,7 +42,7 @@ set statusline+=%2*\ %y                              "FileType
 set statusline+=%3*\ %{&fenc!=''?&fenc:'none'}       "Encoding
 set statusline+=%3*\ %{&bomb?\"BOM\":''}             "Encoding2
 set statusline+=%4*\ %{&ff}                          "FileFormaqt
-set statusline+=%5*\ %{g:proj}                       "Project
+set statusline+=%5*\ %{g:platform}\ %{g:buildconfig}\ %{g:proj} "Build platform, config, project
 set statusline+=%7*\ %=%{v:register}[%l,\ %c]/%L     "Active buffer, line, row, total rows, top/bot
 set statusline+=%8*\ \ %m%r%P
 
@@ -182,6 +182,8 @@ if has("win32") || has("win16")
   set dictionary=~/vimfiles/mystuff/dict/3esl.txt
 else
   let g:proj=''
+  let g:platform=''
+  let g:buildconfig=''
 
   if has("gui_macvim")
     let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
