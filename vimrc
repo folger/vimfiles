@@ -42,6 +42,7 @@ set statusline+=%2*\ %y                              "FileType
 set statusline+=%3*\ %{&fenc!=''?&fenc:'none'}       "Encoding
 set statusline+=%3*\ %{&bomb?\"BOM\":''}             "Encoding2
 set statusline+=%4*\ %{&ff}                          "FileFormaqt
+set statusline+=%5*\ %{g:proj}                       "Project
 set statusline+=%7*\ %=%{v:register}[%l,\ %c]/%L     "Active buffer, line, row, total rows, top/bot
 set statusline+=%8*\ \ %m%r%P
 
@@ -112,9 +113,19 @@ if has("win32") || has("win16")
   nnoremap <silent> <C-F11> :execute 'silent !start cmd.exe /K cd /D ' . MakeWindowsPath('%:p:h')<CR>
 
   function! SetupProj()
-    let l:proj = input('Project/Solution name : ')
-    if len(l:proj) > 0
-      let g:proj = l:proj
+    let l:projs = ['Select a project:',
+                \ '1 ok80',
+                \ '2 oks70',
+                \ '3 ou80',
+                \ '4 okutil',
+                \ '5 outl',
+                \ '6 ocompiler',
+                \ '7 ogrid',
+                \ '8 od70',
+                \]
+    let l:proj = inputlist(l:projs)
+    if l:proj > 0
+      let g:proj = split(l:projs[l:proj], ' ')[1]
     endif
   endfunction
   nnoremap <silent> <C-k><C-p> :call SetupProj()<CR>
@@ -170,6 +181,8 @@ if has("win32") || has("win16")
   nnoremap <silent> <C-k><C-v> :!mingw32-make clean<CR>
   set dictionary=~/vimfiles/mystuff/dict/3esl.txt
 else
+  let g:proj=''
+
   if has("gui_macvim")
     let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
     let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/"
