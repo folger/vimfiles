@@ -37,7 +37,7 @@ set laststatus=2  "" Always show the statusline
 set statusline=
 set statusline+=%6*[%n]                              "buffernr
 set statusline+=%6*\ %<%F                            "Filename
-set statusline+=%6*\ [%{fugitive#head(7)}]           "Git current branch
+set statusline+=%5*\ [%{fugitive#head(7)}]           "Git current branch
 set statusline+=%2*\ %y                              "FileType
 set statusline+=%3*\ %{&fenc!=''?&fenc:'none'}       "Encoding
 set statusline+=%3*\ %{&bomb?\"BOM\":''}             "Encoding2
@@ -321,7 +321,7 @@ hi User1 guifg=#ffdad8 guibg=#880c0e
 hi User2 guifg=#000000 guibg=#F4905C
 hi User3 guifg=#292b00 guibg=#f4f597
 hi User4 guifg=#112605 guibg=#aefe7B
-hi User5 guifg=#051d00 guibg=#7dcc7d
+hi User5 guifg=#051d00 guibg=#7dcc7d gui=bold
 hi User6 guifg=#ffffff guibg=#880c0e gui=bold
 hi User7 guifg=#ffffff guibg=#5b7fbb
 hi User8 guifg=#ffffff guibg=#810085
