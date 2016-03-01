@@ -357,9 +357,9 @@ nnoremap <silent> <C-F1> :silent !start gitex.cmd browse "%:p"<CR>
 nnoremap <silent> <S-F1> :silent !start gitex.cmd filehistory "%:p"<CR>
 "nnoremap <F2> :NERDTreeToggle<CR>
 "nnoremap <S-F2> :NERDTreeFind<CR>
-nnoremap <silent> <F2> :call DiffCurrentFile()<CR>
+nnoremap <silent> <F2> :call DiffCurrentFile('')<CR>
 nnoremap <silent> <C-F2> :silent call DiffFile()<CR>
-nnoremap <silent> <S-F2> :silent Git mergetool % -y<CR>
+nnoremap <silent> <S-F2> :call DiffCurrentFile('--cached')<CR>
 nnoremap <silent> <F3> :silent Git fetch --all<CR>
 nnoremap <silent> <C-F3> :Git pull<CR>
 nnoremap <silent> <S-F3> :Git push<CR>
@@ -383,7 +383,7 @@ nnoremap <silent> <F10> :call ReopenLastBuffer()<CR>
 nnoremap <silent> <C-F10> :let &columns=g:init_columns + 80 - &columns<CR>
 nnoremap <silent> <F12> :silent Git add .<CR>
 nnoremap <C-F12> :call RebaseThenPush()<CR><CR>
-nnoremap <S-F12> :Git reset 
+nnoremap <silent> <S-F12> :silent Git mergetool % -y<CR>
 
 
 nnoremap \ <C-W>
@@ -741,12 +741,12 @@ function! OnBufDelete()
 endfunction
 "" }}}
 "" Show Diff File for Current file {{{
-function! DiffCurrentFile()
+function! DiffCurrentFile(arg)
   let l:file = expand('%:p')
   let l:dir = expand('%:p:h')
   let l:oldDir = getcwd()
   execute 'cd ' . l:dir
-  execute 'new | read !git diff -- "' . l:file . '"'
+  execute 'new | read !git diff ' . a:arg . ' -- "' . l:file . '"'
   1delete
   write! ~/vimbackup/temp.diff
   view
