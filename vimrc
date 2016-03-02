@@ -132,7 +132,7 @@ if has("win32") || has("win16")
   nnoremap <silent> <C-k><C-p> :call SetupProj()<CR>
 
   function! BuildProject(file)
-    let l:output = system("python ". $folscode ."/Python/BuildProj/BuildCmd.py "
+    let l:output = system("python ". $folscode ."/Python/BatchBuild/BuildCmd.py "
           \ . g:proj . ' --file="' . expand(a:file) . '" --platform=' . g:platform . ' --configuration=' . g:buildconfig)
     let l:errors = split(l:output, '\n')
     if len(l:errors) == 1
