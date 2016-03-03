@@ -132,6 +132,11 @@ if has("win32") || has("win16")
   nnoremap <silent> <C-k><C-p> :call SetupProj()<CR>
 
   function! BuildProject(file)
+    if len(a:file) == 0
+      execute '!start python ' . $folscode ."/Python/BatchBuild/BuildCmd.py "
+              \ . g:proj . ' --platform=' . g:platform . ' --configuration=' . g:buildconfig . ' --all-output'
+      return
+    endif
     let l:output = system("python ". $folscode ."/Python/BatchBuild/BuildCmd.py "
           \ . g:proj . ' --file="' . expand(a:file) . '" --platform=' . g:platform . ' --configuration=' . g:buildconfig)
     let l:errors = split(l:output, '\n')
@@ -377,6 +382,7 @@ nnoremap <C-F6> :set fileencoding=utf8<Bar>set bomb
 nnoremap <S-F6> /<C-R>*<CR>
 "nnoremap <F7> :Bufferlist<CR>
 nnoremap <silent> <F7> :call ExecuteCurrentFile()<CR>
+nnoremap <silent> <C-F7> :call BuildProject('')<CR>
 nnoremap <silent> <F8> :let b:tagbar_ignore = 0 \| TagbarToggle<CR>
 nnoremap <silent> <F9> :call PEP8()<CR>
 let g:init_columns = &columns
