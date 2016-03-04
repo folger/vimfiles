@@ -930,11 +930,9 @@ function! RebaseThenPush()
           \' git push origin master'
   execute 'cd ' . l:oldDir
 endfunction
+"" }}}
 "" statusline build info {{{
 function! BuildInfo()
-  if &filetype == 'c' || &filetype == 'cpp'
-    return g:platform . ' - ' . g:buildconfig . ' - '. g:proj
-  endif
-  return ''
+  return g:platform . ' - ' . g:buildconfig . ' - '. g:proj
 endfunction
 "" }}}
