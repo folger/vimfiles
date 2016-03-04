@@ -114,19 +114,34 @@ if has("win32") || has("win16")
 
   function! SetupProj()
     let l:projs = ['Select a project:',
-                \ '1 ok80',
-                \ '2 oks70',
-                \ '3 ou80',
-                \ '4 okutil',
-                \ '5 outl',
-                \ '6 ocompiler',
-                \ '7 ogrid',
-                \ '8 od70',
-                \ '9 otext',
+                \ ' 1 originall',
+                \ ' 2 orgview',
+                \ ' 3 ok80',
+                \ ' 4 oks70',
+                \ ' 5 ou80',
+                \ ' 6 okutil',
+                \ ' 7 outl',
+                \ ' 8 ocompiler',
+                \ ' 9 ogrid',
+                \ '10 od70',
+                \ '11 otext',
                 \]
     let l:proj = inputlist(l:projs)
     if l:proj > 0
       let g:proj = split(l:projs[l:proj], ' ')[1]
+    endif
+    echomsg ' '
+    let l:configs = ['Select a configuration:',
+                \ '1 Win32 Debug',
+                \ '2 x64 Debug',
+                \ '3 Win32 Release',
+                \ '4 x64 Release',
+                \]
+    let l:config = inputlist(l:configs)
+    if l:config > 0
+      let l:c = split(l:configs[l:config], ' ')
+      let g:platform = l:c[1]
+      let g:buildconfig = l:c[2]
     endif
   endfunction
   nnoremap <silent> <C-k><C-p> :call SetupProj()<CR>
@@ -918,7 +933,7 @@ endfunction
 "" statusline build info {{{
 function! BuildInfo()
   if &filetype == 'c' || &filetype == 'cpp'
-    return g:platform . ' ' . g:buildconfig . ' '. g:proj
+    return g:platform . ' - ' . g:buildconfig . ' - '. g:proj
   endif
   return ''
 endfunction
