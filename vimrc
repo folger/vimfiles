@@ -122,9 +122,11 @@ if has("win32") || has("win16")
                 \ ' 6 okutil',
                 \ ' 7 outl',
                 \ ' 8 ocompiler',
-                \ ' 9 ogrid',
-                \ '10 od70',
-                \ '11 otext',
+                \ ' 9 okxf',
+                \ '10 ogrid',
+                \ '11 od70',
+                \ '12 otext',
+                \ '13 o3dgl',
                 \]
     let l:proj = inputlist(l:projs)
     if l:proj > 0
