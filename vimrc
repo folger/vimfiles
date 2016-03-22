@@ -938,3 +938,18 @@ function! BuildInfo()
   return g:platform . ' - ' . g:buildconfig . ' - '. g:proj
 endfunction
 "" }}}
+"" Reverse text in line {{{
+function! Reversed() range
+  let reversed_lines = []
+  let l:alllines = a:firstline == 1 && a:lastline == line('$')
+  for original_line in getline(a:firstline, a:lastline)
+    call add(reversed_lines, join(reverse(split(original_line, '.\zs')), ''))
+  endfor
+  execute a:firstline . ',' . a:lastline . 'delete'
+  call append(a:firstline-1, reversed_lines)
+  if l:alllines
+    delete
+  endif
+endfunction
+command! -range Rev <line1>,<line2>call Reversed()
+"" }}}
