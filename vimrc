@@ -1,4 +1,4 @@
-"" basic settings {{{
+"" Basic settings {{{
 set nocompatible   "" Disable vi-compatibility
 set modelines=0
 
@@ -71,7 +71,7 @@ set wildignore+=*.o,*.obj,*.lib,*.dll,*.exe,
       \*.emf,*.jpg,*.jpeg,*.png,*.bmp,*.chm,
       \*.otp,*.otw,*.otm,*.opj
 "" }}}
-"" clang_complete {{{
+"" Clang_complete {{{
 "let g:clang_complete_loaded=1
 "let g:clang_auto_select = 2
 "let g:clang_complete_copen=1
@@ -81,23 +81,23 @@ set wildignore+=*.o,*.obj,*.lib,*.dll,*.exe,
 "let g:clang_close_preview=1
 "let g:clang_user_options='-stdlib=libc++ -std=c++11 -IIncludePath'
 "" }}}
-"" syntastic settings {{{
+"" Syntastic settings {{{
 "let g:syntastic_ignore_files = ['\m\c\.py$', '\m\c\.pyw$']
 "" }}}
-"" pymode settings {{{
+"" Pymode settings {{{
 "let g:pymode_python = 'python'
 "let g:pymode_rope = 0
 "let g:pymode_lint_ignore = "E501,E265,C901"
 "let g:pymode_breakpoint_bind = ''
 "" }}}
-"" tagbar settings {{{
+"" Tagbar settings {{{
 let g:tagbar_autofocus = 1
 let g:tagbar_sort = 0
 "" }}}
 "" NERDTree settings {{{
 "let g:NERDTreeHijackNetrw = 0
 "" }}}
-"" adjust configuration for such hostile environment as Windows, and others {{{
+"" Adjust configuration for such hostile environment as Windows, and others {{{
 if has("win32") || has("win16")
   set lines=35 columns=165
   let g:tagbar_ctags_bin = 'D:\clang_lib\ctags.exe'
@@ -246,33 +246,33 @@ endfunction
 
 imap <silent> <F11> <Esc><F11>
 "" }}}
-"" indentation settings {{{
+"" Indentation settings {{{
 filetype indent plugin on
-"" according to
+"" According to
 "" http://stackoverflow.com/questions/18415492/autoindent-is-subset-of-smartindent-in-vim,
 "" smartindent is deprecated and should not be used
 set autoindent
 "set smartindent
 "" }}}
-"" turn on matchit {{{
+"" Turn on matchit {{{
 runtime macros/matchit.vim
 "" }}}
-"" airline settings {{{
+"" Airline settings {{{
 "let g:airline#extensions#tabline#enabled = 1
 "" }}}
-"" solarized settings {{{
+"" Solarized settings {{{
 "let g:solarized_italic = 0
 "" }}}
 "" NERDCommenter settings {{{
 let NERDLPlace = '/*'
 let NERDRPlace = '*/'
 "" }}}
-"" gitv settings {{{
+"" Gitv settings {{{
 let g:Gitv_OpenPreviewOnLaunch = 0
 let g:Gitv_CommitStep = 50
 "" }}}
 
-"" auto commands for vim startup {{{
+"" Auto commands for vim startup {{{
 augroup VimStartup
   autocmd!
   "autocmd VimLeave * mksession! ~/vim_session
@@ -280,7 +280,7 @@ augroup VimStartup
   "autocmd VimEnter * :echo ">^.^<"
 augroup END
 "" }}}
-"" auto commands for FileType {{{
+"" Auto commands for FileType {{{
 augroup FileTypeRelated
   autocmd!
   autocmd Filetype python :setlocal expandtab
@@ -289,7 +289,7 @@ augroup FileTypeRelated
   autocmd Filetype lua :setlocal tabstop=2 shiftwidth=2 expandtab
 augroup END
 "" }}}
-"" auto commands for file reading {{{
+"" Auto commands for file reading {{{
 augroup FileReadRelated
   autocmd!
   autocmd BufNewFile,BufRead
@@ -305,14 +305,14 @@ augroup FileReadRelated
   autocmd BufNewFile,BufRead *.oxf,*.vcxproj :set filetype=xml
 augroup END
 "" }}}
-"" auto commands for file writing {{{
+"" Auto commands for file writing {{{
 augroup FileWriteRelated
   autocmd!
   "autocmd BufWritePost vimrc,.vimrc :source $MYVIMRC
   autocmd BufWritePre,FileWritePre *.* :call EnsureDirExists()
 augroup END
 "" }}}
-"" auto commands for buffering {{{
+"" Auto commands for buffering {{{
 augroup BufferRelated
   autocmd!
   autocmd BufWinLeave * :call OnBufWinLeave()
@@ -321,17 +321,17 @@ augroup BufferRelated
   autocmd BufDelete * :call OnBufDelete()
 augroup END
 "" }}}
-"" something other commands {{{
+"" Something other commands {{{
 command! Dowrap set wrap linebreak nolist
 command! Nowrap set nowrap nolinebreak nolist
 "" }}}
-"" commands abbreviation {{{
+"" Commands abbreviation {{{
 "cabbrev git Git
 "" }}}
 
 execute pathogen#infect()
 
-"" colorscheme settings {{{
+"" Colorscheme settings {{{
 syntax enable
 set background=light
 colorscheme summerfruit256
@@ -339,7 +339,7 @@ colorscheme summerfruit256
 "colorscheme flatland
 "" }}}
 
-"" statusline color settings {{{
+"" Statusline color settings {{{
 hi User1 guifg=#ffdad8 guibg=#880c0e
 hi User2 guifg=#000000 guibg=#F4905C
 hi User3 guifg=#292b00 guibg=#f4f597
@@ -351,7 +351,7 @@ hi User8 guifg=#ffffff guibg=#810085
 hi User9 guifg=#ffffff guibg=#094afe
 "" }}}
 
-"" keymappings {{{
+"" Keymappings {{{
 "nnoremap <silent> <Leader><Tab> :Scratch<CR>
 nnoremap <silent> <Leader>tt    :tabedit<CR>
 nnoremap <silent> <Leader>tr    :tabclose<CR>
@@ -472,7 +472,7 @@ nnoremap zz ZZ
 nnoremap Y y$
 "" }}}
 
-"" repeat commands {{{
+"" Repeat commands {{{
 "nnoremap <silent> <Plug>TransposeCharacters xp
             "\:call repeat#set("\<Plug>TransposeCharacters")<CR>
 "nmap cp <Plug>TransposeCharacters
@@ -485,7 +485,7 @@ nnoremap Y y$
 ""
 ""
 ""
-"" setup codemarking {{{
+"" Setup codemarking {{{
 function! SetupCodeMarking()
   let l:codemarks = split(input("Code Mark : "))
   let l:len = len(l:codemarks)
@@ -498,14 +498,14 @@ function! SetupCodeMarking()
   endif
 endfunction
 "" }}}
-"" add code marking to modification log, OrgLab stuff {{{
+"" Add code marking to modification log, OrgLab stuff {{{
 "function! AddModificationLog()
   "let l:temp = @/
 	"g/ \*-\+\*\//normal! O*	Folger =strftime("%m/%d/%Y") =g:jira=g:codem
   "let @/ = l:temp
 "endfunction
 "" }}}
-"" add CodeMarking {{{
+"" Add CodeMarking {{{
 function! AddCodeMarking() range
   let l:fo = &formatoptions
   let l:ci = &cindent
@@ -517,7 +517,7 @@ function! AddCodeMarking() range
   let &cindent = l:ci
 endfunction
 "" }}}
-"" add IfDef {{{
+"" Add IfDef {{{
 function! AddIfDef() range
   let l:ci = &cindent
   let l:ai = &autoindent
@@ -529,7 +529,7 @@ function! AddIfDef() range
   let &autoindent = l:ai
 endfunction
 "" }}}
-"" pretty xml formatted current buffer {{{
+"" Pretty xml formatted current buffer {{{
 function! DoPrettyXML()
   " save the filetype so we can restore it later
   let l:origft = &ft
@@ -559,13 +559,13 @@ function! DoPrettyXML()
 endfunction
 command! PrettyXML call DoPrettyXML()
 "" }}}
-"" pretty json formatted current buffer {{{
+"" Pretty json formatted current buffer {{{
 function! DoPrettyJSON()
   %!python -m json.tool
 endfunction
 command! PrettyJSON call DoPrettyJSON()
 "" }}}
-"" put files in quickfix windows into args {{{
+"" Put files in quickfix windows into args {{{
 function! QuickfixFileNames()
   let buffer_names = {}
   for quickfix_item in getqflist()
@@ -575,7 +575,7 @@ function! QuickfixFileNames()
 endfunction
 command! -nargs=0 -bar Qargs execute 'args' QuickfixFileNames()
 "" }}}
-"" toggle quickfix window {{{
+"" Toggle quickfix window {{{
 let g:quickfix_is_open = 0
 function! QuickfixToggle()
   if g:quickfix_is_open
@@ -590,7 +590,7 @@ function! QuickfixToggle()
 endfunction
 nnoremap <silent> <Leader>q :call QuickfixToggle()<CR>
 "" }}}
-"" toggle location window {{{
+"" Toggle location window {{{
 let g:location_is_open = 0
 function! LocationToggle()
   if g:location_is_open
@@ -605,7 +605,7 @@ function! LocationToggle()
 endfunction
 nnoremap <silent> <Leader>o :call LocationToggle()<CR>
 "" }}}
-"" using CtrlP to open current directory {{{
+"" Using CtrlP to open current directory {{{
 function! CtrlPCurrentFolder()
   let g:ctrlp_working_path_mode = 'c'
   CtrlP
@@ -658,7 +658,7 @@ function! EnsureDirExists()
   end
 endfunction
 "" }}}
-"" change dos ending file to unix {{{
+"" Change dos ending file to unix {{{
 function! DoDOSEndingToUnix()
   edit ++fileformat=dos
   setlocal fileformat=unix
@@ -666,7 +666,7 @@ function! DoDOSEndingToUnix()
 endfunction
 command! -bar DOSEndingToUnix call DoDOSEndingToUnix()
 "" }}}
-"" find symbol in tags file {{{
+"" Find symbol in tags file {{{
 function! FindSymbolInTagsFile(tagspath)
   let l:key = input('Symbol Key : ')
   if len(l:key) <= 0
@@ -712,7 +712,7 @@ function! DiffFile()
   endif
 endfunction
 "" }}}
-"" show diff file using default($diff) diff tool {{{
+"" Show diff file using default($diff) diff tool {{{
 function! BCDiffFile()
   execute "1,$w! ~/vimbackup/temp.diff"
   execute '!"' . $diff . '" ' . $home . '/vimbackup/temp.diff'
@@ -934,7 +934,7 @@ function! RebaseThenPush()
   execute 'cd ' . l:oldDir
 endfunction
 "" }}}
-"" statusline build info {{{
+"" Statusline build info {{{
 function! BuildInfo()
   return g:platform . ' - ' . g:buildconfig . ' - '. g:proj
 endfunction
