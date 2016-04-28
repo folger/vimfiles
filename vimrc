@@ -925,6 +925,10 @@ endfunction
 "" }}}
 "" Git Rebase on master then push {{{
 function! RebaseThenPush()
+  if fugitive#head(7) != 'master'
+    echoerr 'Current branch is not master, cannot rebase and push !!!'
+    return
+  endif
   let l:dir = expand('%:p:h')
   let l:oldDir = getcwd()
   execute 'cd ' . l:dir
