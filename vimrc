@@ -233,7 +233,7 @@ function! ExecuteCurrentFile()
   if &filetype == 'python'
     cd %:p:h
     if has("win32") || has("win16")
-      !python %
+      silent !start cmd.exe /K python %
     else
       !python3 %
     endif
