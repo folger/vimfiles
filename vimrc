@@ -113,24 +113,9 @@ if has("win32") || has("win16")
   nnoremap <silent> <C-F11> :execute 'silent !start cmd.exe /K cd /D ' . MakeWindowsPath('%:p:h')<CR>
 
   function! SetupProj()
-    let l:projs = ['Select a project:',
-                \ ' 1 originall',
-                \ ' 2 orgview',
-                \ ' 3 ok80',
-                \ ' 4 oks70',
-                \ ' 5 ou80',
-                \ ' 6 okutil',
-                \ ' 7 outl',
-                \ ' 8 ocompiler',
-                \ ' 9 okxf',
-                \ '10 ogrid',
-                \ '11 od70',
-                \ '12 otext',
-                \ '13 o3dgl',
-                \]
-    let l:proj = inputlist(l:projs)
-    if l:proj > 0
-      let g:proj = split(l:projs[l:proj], ' ')[1]
+    let l:proj = input('Project: ')
+    if len(l:proj) > 0
+      let g:proj = l:proj
     endif
     echomsg ' '
     let l:configs = ['Select a configuration:',
@@ -155,7 +140,7 @@ if has("win32") || has("win16")
       return
     endif
     let l:output = system("python ". $folscode ."/Python/BatchBuild/BuildCmd.py "
-          \ . g:proj . ' --file="' . expand(a:file) . '" --platform=' . g:platform . ' --configuration=' . g:buildconfig)
+          \ . 'xxx' . ' --file="' . expand(a:file) . '" --platform=' . g:platform . ' --configuration=' . g:buildconfig)
     let l:errors = split(l:output, '\n')
     if len(l:errors) == 1
       echomsg l:errors[0]
@@ -243,7 +228,7 @@ function! ExecuteCurrentFile()
   elseif &filetype == 'markdown'
     execute 'silent !"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" "%:p"'
   else
-    call BuildProject("%:t")
+    call BuildProject("%:p")
   endif
 endfunction
 
