@@ -235,7 +235,10 @@ function! ExecuteCurrentFile()
     if has("win32") || has("win16")
       silent !start cmd.exe /K python %
     else
-      !python3 %
+      let l:tempfile = expand('~/vimbackup/python.sh')
+      call writefile(['cd ' . expand('%:p:h'), 'python3 ' . expand('%')], l:tempfile)
+      execute 'silent !chmod +x ' . l:tempfile
+      execute 'silent !open -a Terminal ' . l:tempfile
     endif
   elseif &filetype == 'markdown'
     execute 'silent !"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" "%:p"'
