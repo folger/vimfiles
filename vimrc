@@ -183,6 +183,9 @@ if has("win32") || has("win16")
   let g:platform='x64'
   let g:buildconfig='Debug'
 
+  function! ExecutePython()
+    silent !start cmd.exe /K python %
+  endfunction
 
   nnoremap <silent> yq :let @+=substitute(expand('%:p'), '/', '\', 'g')<CR>
   nnoremap <silent> <C-k><C-b> :wall!<Bar>!mingw32-make<CR>
@@ -207,6 +210,13 @@ else
   function! BuildProject(file)
   endfunction
 
+  function! ExecutePython()
+    let l:tempfile = expand('~/vimbackup/python.sh')
+    call writefile(['cd ' . expand('%:p:h'), 'python3 ' . expand('%')], l:tempfile)
+    execute 'silent !chmod +x ' . l:tempfile
+    execute 'silent !open -a Terminal ' . l:tempfile
+  endfunction
+
   nnoremap <silent> yq :let @+=expand('%:p')<CR>
   nnoremap <silent> <C-k><C-b> :wall!<Bar>!make<CR>
   nnoremap <silent> <C-k><C-v> :!make clean<CR>
@@ -217,14 +227,7 @@ function! ExecuteCurrentFile()
   update
   if &filetype == 'python'
     cd %:p:h
-    if has("win32") || has("win16")
-      silent !start cmd.exe /K python %
-    else
-      let l:tempfile = expand('~/vimbackup/python.sh')
-      call writefile(['cd ' . expand('%:p:h'), 'python3 ' . expand('%')], l:tempfile)
-      execute 'silent !chmod +x ' . l:tempfile
-      execute 'silent !open -a Terminal ' . l:tempfile
-    endif
+    call ExecutePython()
   elseif &filetype == 'markdown'
     execute 'silent !"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" "%:p"'
   else
