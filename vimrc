@@ -184,7 +184,7 @@ if has("win32") || has("win16")
   let g:buildconfig='Debug'
 
   function! ExecutePython()
-    silent !start cmd.exe /K python %
+    silent !start cmd.exe /C python %&pause
   endfunction
 
   nnoremap <silent> yq :let @+=substitute(expand('%:p'), '/', '\', 'g')<CR>
