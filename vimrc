@@ -113,11 +113,11 @@ if has("win32") || has("win16")
   nnoremap <silent> <C-F11> :execute 'silent !start cmd.exe /K cd /D ' . MakeWindowsPath('%:p:h')<CR>
 
   function! SetupProj()
-    let l:proj = input('Project: ')
-    if len(l:proj) > 0
-      let g:proj = l:proj
-    endif
-    echomsg ' '
+    "let l:proj = input('Project: ')
+    "if len(l:proj) > 0
+      "let g:proj = l:proj
+    "endif
+    "echomsg ' '
     let l:configs = ['Select a configuration:',
                 \ '1 Win32 Debug',
                 \ '2 x64 Debug',
