@@ -449,7 +449,9 @@ nnoremap <silent> <A-Down> ]c
 nnoremap <silent> <A-Left> :call ChangeFontSize(-1)<CR>
 nnoremap <silent> <A-Right> :call ChangeFontSize(1)<CR>
 
-nnoremap <space> za
+"nnoremap <space> za
+nnoremap <space> <C-F>
+nnoremap <S-space> <C-B>
 vnoremap <space> zf
 
 nnoremap & "*
