@@ -395,8 +395,9 @@ nnoremap <silent> <F8> :let b:tagbar_ignore = 0 \| TagbarToggle<CR>
 nnoremap <silent> <F9> :call PEP8()<CR>
 let g:init_columns = &columns
 "nnoremap <silent> <F10> :call ReopenLastBuffer()<CR>
-nnoremap <silent> <F10> :normal @a<CR>
-nnoremap <silent> <C-F10> :let &columns=g:init_columns + 80 - &columns<CR>
+nnoremap <silent> <F10> :NERDTreeToggle<CR>
+nnoremap <silent> <C-F10> :NERDTreeFind<CR>
+nnoremap <silent> <S-F10> :let &columns=g:init_columns + 80 - &columns<CR>
 nnoremap <silent> <F12> :silent Git add .<CR>
 nnoremap <C-F12> :call RebaseThenPush()<CR><CR>
 nnoremap <silent> <S-F12> :silent Git mergetool % -y<CR>
