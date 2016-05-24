@@ -230,6 +230,8 @@ function! ExecuteCurrentFile()
     call ExecutePython()
   elseif &filetype == 'markdown'
     execute 'silent !"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" "%:p"'
+  elseif &filetype == 'dosbatch'
+    silent !start cmd.exe /C %&pause
   else
     call BuildProject("%:p")
   endif
