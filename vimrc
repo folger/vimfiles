@@ -465,7 +465,7 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 vnoremap <silent> S<space> :call SurroundWithSpace()<CR>
 
 nnoremap z. zz
-nnoremap zz :NERDTreeClose<bar>normal ZZ<CR>
+nnoremap zz :silent NERDTreeClose<bar>normal ZZ<CR>
 nnoremap Y y$
 "" }}}
 
