@@ -454,6 +454,8 @@ nnoremap <silent> <A-Right> :call ChangeFontSize(1)<CR>
 
 nnoremap <space> <C-F>
 nnoremap <S-space> <C-B>
+vnoremap <space> <C-F>
+vnoremap <S-space> <C-B>
 nnoremap <C-space> za
 vnoremap <C-space> zf
 
