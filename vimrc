@@ -409,7 +409,7 @@ nnoremap \ <C-W>
 nnoremap \\ <C-W><C-W>
 
 
-noremap <silent> <Esc> :noh<bar>pclose<CR><Esc>
+noremap <silent> <Esc> :noh<bar>pclose<bar>echo ''<CR><Esc>
 
 nnoremap <silent> <C-k><C-o> :Gist -l<CR>
 nnoremap <silent> <C-k><C-i> :CtrlPMRU<CR>
