@@ -712,9 +712,10 @@ function! DiffFile()
 endfunction
 "" }}}
 "" Show diff file using default($diff) diff tool {{{
+let g:tempdiff=expand('~/vimbackup/temp.diff')
 function! BCDiffFile()
-  execute "1,$w! ~/vimbackup/temp.diff"
-  execute '!"' . $diff . '" ' . $home . '/vimbackup/temp.diff'
+  execute "1,$w! " . g:tempdiff
+  execute '!"' . $diff . '" "' . g:tempdiff . '"'
 endfunction
 "" }}}
 "" Surround selection with space {{{
@@ -728,14 +729,16 @@ endfunction
 "" }}}
 "" Buffer event {{{
 function! OnBufWinLeave()
-  let l:filename = expand('%')
+  let l:filename = expand('%:p')
   if len(l:filename) <= 0
     return
   endif
 
   " make view
   if !&bin && l:filename !~ '^fugitive' &&
-            \ l:filename !~ '/\.git/index$'
+            \ l:filename !~ '/\.git/index$' &&
+            \ l:filename !~ 'gitv-\d' &&
+            \ l:filename !~ g:tempdiff
     mkview!
   end
 endfunction
@@ -772,7 +775,7 @@ function! DiffCurrentFile(arg)
   execute 'cd ' . l:dir
   execute 'new | read !git diff ' . a:arg . ' -- "' . l:file . '"'
   1delete
-  write! ~/vimbackup/temp.diff
+  execute 'write! ' g:tempdiff
   view
   setlocal nomodifiable
   setlocal previewwindow
