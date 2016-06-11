@@ -960,29 +960,3 @@ function! Reversed() range
 endfunction
 command! -range Rev <line1>,<line2>call Reversed()
 "" }}}
-"" Git status current file {{{
-let g:globalcount = 0
-let g:laststatus = ''
-function! CurrentFileGitStauts()
-  if g:globalcount < 10
-    let g:globalcount += 1
-    return g:laststatus
-  endif
-  let g:laststatus = ''
-  let g:globalcount = 0
-  if fugitive#head() == ''
-    return ''
-  endif
-  let l:oldDir = getcwd()
-  execute 'cd ' . expand('%:p:h')
-  let l:msg = system('git status --short -- ' . expand('%'))
-  execute 'cd ' l:oldDir
-  if l:msg != ''
-    let l:status = split(l:msg, ' ')[0]
-    if l:status != 'fatal:'
-      let g:laststatus = l:status
-    endif
-  endif
-  return g:laststatus
-endfunction
-"" }}}
