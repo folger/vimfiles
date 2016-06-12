@@ -379,7 +379,7 @@ nnoremap <silent> <S-F2> :call DiffCurrentFile('--cached')<CR>
 nnoremap <silent> <F3> :silent Git fetch --all<CR>
 nnoremap <silent> <C-F3> :Git pull<CR>
 nnoremap <silent> <S-F3> :Git push<CR>
-nnoremap <silent> <F4> :Gwrite:0<CR>
+nnoremap <silent> <F4> :silent Git add %<CR>
 nnoremap <silent> <C-F4> :Gcommit<CR>
 nnoremap <silent> <S-F4> :Gcommit --amend<CR>
 "nnoremap <F5> :GundoToggle<CR>
