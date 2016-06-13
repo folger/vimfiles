@@ -964,6 +964,9 @@ endfunction
 "" }}}
 "" Statusline build info {{{
 function! BuildInfo()
+  if g:proj == ''
+    return ''
+  endif
   return g:platform . ' - ' . g:buildconfig . ' - '. g:proj
 endfunction
 "" }}}
