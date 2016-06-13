@@ -758,7 +758,9 @@ function! OnBufWinLeave()
   if !&bin && l:filename !~ '^fugitive' &&
             \ l:filename !~ '/\.git/index$' &&
             \ l:filename !~ 'gitv-\d' &&
-            \ l:filename !~ g:tempdiff
+            \ l:filename !~ g:tempdiff &&
+            \ l:filename !~ '[Vundle]' &&
+            \ l:filename !~ 'NERD_tree_'
     mkview!
   end
 endfunction
