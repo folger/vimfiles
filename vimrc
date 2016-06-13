@@ -71,25 +71,6 @@ set wildignore+=*.o,*.obj,*.lib,*.dll,*.exe,
       \*.emf,*.jpg,*.jpeg,*.png,*.bmp,*.chm,
       \*.otp,*.otw,*.otm,*.opj
 "" }}}
-"" Clang_complete {{{
-"let g:clang_complete_loaded=1
-"let g:clang_auto_select = 2
-"let g:clang_complete_copen=1
-"let g:clang_periodic_quickfix=1
-"let g:clang_snippets=1
-"let g:clang_use_library=1
-"let g:clang_close_preview=1
-"let g:clang_user_options='-stdlib=libc++ -std=c++11 -IIncludePath'
-"" }}}
-"" Syntastic settings {{{
-"let g:syntastic_ignore_files = ['\m\c\.py$', '\m\c\.pyw$']
-"" }}}
-"" Pymode settings {{{
-"let g:pymode_python = 'python'
-"let g:pymode_rope = 0
-"let g:pymode_lint_ignore = "E501,E265,C901"
-"let g:pymode_breakpoint_bind = ''
-"" }}}
 "" Tagbar settings {{{
 let g:tagbar_autofocus = 1
 let g:tagbar_sort = 0
@@ -253,12 +234,6 @@ set autoindent
 "" Turn on matchit {{{
 runtime macros/matchit.vim
 runtime macros/a.vim
-"" }}}
-"" Airline settings {{{
-"let g:airline#extensions#tabline#enabled = 1
-"" }}}
-"" Solarized settings {{{
-"let g:solarized_italic = 0
 "" }}}
 "" NERDCommenter settings {{{
 let NERDLPlace = '/*'
