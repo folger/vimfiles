@@ -759,7 +759,7 @@ function! OnBufWinLeave()
             \ l:filename !~ '/\.git/index$' &&
             \ l:filename !~ 'gitv-\d' &&
             \ l:filename !~ g:tempdiff &&
-            \ l:filename !~ '[Vundle]' &&
+            \ l:filename !~ '\[Vundle\]' &&
             \ l:filename !~ 'NERD_tree_'
     mkview!
   end
