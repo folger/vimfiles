@@ -191,6 +191,8 @@ if has("win32") || has("win16")
   nnoremap <silent> <C-k><C-b> :wall!<Bar>!mingw32-make<CR>
   nnoremap <silent> <C-k><C-v> :!mingw32-make clean<CR>
   set dictionary=~/vimfiles/mystuff/dict/3esl.txt
+  set rtp+=~/vimfiles/bundle/Vundle.vim
+  call vundle#rc('~/vimfiles/bundle/') 
 else
   let g:proj=''
   let g:platform=''
@@ -221,6 +223,7 @@ else
   nnoremap <silent> <C-k><C-b> :wall!<Bar>!make<CR>
   nnoremap <silent> <C-k><C-v> :!make clean<CR>
   set dictionary=~/.vim/mystuff/dict/3esl.txt
+  set rtp+=~/.vim/bundle/Vundle.vim
 endif
 
 function! ExecuteCurrentFile()
@@ -249,6 +252,7 @@ set autoindent
 "" }}}
 "" Turn on matchit {{{
 runtime macros/matchit.vim
+runtime macros/a.vim
 "" }}}
 "" Airline settings {{{
 "let g:airline#extensions#tabline#enabled = 1
@@ -322,7 +326,23 @@ command! Nowrap set nowrap nolinebreak nolist
 "cabbrev git Git
 "" }}}
 
-execute pathogen#infect()
+"" Vundle {{{
+call vundle#begin()
+Plugin 'tpope/vim-fugitive'
+Plugin 'gregsexton/gitv'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'kien/ctrlp.vim'
+Plugin 'Raimondi/delimitMate'
+Plugin 'msanders/snipmate.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'bronson/vim-visual-star-search'
+Plugin 'tommcdo/vim-exchange'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'majutsushi/tagbar'
+call vundle#end()
+"" }}}
 
 "" Colorscheme settings {{{
 syntax enable
