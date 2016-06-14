@@ -451,8 +451,8 @@ nnoremap <space> <C-F>
 nnoremap <S-space> <C-B>
 vnoremap <space> <C-F>
 vnoremap <S-space> <C-B>
-nnoremap <C-space> za
-vnoremap <C-space> zf
+nnoremap <A-space> za
+vnoremap <A-space> zf
 
 nnoremap & "*
 xnoremap & "*
