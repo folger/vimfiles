@@ -18,8 +18,13 @@ set history=200
 
 set scrolloff=3
 
-set go-=m ""remove the menu bar
-set go-=T ""remove the toolbar
+set guioptions-=m ""remove the menu bar
+set guioptions-=T ""remove the toolbar
+"" remove scroll bars
+set guioptions-=l
+set guioptions-=L
+set guioptions-=r
+set guioptions-=R
 
 "set relativenumber
 set cursorline
@@ -32,6 +37,9 @@ set showmatch
 set tabstop=4
 set shiftwidth=4
 set shellslash
+
+set wildmenu              ""command-line show menu when tab
+set gcr=a:blinkon0        ""cursor no blink
 
 set laststatus=2  "" Always show the statusline
 set statusline=
