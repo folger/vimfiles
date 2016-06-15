@@ -322,10 +322,9 @@ call vundle#end()
 
 "" Colorscheme settings {{{
 syntax enable
-set background=light
-colorscheme summerfruit256
-"set background=dark
-"colorscheme flatland
+"colorscheme summerfruit256
+let g:molokai_original = 1
+colorscheme molokai
 "" }}}
 
 "" Statusline color settings {{{
