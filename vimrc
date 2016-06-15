@@ -397,7 +397,7 @@ nnoremap <silent> <C-F10> :NERDTreeFind<CR>
 nnoremap <silent> <S-F10> :let &columns=g:init_columns + 80 - &columns<CR>
 nnoremap <silent> <F12> :silent Git add .<CR>
 nnoremap <C-F12> :call RebaseThenPush()<CR><CR>
-nnoremap <silent> <S-F12> :silent Git mergetool % -y<CR>
+nnoremap <silent> <S-F12> :call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR>
 
 
 nnoremap \ <C-W>
