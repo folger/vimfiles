@@ -316,6 +316,7 @@ Plugin 'bronson/vim-visual-star-search'
 Plugin 'tommcdo/vim-exchange'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'majutsushi/tagbar'
+Plugin 'kshenoy/vim-signature'
 call vundle#end()
 "" }}}
 
