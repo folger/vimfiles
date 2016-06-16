@@ -251,6 +251,9 @@ let NERDRPlace = '*/'
 let g:Gitv_OpenPreviewOnLaunch = 0
 let g:Gitv_CommitStep = 50
 "" }}}
+"" ctrlsf settings {{{
+let g:ctrlsf_auto_close = 0
+"" }}}
 
 "" Auto commands for vim startup {{{
 augroup VimStartup
@@ -325,6 +328,7 @@ Plugin 'tommcdo/vim-exchange'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'majutsushi/tagbar'
 Plugin 'kshenoy/vim-signature'
+Plugin 'dyng/ctrlsf.vim'
 call vundle#end()
 "" }}}
 
@@ -410,6 +414,8 @@ nnoremap <silent> <S-F12> :call libcallnr("gvimfullscreen.dll", "ToggleFullScree
 
 nnoremap \ <C-W>
 nnoremap \\ <C-W><C-W>
+nnoremap <C-S> :MyCtrlSF 
+nnoremap <C-A> :CtrlSFToggle<CR>
 
 
 noremap <silent> <Esc> :noh<bar>pclose<bar>echo ''<CR><Esc>
@@ -743,7 +749,9 @@ function! OnBufWinLeave()
             \ l:filename !~ 'gitv-\d' &&
             \ l:filename !~ g:tempdiff &&
             \ l:filename !~ '\[Vundle\]' &&
-            \ l:filename !~ 'NERD_tree_'
+            \ l:filename !~ 'NERD_tree_' &&
+            \ l:filename !~ '__CtrlSF__' &&
+            \ l:filename !~ '__Tagbar__'
     mkview!
   end
 endfunction
@@ -967,4 +975,13 @@ function! Reversed() range
   endif
 endfunction
 command! -range Rev <line1>,<line2>call Reversed()
+"" }}}
+"" Reverse text in line {{{
+function! DoCtrlSF(args)
+  let l:old = &shellslash
+  let &shellslash = 0
+  call ctrlsf#Search(a:args, 0) 
+  let &shellslash = l:old
+endfunction
+com! -n=* -comp=customlist,ctrlsf#comp#Completion MyCtrlSF call DoCtrlSF(<q-args>)
 "" }}}
