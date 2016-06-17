@@ -329,6 +329,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'majutsushi/tagbar'
 Plugin 'kshenoy/vim-signature'
 Plugin 'dyng/ctrlsf.vim'
+Plugin 'octol/vim-cpp-enhanced-highlight'
 call vundle#end()
 "" }}}
 
