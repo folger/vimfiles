@@ -308,9 +308,6 @@ augroup END
 command! Dowrap set wrap linebreak nolist
 command! Nowrap set nowrap nolinebreak nolist
 "" }}}
-"" Commands abbreviation {{{
-"cabbrev git Git
-"" }}}
 
 "" Vundle {{{
 call vundle#begin()
@@ -479,12 +476,6 @@ vnoremap <silent> S<space> :call SurroundWithSpace()<CR>
 nnoremap z. zz
 nnoremap zz :silent NERDTreeClose<bar>normal ZZ<CR>
 nnoremap Y y$
-"" }}}
-
-"" Repeat commands {{{
-"nnoremap <silent> <Plug>TransposeCharacters xp
-            "\:call repeat#set("\<Plug>TransposeCharacters")<CR>
-"nmap cp <Plug>TransposeCharacters
 "" }}}
 
 ""
