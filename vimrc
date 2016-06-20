@@ -416,7 +416,7 @@ nnoremap <silent> <S-F12> :call libcallnr("gvimfullscreen.dll", "ToggleFullScree
 nnoremap \ <C-W>
 nnoremap \\ <C-W><C-W>
 nnoremap <C-S> :MyCtrlSF 
-nnoremap <C-A> :CtrlSFToggle<CR>
+nnoremap <C-S> :CtrlSFToggle<CR>
 
 
 noremap <silent> <Esc> :noh<bar>pclose<bar>echo ''<CR><Esc>
@@ -981,8 +981,8 @@ command! -range Rev <line1>,<line2>call Reversed()
 function! DoCtrlSF(args)
   let l:old = &shellslash
   let &shellslash = 0
-  call ctrlsf#Search(a:args, 0) 
+  silent call ctrlsf#Search(a:args, 0) 
   let &shellslash = l:old
 endfunction
-com! -n=* -comp=customlist,ctrlsf#comp#Completion MyCtrlSF call DoCtrlSF(<q-args>)
+com! -n=* -comp=customlist,ctrlsf#comp#Completion CS call DoCtrlSF(<q-args>)
 "" }}}
