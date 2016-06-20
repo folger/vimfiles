@@ -356,11 +356,12 @@ hi User9 guifg=#ffffff guibg=#094afe
 "nnoremap <silent> <Leader><Tab> :Scratch<CR>
 nnoremap <silent> <Leader>tt    :tabedit<CR>
 nnoremap <silent> <Leader>tr    :tabclose<CR>
+nnoremap <silent> <Leader>a     :A<CR>
 nnoremap <silent> <Leader>b     :CtrlPBuffer<CR>
 nnoremap <silent> <Leader>f     :call CtrlPCurrentFolder()<CR>
 nnoremap <silent> <Leader>v     :e $MYVIMRC<CR>
 nnoremap <silent> <Leader>d     :bdelete<CR>
-nnoremap <silent> <Leader>w     :A<CR>
+nnoremap <silent> <Leader>w     :update<CR>
 nnoremap <silent> <Leader>n     :enew<CR>
 nnoremap <Leader>ew             :e <C-R>=expand("%:p:h") . "/"<CR>
 nnoremap <Leader>l              :set list!<Bar>set list?<CR>
