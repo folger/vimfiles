@@ -28,6 +28,7 @@ set guioptions-=R
 
 "set relativenumber
 set cursorline
+"set cursorcolumn
 set backspace=2 ""make backspace work like most other apps
 "set number
 
@@ -91,7 +92,7 @@ if has("win32") || has("win16")
   set lines=35 columns=165
   let g:tagbar_ctags_bin = 'D:\clang_lib\ctags.exe'
   let g:clang_library_path="D:/clang_lib/"
-  set guifont=Microsoft_YaHei_Mono:h11
+  set guifont=Microsoft_YaHei_Mono:h13
   "set guifontwide=NSimSun:h11
 
   function! MakeWindowsPath(path)
@@ -190,7 +191,7 @@ else
   if has("gui_macvim")
     let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
     let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/"
-    set guifont=Microsoft_YaHei_Mono:h14
+    set guifont=Microsoft_YaHei_Mono:h16
 
     nnoremap <silent> <F11> :silent !open %:p:h<CR>
     nnoremap <silent> <C-F11> :silent !open -a Terminal "%:p:h"<CR>
@@ -744,7 +745,8 @@ function! OnBufWinLeave()
             \ l:filename !~ '\[Vundle\]' &&
             \ l:filename !~ 'NERD_tree_' &&
             \ l:filename !~ '__CtrlSF__' &&
-            \ l:filename !~ '__Tagbar__'
+            \ l:filename !~ '__Tagbar__' &&
+            \ l:filename !~ 'COMMIT_EDITMSG'
     mkview!
   end
 endfunction
