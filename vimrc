@@ -754,7 +754,8 @@ function! OnBufWinLeave()
             \ l:filename !~ '\[Vundle\]' &&
             \ l:filename !~ 'NERD_tree_' &&
             \ l:filename !~ '__CtrlSF__' &&
-            \ l:filename !~ '__Tagbar__'
+            \ l:filename !~ '__Tagbar__' &&
+            \ l:filename !~ 'COMMIT_EDITMSG'
     mkview!
   end
 endfunction
