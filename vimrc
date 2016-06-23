@@ -28,7 +28,7 @@ set guioptions-=R
 
 "set relativenumber
 set cursorline
-set cursorcolumn
+"set cursorcolumn
 set backspace=2 ""make backspace work like most other apps
 "set number
 
