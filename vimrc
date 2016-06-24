@@ -169,7 +169,7 @@ if has("win32") || has("win16")
     endif
   endfunction
   "nnoremap <silent> <C-k><C-b> :call BuildProject("")<CR>
-  let g:proj='ok80'
+  let g:proj='OriginAll'
   let g:platform='x64'
   let g:buildconfig='Debug'
 
