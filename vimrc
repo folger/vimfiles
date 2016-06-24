@@ -170,7 +170,7 @@ if has("win32") || has("win16")
   endfunction
   "nnoremap <silent> <C-k><C-b> :call BuildProject("")<CR>
   let g:proj='OriginAll'
-  let g:platform='x64'
+  let g:platform='Win32'
   let g:buildconfig='Debug'
 
   function! ExecutePython()
