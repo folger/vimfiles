@@ -971,7 +971,7 @@ function! Reversed() range
 endfunction
 command! -range Rev <line1>,<line2>call Reversed()
 "" }}}
-"" Reverse text in line {{{
+"" DoCtrlSF {{{
 function! DoCtrlSF(args)
   let l:old = &shellslash
   let &shellslash = 0
