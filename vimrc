@@ -414,7 +414,6 @@ nnoremap <silent> <S-F12> :call libcallnr("gvimfullscreen.dll", "ToggleFullScree
 
 nnoremap \ <C-W>
 nnoremap \\ <C-W><C-W>
-nnoremap <C-S> :MyCtrlSF 
 nnoremap <C-S> :CtrlSFToggle<CR>
 
 
