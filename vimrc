@@ -429,7 +429,6 @@ nnoremap <silent> <C-k><C-j> :call SetupCodeMarking()<CR>
 nnoremap <silent> <C-k><C-u> :call AddIfDef()<CR>
 vnoremap <silent> <C-k><C-u> :call AddIfDef()<CR>
 nnoremap <silent> <C-k><C-l> :call SurroundWithExceptionHandler()<CR>
-vnoremap <silent> <C-k><C-l> :call SurroundWithExceptionHandler()<CR>
 
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
