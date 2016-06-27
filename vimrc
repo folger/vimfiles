@@ -40,7 +40,7 @@ set shiftwidth=4
 set shellslash
 
 set wildmenu              ""command-line show menu when tab
-set gcr=a:blinkon0        ""cursor no blink
+"set gcr=a:blinkon0        ""cursor no blink
 
 set laststatus=2  "" Always show the statusline
 set statusline=
