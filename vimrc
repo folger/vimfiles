@@ -221,6 +221,7 @@ function! ExecuteCurrentFile()
   if &filetype == 'python'
     cd %:p:h
     call ExecutePython()
+    cd -
   elseif &filetype == 'markdown'
     execute 'silent !"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" "%:p"'
   elseif &filetype == 'dosbatch'
@@ -777,7 +778,6 @@ endfunction
 function! DiffCurrentFile(arg)
   let l:file = expand('%:p')
   let l:dir = expand('%:p:h')
-  let l:oldDir = getcwd()
   execute 'cd ' . l:dir
   execute 'new | read !git diff ' . a:arg . ' -- "' . l:file . '"'
   1delete
@@ -787,7 +787,7 @@ function! DiffCurrentFile(arg)
   setlocal previewwindow
   setlocal bufhidden=delete
   1
-  execute 'cd ' l:oldDir
+  cd -
 endfunction
 "" }}}
 "" PEP8 {{{
@@ -937,13 +937,12 @@ function! RebaseThenPush()
     return
   endif
   let l:dir = expand('%:p:h')
-  let l:oldDir = getcwd()
   execute 'cd ' . l:dir
   execute '!git fetch --all &&' .
           \' git checkout master &&' .
           \' git rebase origin/master &&' .
           \' git push origin master'
-  execute 'cd ' . l:oldDir
+  cd -
 endfunction
 "" }}}
 "" Statusline build info {{{
