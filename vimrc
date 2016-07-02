@@ -102,12 +102,7 @@ if has("win32") || has("win16")
   nnoremap <silent> <S-F11> :execute 'silent !start explorer /e,' . MakeWindowsPath('%:p:h')<CR>
   nnoremap <silent> <C-F11> :execute 'silent !start cmd.exe /K cd /D ' . MakeWindowsPath('%:p:h')<CR>
 
-  function! SetupProj()
-    "let l:proj = input('Project: ')
-    "if len(l:proj) > 0
-      "let g:proj = l:proj
-    "endif
-    "echomsg ' '
+  function! SetupConf()
     let l:configs = ['Select a configuration:',
                 \ '1 Win32 Debug',
                 \ '2 x64 Debug',
@@ -119,6 +114,28 @@ if has("win32") || has("win16")
       let l:c = split(l:configs[l:config], ' ')
       let g:platform = l:c[1]
       let g:buildconfig = l:c[2]
+    endif
+  endfunction
+  nnoremap <silent> <C-k><C-o> :call SetupConf()<CR>
+  function! SetupProj()
+    let l:projs = ['Select a project:',
+                \ ' 1 originall',
+                \ ' 2 orgview',
+                \ ' 3 ok80',
+                \ ' 4 oks70',
+                \ ' 5 ou80',
+                \ ' 6 okutil',
+                \ ' 7 outl',
+                \ ' 8 ocompiler',
+                \ ' 9 okxf',
+                \ '10 ogrid',
+                \ '11 od70',
+                \ '12 otext',
+                \ '13 o3dgl',
+                \]
+    let l:proj = inputlist(l:projs)
+    if l:proj > 0
+      let g:proj = split(l:projs[l:proj], ' ')[1]
     endif
   endfunction
   nnoremap <silent> <C-k><C-p> :call SetupProj()<CR>
@@ -421,7 +438,6 @@ nnoremap <C-S> :CtrlSFToggle<CR>
 
 noremap <silent> <Esc> :noh<bar>pclose<bar>echo ''<CR><Esc>
 
-nnoremap <silent> <C-k><C-o> :Gist -l<CR>
 nnoremap <silent> <C-k><C-i> :CtrlPMRU<CR>
 nnoremap <silent> <C-k><C-d> :Gdiff<CR>
 "nnoremap <silent> <C-K><C-m> :call AddModificationLog()<CR>
